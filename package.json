@@ -1,0 +1,25 @@
+{
+  "name": "skill-matrix",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SamerYaserr/Skill-Matrix.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SamerYaserr/Skill-Matrix/issues"
+  },
+  "homepage": "https://github.com/SamerYaserr/Skill-Matrix#readme",
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "mongoose": "^8.15.0"
+  }
+}
