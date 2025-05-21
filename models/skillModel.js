@@ -27,7 +27,7 @@ const skillSchema = new mongoose.Schema(
     },
     category: {
       type: String,
-      required: [true, 'A sli;; must have a category'],
+      required: [true, 'A skill must have a category'],
       enum: {
         values: ['Development', 'Design', 'Marketing'],
         message: 'category must be either Development, Design, or Marketing',
