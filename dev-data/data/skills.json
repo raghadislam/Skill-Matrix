@@ -1,0 +1,114 @@
+[
+  {
+    "_id": "6651a1111111111111111111",
+    "name": "Programming",
+    "description": "The foundation of all software development using code.",
+    "category": "Development",
+    "parentSkillId": []
+  },
+  {
+    "_id": "6651a1111111111111111112",
+    "name": "Web Development",
+    "description": "Building interactive websites and applications for browsers.",
+    "category": "Development",
+    "parentSkillId": ["6651a1111111111111111111"]
+  },
+  {
+    "_id": "6651a1111111111111111113",
+    "name": "Front-End Development",
+    "description": "Creating the user interface and visual layer of web applications.",
+    "category": "Development",
+    "parentSkillId": ["6651a1111111111111111112"]
+  },
+  {
+    "_id": "6651a1111111111111111114",
+    "name": "Back-End Development",
+    "description": "Server-side logic, databases, and API design.",
+    "category": "Development",
+    "parentSkillId": ["6651a1111111111111111112"]
+  },
+  {
+    "_id": "6651a1111111111111111115",
+    "name": "JavaScript",
+    "description": "A core language of the web used for client and server-side scripting.",
+    "category": "Development",
+    "parentSkillId": ["6651a1111111111111111111"]
+  },
+  {
+    "_id": "6651a1111111111111111116",
+    "name": "React",
+    "description": "A JavaScript library for building component-based UIs.",
+    "category": "Development",
+    "parentSkillId": ["6651a1111111111111111113", "6651a1111111111111111115"]
+  },
+  {
+    "_id": "6651a1111111111111111117",
+    "name": "Node.js",
+    "description": "JavaScript runtime used for back-end development.",
+    "category": "Development",
+    "parentSkillId": ["6651a1111111111111111114", "6651a1111111111111111115"]
+  },
+  {
+    "_id": "6651a1111111111111111118",
+    "name": "UI Design",
+    "description": "Creating user interface elements like buttons, menus, and layout.",
+    "category": "Design",
+    "parentSkillId": []
+  },
+  {
+    "_id": "6651a1111111111111111119",
+    "name": "UX Design",
+    "description": "Crafting intuitive and satisfying user experiences.",
+    "category": "Design",
+    "parentSkillId": []
+  },
+  {
+    "_id": "6651a1111111111111111120",
+    "name": "Figma",
+    "description": "Collaborative tool for UI/UX design and prototyping.",
+    "category": "Design",
+    "parentSkillId": ["6651a1111111111111111118", "6651a1111111111111111119"]
+  },
+  {
+    "_id": "6651a1111111111111111121",
+    "name": "Adobe XD",
+    "description": "Tool for wireframing and UI/UX design from Adobe.",
+    "category": "Design",
+    "parentSkillId": ["6651a1111111111111111118"]
+  },
+  {
+    "_id": "6651a1111111111111111122",
+    "name": "Brand Strategy",
+    "description": "Defining a brand’s positioning, tone, and identity.",
+    "category": "Marketing",
+    "parentSkillId": []
+  },
+  {
+    "_id": "6651a1111111111111111123",
+    "name": "Digital Marketing",
+    "description": "Marketing products or services via digital channels.",
+    "category": "Marketing",
+    "parentSkillId": []
+  },
+  {
+    "_id": "6651a1111111111111111124",
+    "name": "SEO",
+    "description": "Search engine optimization to increase visibility.",
+    "category": "Marketing",
+    "parentSkillId": ["6651a1111111111111111123"]
+  },
+  {
+    "_id": "6651a1111111111111111125",
+    "name": "Social Media Marketing",
+    "description": "Using social platforms to connect with audiences.",
+    "category": "Marketing",
+    "parentSkillId": ["6651a1111111111111111123"]
+  },
+  {
+    "_id": "6651a1111111111111111126",
+    "name": "Content Creation",
+    "description": "Producing engaging visuals, videos, or writing for marketing.",
+    "category": "Marketing",
+    "parentSkillId": ["6651a1111111111111111123"]
+  }
+]
