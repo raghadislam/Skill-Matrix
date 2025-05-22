@@ -1,17 +1,21 @@
+const { fromError } = require('zod-validation-error');
+
+const AppError = require('../utils/appError');
+
 module.exports = (schema) => (req, res, next) => {
-  try {
-    req.body = schema.parse(req.body);
-    next();
-  } catch (err) {
-    if (err instanceof require('zod').ZodError) {
-      return res.status(400).json({
-        status: 'fail',
-        errors: err.errors.map((e) => ({
-          path: e.path.join('.'),
-          message: e.message,
-        })),
-      });
-    }
-    next(err);
+  const result = schema.safeParse({
+    body: req.body,
+    params: req.params,
+  });
+
+  if (!result.success) {
+    const error = fromError(result.error);
+    throw new AppError(error.message, 400);
   }
+
+  Object.entries(result.data).forEach(([key, data]) => {
+    req[key] = data;
+  });
+
+  next();
 };

@@ -8,10 +8,12 @@ const objectId = z
   });
 
 const skillZodSchema = z.object({
-  name: z.string().min(1, 'A skill must have a name'),
-  description: z.string().optional(),
-  parentSkillId: z.array(objectId).optional(),
-  category: z.enum(['Development', 'Design', 'Marketing']),
+  body: z.object({
+    name: z.string().min(1, 'A skill must have a name'),
+    description: z.string().optional(),
+    parentSkillId: z.array(objectId).optional(),
+    category: z.enum(['Development', 'Design', 'Marketing']),
+  }),
 });
 
 const updateSkillZodSchema = skillZodSchema.partial();
