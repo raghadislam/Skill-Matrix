@@ -9,7 +9,7 @@ class AuthService {
     });
   }
 
-  async signup(data, res) {
+  async signup(data) {
     const user = await User.create(data);
     const token = this.#signToken(user._id);
 
