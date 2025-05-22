@@ -5,6 +5,7 @@ const skillSchema = new mongoose.Schema(
     name: {
       type: String,
       required: [true, 'A skill must have a name'],
+      unique: true,
     },
     description: {
       type: String,
