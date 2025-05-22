@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
+const bcrypt = require('bcryptjs');
 
 const ROLE = require('../utils/role');
 
@@ -53,6 +54,13 @@ userSchema.pre(/^update|.*Update.*$/, function (next) {
   };
   this.setUpdate(update);
 
+  next();
+});
+
+userSchema.pre('save', async function (next) {
+  if (!this.isModified('password')) return next();
+
+  this.password = await bcrypt.hash(this.password, 12);
   next();
 });
 

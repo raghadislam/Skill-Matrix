@@ -1,6 +1,6 @@
 const SkillService = require('../services/skillServices');
 const AppError = require('../utils/appError');
-const catchAsync = require('../utils/catchAsunc');
+const catchAsync = require('../utils/catchAsync');
 
 const skillService = new SkillService();
 
