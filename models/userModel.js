@@ -21,6 +21,15 @@ const userSchema = new mongoose.Schema(
       enum: Object.values(ROLE),
       default: ROLE.TRAINER,
     },
+    password: {
+      type: String,
+      required: [true, 'Please provide a password'],
+      minlength: [
+        8,
+        'A user password must have greater or equal than 8 characters',
+      ],
+      select: false,
+    },
   },
   {
     // ===> This turns on automatic createdAt & updatedAt
