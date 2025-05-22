@@ -1,8 +1,13 @@
 const express = require('express');
 
 const globalErrorHandler = require('./middlewares/globalErrorHandler');
+const skillRouter = require('./routes/skillRoutes');
 
 const app = express();
+
+app.use(express.json());
+
+app.use('/api/v1/skills', skillRouter);
 
 app.use(globalErrorHandler);
 
