@@ -32,3 +32,15 @@ exports.signupZodSchema = z.object({
     })
     .transform(({ confirmPassword, ...data }) => data),
 });
+
+exports.loginZodSchema = z.object({
+  body: z
+    .object({
+      email: z.string().email({ message: 'Invalid email address' }).trim(),
+      password: z
+        .string()
+        .min(8, 'Password must be at least 8 characters long')
+        .trim(),
+    })
+    .strict(),
+});

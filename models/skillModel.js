@@ -17,15 +17,6 @@ const skillSchema = new mongoose.Schema(
         ref: 'Skill',
       },
     ],
-    createdAt: {
-      type: Date,
-      default: Date.now(),
-      select: false,
-    },
-    updatedAt: {
-      type: Date,
-      select: false,
-    },
     category: {
       type: String,
       required: [true, 'A skill must have a category'],
@@ -36,20 +27,26 @@ const skillSchema = new mongoose.Schema(
     },
   },
   {
+    timestamps: true,
     toJSON: { virtuals: true },
     toObject: { virtuals: true },
   },
 );
 
-skillSchema.pre('save', function (next) {
-  if (this.isNew) return next();
-  if (
-    this.isModified('name') ||
-    this.isModified('description') ||
-    this.isModified('parentSkillId')
-  ) {
-    this.updatedAt = Date.now();
-  }
+skillSchema.path('createdAt').select(false);
+skillSchema.path('updatedAt').select(false);
+
+skillSchema.pre(/^update|.*Update.*$/, function (next) {
+  const update = this.getUpdate();
+  if (this.isNew || !update) return next();
+
+  update.$set = {
+    ...(update.$set || {}),
+    updatedAt: Date.now(),
+  };
+
+  this.setUpdate(update);
+
   next();
 });
 

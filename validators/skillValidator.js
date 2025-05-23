@@ -16,7 +16,9 @@ const skillZodSchema = z.object({
   }),
 });
 
-const updateSkillZodSchema = skillZodSchema.partial();
+const updateSkillZodSchema = z.object({
+  body: skillZodSchema.shape.body.partial(),
+});
 
 module.exports = {
   skillZodSchema,

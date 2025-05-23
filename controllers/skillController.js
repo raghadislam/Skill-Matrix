@@ -10,7 +10,7 @@ const sendResponse = (res, statusCode, status, data, message) => {
 
 exports.getAllSkills = catchAsync(async (req, res, next) => {
   const allSkills = await skillService.getAllSkills();
-  res.status(200).json({ status: 'success', data: allSkills });
+  sendResponse(res, 200, 'success', allSkills);
 });
 
 exports.createSkill = catchAsync(async (req, res, next) => {
