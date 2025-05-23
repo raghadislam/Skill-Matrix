@@ -31,6 +31,7 @@ const userSchema = new mongoose.Schema(
       ],
       select: false,
     },
+    passwordChangedAt: Date,
   },
   {
     // ===> This turns on automatic createdAt & updatedAt
@@ -50,7 +51,7 @@ userSchema.pre(/^update|.*Update.*$/, function (next) {
 
   update.$set = {
     ...(update.$set || {}),
-    updatedAt: Date.now() - 1000,
+    updatedAt: Date.now(),
   };
   this.setUpdate(update);
 
@@ -63,6 +64,23 @@ userSchema.pre('save', async function (next) {
   this.password = await bcrypt.hash(this.password, 12);
   next();
 });
+
+userSchema.pre('save', function (next) {
+  if (!this.isModified('password') || this.isNew) return next();
+
+  this.passwordChangedAt = Date.now() - 1000;
+  next();
+});
+
+userSchema.methods.changedPasswordAfter = function (JWTTimestamp) {
+  if (!this.changePasswordAfter) return false;
+
+  const changedTimestamp = parseInt(
+    this.passwordChangedAt.getTime() / 1000,
+    10,
+  );
+  return changedTimestamp > JWTTimestamp;
+};
 
 const User = mongoose.model('User', userSchema);
 
