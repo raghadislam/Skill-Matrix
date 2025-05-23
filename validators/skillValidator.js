@@ -1,5 +1,6 @@
 const { z } = require('zod');
 const mongoose = require('mongoose');
+const DEPT = require('../utils/departments');
 
 const objectId = z
   .string()
@@ -12,7 +13,11 @@ const skillZodSchema = z.object({
     name: z.string().min(1, 'A skill must have a name'),
     description: z.string().optional(),
     parentSkillId: z.array(objectId).optional(),
-    category: z.enum(['Development', 'Design', 'Marketing']),
+    category: z.enum([DEPT.DEVELOPMENT, DEPT.DESIGN, DEPT.MARKETING], {
+      errorMap: () => ({
+        message: `Category must be either "${DEPT.DEVELOPMENT}", "${DEPT.DESIGN}" or "${DEPT.MARKETING}"`,
+      }),
+    }),
   }),
 });
 
