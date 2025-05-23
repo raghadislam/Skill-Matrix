@@ -9,11 +9,11 @@ class UserService {
       .limitFields()
       .paginate();
 
-    const users = await feature.query.lean();
+    return await feature.query.lean();
+  }
 
-    return {
-      users,
-    };
+  async getUser(id) {
+    return await User.findById(id);
   }
 }
 
