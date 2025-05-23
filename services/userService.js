@@ -15,6 +15,10 @@ class UserService {
   async getUser(id) {
     return await User.findById(id);
   }
+
+  async deleteUser(id) {
+    return await User.findByIdAndDelete(id);
+  }
 }
 
 module.exports = new UserService();

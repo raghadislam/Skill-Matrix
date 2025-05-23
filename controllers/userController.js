@@ -23,3 +23,13 @@ exports.getUser = catchAsync(async (req, res, next) => {
     data: { user },
   });
 });
+
+exports.deleteUser = catchAsync(async (req, res, next) => {
+  const user = await userService.deleteUser(req.params.id);
+  if (!user) return next(new AppError(`No user found with that ID`, 404));
+
+  sendResponse(res, {
+    statusCode: 204,
+    status: 'success',
+  });
+});

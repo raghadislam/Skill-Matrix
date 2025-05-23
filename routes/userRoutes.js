@@ -10,6 +10,7 @@ const { signupZodSchema } = require('../validators/authValidator');
 const {
   getAllUsersZodSchema,
   getUserZodSchema,
+  deleteUserZodSchema,
 } = require('../validators/userValidator');
 
 const router = express.Router();
@@ -22,6 +23,9 @@ router
   .route('/')
   .get(validate(getAllUsersZodSchema), userController.getAllUsers);
 
-router.route('/:id').get(validate(getUserZodSchema), userController.getUser);
+router
+  .route('/:id')
+  .get(validate(getUserZodSchema), userController.getUser)
+  .delete(validate(deleteUserZodSchema), userController.deleteUser);
 
 module.exports = router;
