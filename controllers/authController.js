@@ -2,7 +2,7 @@ const AuthService = require('../services/authService');
 const sendResponse = require('../utils/sendResponse');
 const catchAsync = require('../utils/catchAsync');
 
-exports.signup = catchAsync(async (req, res) => {
+exports.signup = catchAsync(async (req, res, next) => {
   const { status, statusCode, token, user } = await AuthService.signup(
     req.body,
   );
