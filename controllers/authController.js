@@ -36,6 +36,6 @@ exports.signup = catchAsync(async (req, res) => {
 exports.login = catchAsync(async (req, res, next) => {
   const { status, statusCode, token, user } = await AuthService.login(req.body);
   sendCookie(res, token);
-  const message = 'Loggrd in successfully.';
+  const message = 'Logged in successfully.';
   sendResponse(res, { statusCode, status, message, token, data: { user } });
 });
