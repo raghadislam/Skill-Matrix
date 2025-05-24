@@ -3,6 +3,7 @@ const validator = require('validator');
 const bcrypt = require('bcryptjs');
 
 const ROLE = require('../utils/role');
+const DEPT = require('../utils/departments');
 
 const userSchema = new mongoose.Schema(
   {
@@ -30,6 +31,14 @@ const userSchema = new mongoose.Schema(
         'A user password must have greater or equal than 8 characters',
       ],
       select: false,
+    },
+    department: {
+      type: String,
+      required: [true, 'A user must have a department'],
+      enum: {
+        values: Object.values(DEPT),
+        message: `Department must be one of ${Object.values(DEPT).join(', ')}`,
+      },
     },
     passwordChangedAt: Date,
   },
