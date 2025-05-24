@@ -20,7 +20,13 @@ const learningPathSchema = new mongoose.Schema(
           required: true,
         },
       ],
-      default: [],
+      required: [true, 'Learning path must include at least one course'],
+      validate: {
+        validator: function (v) {
+          return Array.isArray(v) && v.length > 0;
+        },
+        message: 'Learning path must include at least one course',
+      },
     },
   },
   {
