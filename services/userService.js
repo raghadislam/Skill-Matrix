@@ -26,6 +26,13 @@ class UserService {
       runValidators: true,
     });
   }
+
+  async createUser(data) {
+    const newUser = await User.create(data);
+    newUser.password = undefined;
+
+    return newUser;
+  }
 }
 
 module.exports = new UserService();
