@@ -1,8 +1,15 @@
 const Skill = require('../models/skillModel');
+const APIFeatures = require('../utils/apiFeatures');
 
 class SkillService {
-  async getAllSkills() {
-    return await Skill.find().select('-__v');
+  async getAllSkills(queryString) {
+    const feature = new APIFeatures(Skill.find(), queryString)
+      .filter()
+      .sort()
+      .limitFields()
+      .paginate();
+
+    return await feature.query.lean();
   }
 
   async createSkill(data) {
@@ -18,6 +25,10 @@ class SkillService {
 
   async deleteSkill(id) {
     return await Skill.findByIdAndDelete(id);
+  }
+
+  async getSkill(id) {
+    return await Skill.findById(id);
   }
 }
 
