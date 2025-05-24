@@ -9,7 +9,7 @@ const sendResponse = (res, statusCode, status, data, message) => {
 };
 
 exports.getAllSkills = catchAsync(async (req, res, next) => {
-  const allSkills = await skillService.getAllSkills();
+  const allSkills = await skillService.getAllSkills(req.query);
   sendResponse(res, 200, 'success', allSkills);
 });
 
