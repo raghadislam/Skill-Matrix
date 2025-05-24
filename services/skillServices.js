@@ -26,6 +26,10 @@ class SkillService {
   async deleteSkill(id) {
     return await Skill.findByIdAndDelete(id);
   }
+
+  async getSkill(id) {
+    return await Skill.findById(id);
+  }
 }
 
 module.exports = SkillService;

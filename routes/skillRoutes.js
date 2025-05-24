@@ -15,6 +15,7 @@ router
 
 router
   .route('/:id')
+  .get(skillController.getSkill)
   .patch(validate(updateSkillZodSchema), skillController.updateSkill)
   .delete(skillController.deleteSkill);
 

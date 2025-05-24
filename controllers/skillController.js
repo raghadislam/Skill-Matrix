@@ -33,3 +33,9 @@ exports.deleteSkill = catchAsync(async (req, res, next) => {
   }
   sendResponse(res, 204, 'success', null);
 });
+
+exports.getSkill = catchAsync(async (req, res, next) => {
+  const skill = await skillService.getSkill(req.params.id);
+  if (!skill) return next(new AppError(`No skill found with that ID`, 404));
+  sendResponse(res, 200, 'success', skill);
+});
