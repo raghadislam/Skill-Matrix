@@ -1,9 +1,8 @@
-const catchAsync = require('../utils/catchAsync');
 const userService = require('../services/userService');
 const { sendResponse } = require('../utils/responseUtils');
 const AppError = require('../utils/appError');
 
-exports.getAllUsers = catchAsync(async (req, res, next) => {
+exports.getAllUsers = async (req, res, next) => {
   const users = await userService.getAllUsers(req.query);
 
   sendResponse(res, {
@@ -11,9 +10,9 @@ exports.getAllUsers = catchAsync(async (req, res, next) => {
     status: 'success',
     data: { users },
   });
-});
+};
 
-exports.getUser = catchAsync(async (req, res, next) => {
+exports.getUser = async (req, res, next) => {
   const user = await userService.getUser(req.params.id);
   if (!user) return next(new AppError(`No user found with that ID`, 404));
 
@@ -22,9 +21,9 @@ exports.getUser = catchAsync(async (req, res, next) => {
     status: 'success',
     data: { user },
   });
-});
+};
 
-exports.deleteUser = catchAsync(async (req, res, next) => {
+exports.deleteUser = async (req, res, next) => {
   const user = await userService.deleteUser(req.params.id);
   if (!user) return next(new AppError(`No user found with that ID`, 404));
 
@@ -32,7 +31,7 @@ exports.deleteUser = catchAsync(async (req, res, next) => {
     statusCode: 204,
     status: 'success',
   });
-});
+};
 
 exports.updateUser = async (req, res, next) => {
   const updateUser = await userService.updateUser(req.params.id, req.body);
