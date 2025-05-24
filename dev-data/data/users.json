@@ -3,96 +3,112 @@
     "name": "Alice Johnson",
     "email": "alice.johnson@example.com",
     "role": "trainer",
-    "password": "pass1111"
+    "password": "pass1111",
+    "department": "Development"
   },
   {
     "name": "Bob Smith",
     "email": "bob.smith@example.com",
     "role": "employee",
-    "password": "pass1111"
+    "password": "pass1111",
+    "department": "Marketing"
   },
   {
     "name": "Carol Lee",
     "email": "carol.lee@example.com",
     "role": "admin",
-    "password": "pass1111"
+    "password": "pass1111",
+    "department": "Design"
   },
   {
     "name": "David Kim",
     "email": "david.kim@example.com",
     "role": "trainer",
-    "password": "pass1111"
+    "password": "pass1111",
+    "department": "Development"
   },
   {
     "name": "Eva Miller",
     "email": "eva.miller@example.com",
     "role": "employee",
-    "password": "pass1111"
+    "password": "pass1111",
+    "department": "Marketing"
   },
   {
     "name": "Frank Wilson",
     "email": "frank.wilson@example.com",
     "role": "trainer",
-    "password": "pass1111"
+    "password": "pass1111",
+    "department": "Development"
   },
   {
     "name": "Grace Chen",
     "email": "grace.chen@example.com",
     "role": "employee",
-    "password": "pass1111"
+    "password": "pass1111",
+    "department": "Marketing"
   },
   {
     "name": "Henry Davis",
     "email": "henry.davis@example.com",
     "role": "admin",
-    "password": "pass1111"
+    "password": "pass1111",
+    "department": "Design"
   },
   {
     "name": "Isabella Garcia",
     "email": "isabella.garcia@example.com",
     "role": "trainer",
-    "password": "pass1111"
+    "password": "pass1111",
+    "department": "Development"
   },
   {
     "name": "Jack Martinez",
     "email": "jack.martinez@example.com",
     "role": "employee",
-    "password": "pass1111"
+    "password": "pass1111",
+    "department": "Marketing"
   },
   {
     "name": "Katherine Brown",
     "email": "katherine.brown@example.com",
     "role": "trainer",
-    "password": "pass1111"
+    "password": "pass1111",
+    "department": "Development"
   },
   {
     "name": "Liam Wilson",
     "email": "liam.wilson@example.com",
     "role": "admin",
-    "password": "pass1111"
+    "password": "pass1111",
+    "department": "Design"
   },
   {
     "name": "Mia Thompson",
     "email": "mia.thompson@example.com",
     "role": "employee",
-    "password": "pass1111"
+    "password": "pass1111",
+    "department": "Marketing"
   },
   {
     "name": "Noah Moore",
     "email": "noah.moore@example.com",
     "role": "trainer",
-    "password": "pass1111"
+    "password": "pass1111",
+    "department": "Development"
   },
   {
     "name": "Olivia Taylor",
     "email": "olivia.taylor@example.com",
     "role": "employee",
-    "password": "pass1111"
+    "password": "pass1111",
+    "department": "Marketing"
   },
   {
     "name": "Paul Hernandez",
     "email": "paul.hernandez@example.com",
     "role": "admin",
-    "password": "pass1111"
+    "password": "pass1111",
+    "department": "Design"
   }
 ]

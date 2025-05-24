@@ -3,7 +3,8 @@
     "title": "JavaScript Fundamentals",
     "description": "Learn the core language of the web: variables, functions, objects, and ES6+ features.",
     "durationHours": 20,
-    "prerequisites": ["6651a1111111111111111111", "6651a1111111111111111115"]
+    "prerequisites": ["6651a1111111111111111111", "6651a1111111111111111115"],
+    "category": "Development"
   },
   {
     "title": "Front-End Development with React",
@@ -13,7 +14,8 @@
       "6651a1111111111111111113",
       "6651a1111111111111111115",
       "6651a1111111111111111116"
-    ]
+    ],
+    "category": "Development"
   },
   {
     "title": "Back-End Development with Node.js",
@@ -23,13 +25,15 @@
       "6651a1111111111111111114",
       "6651a1111111111111111115",
       "6651a1111111111111111117"
-    ]
+    ],
+    "category": "Development"
   },
   {
     "title": "Full-Stack Web Application Bootcamp",
     "description": "End-to-end web development: build, deploy and secure a MERN-stack application.",
     "durationHours": 50,
-    "prerequisites": ["6651a1111111111111111116", "6651a1111111111111111117"]
+    "prerequisites": ["6651a1111111111111111116", "6651a1111111111111111117"],
+    "category": "Development"
   },
   {
     "title": "UI/UX Design Essentials",
@@ -40,7 +44,8 @@
       "6651a1111111111111111119",
       "6651a1111111111111111120",
       "6651a1111111111111111121"
-    ]
+    ],
+    "category": "Design"
   },
   {
     "title": "Digital Marketing Fundamentals",
@@ -51,66 +56,98 @@
       "6651a1111111111111111124",
       "6651a1111111111111111125",
       "6651a1111111111111111126"
-    ]
+    ],
+    "category": "Marketing"
   },
   {
     "title": "RESTful API Design with Express",
     "description": "Design, implement and secure RESTful endpoints using Express.js and JWT authentication.",
     "durationHours": 22,
-    "prerequisites": ["6651a1111111111111111114", "6651a1111111111111111117"]
+    "prerequisites": ["6651a1111111111111111114", "6651a1111111111111111117"],
+    "category": "Development"
   },
   {
     "title": "GraphQL with Apollo Server",
     "description": "Build a GraphQL API from schema design to resolver implementation using Apollo Server.",
     "durationHours": 24,
-    "prerequisites": ["6651a1111111111111111115", "6651a1111111111111111117"]
+    "prerequisites": ["6651a1111111111111111115", "6651a1111111111111111117"],
+    "category": "Development"
   },
   {
     "title": "Database Modeling and Relationships",
     "description": "Learn to model complex schemas, relationships, and indexing strategies in MongoDB.",
     "durationHours": 16,
-    "prerequisites": ["6651a1111111111111111114"]
+    "prerequisites": ["6651a1111111111111111114"],
+    "category": "Development"
   },
   {
     "title": "Testing and Debugging in Node.js",
     "description": "Write unit and integration tests with Jest and debug Node.js applications effectively.",
     "durationHours": 12,
-    "prerequisites": ["6651a1111111111111111117"]
+    "prerequisites": ["6651a1111111111111111117"],
+    "category": "Development"
   },
   {
     "title": "State Management with Redux",
     "description": "Implement predictable state containers in React applications using Redux and middleware.",
     "durationHours": 14,
-    "prerequisites": ["6651a1111111111111111116"]
+    "prerequisites": ["6651a1111111111111111116"],
+    "category": "Development"
   },
   {
     "title": "Advanced CSS and Tailwind",
     "description": "Master modern CSS techniques and utility-first styling with Tailwind CSS.",
     "durationHours": 10,
-    "prerequisites": ["6651a1111111111111111113"]
+    "prerequisites": ["6651a1111111111111111113"],
+    "category": "Design"
   },
   {
     "title": "Performance Optimization for Web Apps",
     "description": "Analyze and improve front-end and back-end performance for faster load and response times.",
     "durationHours": 18,
-    "prerequisites": ["6651a1111111111111111116", "6651a1111111111111111117"]
+    "prerequisites": ["6651a1111111111111111116", "6651a1111111111111111117"],
+    "category": "Development"
   },
   {
     "title": "DevOps Essentials with Docker",
     "description": "Containerize applications, write Dockerfiles, and orchestrate with Docker Compose.",
     "durationHours": 20,
-    "prerequisites": ["6651a1111111111111111117"]
+    "prerequisites": ["6651a1111111111111111117"],
+    "category": "Development"
   },
   {
     "title": "Serverless Architecture on AWS",
     "description": "Build and deploy serverless functions using AWS Lambda, API Gateway, and DynamoDB.",
     "durationHours": 26,
-    "prerequisites": ["6651a1111111111111111117"]
+    "prerequisites": ["6651a1111111111111111117"],
+    "category": "Development"
   },
   {
     "title": "Progressive Web Apps",
     "description": "Create installable, offline-capable web apps with Service Workers and Manifest files.",
     "durationHours": 14,
-    "prerequisites": ["6651a1111111111111111116"]
+    "prerequisites": ["6651a1111111111111111116"],
+    "category": "Development"
+  },
+  {
+    "title": "Introduction to Programming",
+    "description": "Get started with the fundamentals of programming: variables, control flow, and basic algorithms.",
+    "durationHours": 8,
+    "prerequisites": [],
+    "category": "Development"
+  },
+  {
+    "title": "Graphic Design Basics",
+    "description": "Learn the core principles of graphic design, color theory, and typography.",
+    "durationHours": 12,
+    "prerequisites": [],
+    "category": "Design"
+  },
+  {
+    "title": "Marketing 101",
+    "description": "An introductory course on marketing principles, audience segmentation, and campaign planning.",
+    "durationHours": 10,
+    "prerequisites": [],
+    "category": "Marketing"
   }
 ]
