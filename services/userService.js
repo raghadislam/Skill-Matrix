@@ -19,6 +19,20 @@ class UserService {
   async deleteUser(id) {
     return await User.findByIdAndDelete(id);
   }
+
+  async updateUser(id, data) {
+    return await User.findByIdAndUpdate(id, data, {
+      new: true,
+      runValidators: true,
+    });
+  }
+
+  async createUser(data) {
+    const newUser = await User.create(data);
+    newUser.password = undefined;
+
+    return newUser;
+  }
 }
 
 module.exports = new UserService();
