@@ -1,0 +1,116 @@
+[
+  {
+    "title": "JavaScript Fundamentals",
+    "description": "Learn the core language of the web: variables, functions, objects, and ES6+ features.",
+    "durationHours": 20,
+    "prerequisites": ["6651a1111111111111111111", "6651a1111111111111111115"]
+  },
+  {
+    "title": "Front-End Development with React",
+    "description": "Build dynamic, component-based user interfaces using React and modern tooling.",
+    "durationHours": 30,
+    "prerequisites": [
+      "6651a1111111111111111113",
+      "6651a1111111111111111115",
+      "6651a1111111111111111116"
+    ]
+  },
+  {
+    "title": "Back-End Development with Node.js",
+    "description": "Master server-side JavaScript, Express.js, and working with MongoDB via Mongoose.",
+    "durationHours": 25,
+    "prerequisites": [
+      "6651a1111111111111111114",
+      "6651a1111111111111111115",
+      "6651a1111111111111111117"
+    ]
+  },
+  {
+    "title": "Full-Stack Web Application Bootcamp",
+    "description": "End-to-end web development: build, deploy and secure a MERN-stack application.",
+    "durationHours": 50,
+    "prerequisites": ["6651a1111111111111111116", "6651a1111111111111111117"]
+  },
+  {
+    "title": "UI/UX Design Essentials",
+    "description": "Principles of user interface and user experience design, prototyping in Figma and Adobe XD.",
+    "durationHours": 15,
+    "prerequisites": [
+      "6651a1111111111111111118",
+      "6651a1111111111111111119",
+      "6651a1111111111111111120",
+      "6651a1111111111111111121"
+    ]
+  },
+  {
+    "title": "Digital Marketing Fundamentals",
+    "description": "Explore SEO, social media, and content strategies to grow your brand online.",
+    "durationHours": 18,
+    "prerequisites": [
+      "6651a1111111111111111123",
+      "6651a1111111111111111124",
+      "6651a1111111111111111125",
+      "6651a1111111111111111126"
+    ]
+  },
+  {
+    "title": "RESTful API Design with Express",
+    "description": "Design, implement and secure RESTful endpoints using Express.js and JWT authentication.",
+    "durationHours": 22,
+    "prerequisites": ["6651a1111111111111111114", "6651a1111111111111111117"]
+  },
+  {
+    "title": "GraphQL with Apollo Server",
+    "description": "Build a GraphQL API from schema design to resolver implementation using Apollo Server.",
+    "durationHours": 24,
+    "prerequisites": ["6651a1111111111111111115", "6651a1111111111111111117"]
+  },
+  {
+    "title": "Database Modeling and Relationships",
+    "description": "Learn to model complex schemas, relationships, and indexing strategies in MongoDB.",
+    "durationHours": 16,
+    "prerequisites": ["6651a1111111111111111114"]
+  },
+  {
+    "title": "Testing and Debugging in Node.js",
+    "description": "Write unit and integration tests with Jest and debug Node.js applications effectively.",
+    "durationHours": 12,
+    "prerequisites": ["6651a1111111111111111117"]
+  },
+  {
+    "title": "State Management with Redux",
+    "description": "Implement predictable state containers in React applications using Redux and middleware.",
+    "durationHours": 14,
+    "prerequisites": ["6651a1111111111111111116"]
+  },
+  {
+    "title": "Advanced CSS and Tailwind",
+    "description": "Master modern CSS techniques and utility-first styling with Tailwind CSS.",
+    "durationHours": 10,
+    "prerequisites": ["6651a1111111111111111113"]
+  },
+  {
+    "title": "Performance Optimization for Web Apps",
+    "description": "Analyze and improve front-end and back-end performance for faster load and response times.",
+    "durationHours": 18,
+    "prerequisites": ["6651a1111111111111111116", "6651a1111111111111111117"]
+  },
+  {
+    "title": "DevOps Essentials with Docker",
+    "description": "Containerize applications, write Dockerfiles, and orchestrate with Docker Compose.",
+    "durationHours": 20,
+    "prerequisites": ["6651a1111111111111111117"]
+  },
+  {
+    "title": "Serverless Architecture on AWS",
+    "description": "Build and deploy serverless functions using AWS Lambda, API Gateway, and DynamoDB.",
+    "durationHours": 26,
+    "prerequisites": ["6651a1111111111111111117"]
+  },
+  {
+    "title": "Progressive Web Apps",
+    "description": "Create installable, offline-capable web apps with Service Workers and Manifest files.",
+    "durationHours": 14,
+    "prerequisites": ["6651a1111111111111111116"]
+  }
+]
