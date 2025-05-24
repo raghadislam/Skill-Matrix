@@ -18,28 +18,42 @@ exports.deleteUserZodSchema = z.object({
 
 exports.updateUserZodSchema = z.object({
   body: z
-    .object({
-      name: z
-        .string()
-        .min(3, 'Name must be at least 3 characters long')
-        .max(30, 'Name must not be more than 30 characters long')
-        .trim()
-        .optional(),
+    .object(
+      {
+        name: z
+          .string()
+          .min(3, 'Name must be at least 3 characters long')
+          .max(30, 'Name must not be more than 30 characters long')
+          .trim()
+          .optional(),
 
-      email: z
-        .string()
-        .email({ message: 'Invalid email address' })
-        .trim()
-        .optional(),
+        email: z
+          .string()
+          .email({ message: 'Invalid email address' })
+          .trim()
+          .optional(),
 
-      role: z
-        .enum(Object.values(ROLE), {
-          errorMap: () => ({
-            message: `Role must be one of ${Object.values(ROLE).join(', ')}`,
-          }),
-        })
-        .optional(),
-    })
+        role: z
+          .enum(Object.values(ROLE), {
+            errorMap: () => ({
+              message: `Role must be one of ${Object.values(ROLE).join(', ')}`,
+            }),
+          })
+          .optional(),
+      },
+      {
+        // to catch the extra keys
+        errorMap: (issue, ctx) => {
+          if (issue.code === z.ZodIssueCode.unrecognized_keys) {
+            const extraFields = issue.keys.join(', ');
+            return {
+              message: `No extra fields are permitted in the request body: ${extraFields}`,
+            };
+          }
+          return { message: ctx.defaultError };
+        },
+      },
+    )
     .strict()
     .refine((data) => Object.keys(data).length > 0, {
       message: 'You must provide at least one field to update',
