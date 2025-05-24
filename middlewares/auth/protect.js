@@ -3,9 +3,8 @@ const jwt = require('jsonwebtoken');
 
 const AppError = require('../../utils/appError');
 const User = require('../../models/userModel');
-const catchAsync = require('../../utils/catchAsync');
 
-module.exports = catchAsync(async (req, res, next) => {
+module.exports = async (req, res, next) => {
   let token;
   if (
     req.headers.authorization &&
@@ -35,4 +34,4 @@ module.exports = catchAsync(async (req, res, next) => {
 
   req.user = user;
   next();
-});
+};
