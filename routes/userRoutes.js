@@ -10,6 +10,7 @@ const {
   getAllUsersZodSchema,
   getUserZodSchema,
   deleteUserZodSchema,
+  updateUserZodSchema,
 } = require('../validators/userValidator');
 const {
   signupZodSchema,
@@ -30,6 +31,7 @@ router
 router
   .route('/:id')
   .get(validate(getUserZodSchema), userController.getUser)
-  .delete(validate(deleteUserZodSchema), userController.deleteUser);
+  .delete(validate(deleteUserZodSchema), userController.deleteUser)
+  .patch(validate(updateUserZodSchema), userController.updateUser);
 
 module.exports = router;

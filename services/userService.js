@@ -19,6 +19,13 @@ class UserService {
   async deleteUser(id) {
     return await User.findByIdAndDelete(id);
   }
+
+  async updateUser(id, data) {
+    return await User.findByIdAndUpdate(id, data, {
+      new: true,
+      runValidators: true,
+    });
+  }
 }
 
 module.exports = new UserService();

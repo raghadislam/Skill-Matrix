@@ -33,3 +33,14 @@ exports.deleteUser = catchAsync(async (req, res, next) => {
     status: 'success',
   });
 });
+
+exports.updateUser = async (req, res, next) => {
+  const updateUser = await userService.updateUser(req.params.id, req.body);
+  if (!updateUser) return next(new AppError(`No user found with that ID`, 404));
+
+  sendResponse(res, {
+    statusCode: 200,
+    status: 'success',
+    data: { updateUser },
+  });
+};
