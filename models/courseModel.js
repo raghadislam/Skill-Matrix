@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 
+const DEPT = require('../utils/departments');
+
 const courseSchema = new mongoose.Schema(
   {
     title: {
@@ -10,6 +12,7 @@ const courseSchema = new mongoose.Schema(
     description: {
       type: String,
       trim: true,
+      required: [true, 'Course must have a description'],
     },
     durationHours: {
       type: Number,
@@ -22,6 +25,14 @@ const courseSchema = new mongoose.Schema(
         ref: 'Skill',
       },
     ],
+    category: {
+      type: String,
+      required: [true, 'A course must have a category'],
+      enum: {
+        values: Object.values(DEPT),
+        message: `category must be one of ${Object.values(DEPT).join(', ')}`,
+      },
+    },
   },
   {
     timestamps: true,
@@ -55,5 +66,4 @@ courseSchema.pre(/^find$/, function (next) {
 });
 
 const Course = mongoose.model('Course', courseSchema);
-
 module.exports = Course;
