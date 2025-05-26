@@ -1,7 +1,5 @@
-const SkillService = require('../services/skillServices');
+const skillService = require('../services/skillServices');
 const AppError = require('../utils/appError');
-
-const skillService = new SkillService();
 
 const sendResponse = (res, statusCode, status, data, message) => {
   res.status(statusCode).json({ status, data, message });
