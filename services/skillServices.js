@@ -35,8 +35,7 @@ class SkillService {
   }
 
   async deleteSkill(id) {
-    const query = this.#population(Skill.findByIdAndDelete(id));
-    return await query.lean();
+    return await Skill.findByIdAndDelete(id);
   }
 
   async getSkill(id) {
