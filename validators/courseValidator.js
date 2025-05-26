@@ -57,3 +57,7 @@ exports.createCourseZodSchema = z.object({
 exports.updateCourseZodSchema = z.object({
   body: courseBodySchema.partial().strict(),
 });
+
+exports.deleteCourseZodSchema = z.object({
+  params: idParamsValidator,
+});

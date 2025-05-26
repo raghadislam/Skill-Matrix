@@ -38,6 +38,10 @@ class CourseService {
 
     return await query.lean();
   }
+
+  async deleteCourse(id) {
+    return await Course.findByIdAndDelete(id);
+  }
 }
 
 module.exports = new CourseService();

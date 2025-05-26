@@ -10,6 +10,7 @@ const {
   getCourseZodSchema,
   createCourseZodSchema,
   updateCourseZodSchema,
+  deleteCourseZodSchema,
 } = require('../validators/courseValidator');
 
 const router = express.Router();
@@ -31,6 +32,7 @@ router.post(
 
 router
   .route('/:id')
-  .patch(validate(updateCourseZodSchema), courseController.updateCourse);
+  .patch(validate(updateCourseZodSchema), courseController.updateCourse)
+  .delete(validate(deleteCourseZodSchema), courseController.deleteCourse);
 
 module.exports = router;
