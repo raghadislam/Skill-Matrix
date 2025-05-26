@@ -60,8 +60,8 @@ courseSchema.pre(/^update|.*Update.*$/, function (next) {
   next();
 });
 
-courseSchema.pre(/^find$/, function (next) {
-  this.populate({ path: 'prerequisites' });
+courseSchema.pre(/^find/, function (next) {
+  this.populate({ path: 'prerequisites', select: '-_id -__v' });
   next();
 });
 
