@@ -1,5 +1,6 @@
 const courseService = require('../services/courseService');
 const { sendResponse } = require('../utils/responseUtils');
+const AppError = require('../utils/appError');
 
 exports.getAllCourses = async (req, res, err) => {
   const courses = await courseService.getAllCourses(req.query);
@@ -8,5 +9,16 @@ exports.getAllCourses = async (req, res, err) => {
     status: 'success',
     statusCode: 200,
     data: { courses },
+  });
+};
+
+exports.getCourse = async (req, res, next) => {
+  const course = await courseService.getCourse(req.params.id);
+  if (!course) throw new AppError(`No course found with that ID`, 404);
+
+  sendResponse(res, {
+    status: 'success',
+    statusCode: 200,
+    data: { course },
   });
 };

@@ -61,7 +61,7 @@ courseSchema.pre(/^update|.*Update.*$/, function (next) {
 });
 
 courseSchema.pre(/^find/, function (next) {
-  this.populate({ path: 'prerequisites', select: '-_id -__v' });
+  this.populate({ path: 'prerequisites', select: '-_id -__v -parentSkillId' });
   next();
 });
 
