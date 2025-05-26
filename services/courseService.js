@@ -2,32 +2,27 @@ const ApiFeatures = require('../utils/apiFeatures');
 const Course = require('../models/courseModel');
 
 class CourseService {
-  #drop(course) {
-    course.prerequisites = course.prerequisites.map((skill) => {
-      const { parentSkillId, ...rest } = skill;
-      return rest;
+  #population(query) {
+    return query.populate({
+      path: 'prerequisites',
+      select: '-_id -__v -parentSkillId',
     });
-    return course;
   }
 
   async getAllCourses(queryString) {
-    const feature = new ApiFeatures(Course.find(), queryString)
+    const query = this.#population(Course.find());
+    const feature = new ApiFeatures(query, queryString)
       .filter()
       .sort()
       .limitFields()
       .paginate();
 
-    let courses = await feature.query.lean();
-    courses = courses.map((course) => this.#drop(course));
-
-    return courses;
+    return await feature.query.lean();
   }
 
   async getCourse(id) {
-    let course = await Course.findById(id).lean();
-    course = this.#drop(course);
-
-    return course;
+    const query = this.#population(Course.findById(id));
+    return await query.lean();
   }
 }
 

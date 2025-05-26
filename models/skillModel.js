@@ -50,14 +50,6 @@ skillSchema.pre(/^update|.*Update.*$/, function (next) {
   next();
 });
 
-skillSchema.pre(/^find/, function (next) {
-  this.populate({
-    path: 'parentSkillId',
-    select: '-__v',
-  });
-  next();
-});
-
 const Skill = mongoose.model('Skill', skillSchema);
 
 module.exports = Skill;

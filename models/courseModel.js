@@ -60,10 +60,5 @@ courseSchema.pre(/^update|.*Update.*$/, function (next) {
   next();
 });
 
-courseSchema.pre(/^find/, function (next) {
-  this.populate({ path: 'prerequisites', select: '-_id -__v -parentSkillId' });
-  next();
-});
-
 const Course = mongoose.model('Course', courseSchema);
 module.exports = Course;

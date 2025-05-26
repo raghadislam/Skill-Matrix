@@ -2,7 +2,7 @@ const courseService = require('../services/courseService');
 const { sendResponse } = require('../utils/responseUtils');
 const AppError = require('../utils/appError');
 
-exports.getAllCourses = async (req, res, err) => {
+exports.getAllCourses = async (req, res, next) => {
   const courses = await courseService.getAllCourses(req.query);
 
   sendResponse(res, {
