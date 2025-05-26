@@ -53,3 +53,7 @@ exports.getCourseZodSchema = z.object({
 exports.createCourseZodSchema = z.object({
   body: courseBodySchema.strict(),
 });
+
+exports.updateCourseZodSchema = z.object({
+  body: courseBodySchema.partial().strict(),
+});

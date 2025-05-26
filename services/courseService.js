@@ -28,6 +28,16 @@ class CourseService {
   async createCourse(data) {
     return await Course.create(data);
   }
+
+  async updateCourse(id, data) {
+    let query = Course.findByIdAndUpdate(id, data, {
+      new: true,
+      runValidators: true,
+    });
+    query = this.#population(query);
+
+    return await query.lean();
+  }
 }
 
 module.exports = new CourseService();

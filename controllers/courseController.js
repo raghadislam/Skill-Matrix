@@ -32,3 +32,17 @@ exports.createCourse = async (req, res, next) => {
     data: { newCourse },
   });
 };
+
+exports.updateCourse = async (req, res, next) => {
+  const updatedCourse = await courseService.updateCourse(
+    req.params.id,
+    req.body,
+  );
+  if (!updatedCourse) throw new AppError(`No course found with that ID`, 404);
+
+  sendResponse(res, {
+    statusCode: 200,
+    status: 'success',
+    data: { updatedCourse },
+  });
+};
