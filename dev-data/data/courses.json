@@ -1,5 +1,6 @@
 [
   {
+    "_id": "665a10000000000000000001",
     "title": "JavaScript Fundamentals",
     "description": "Learn the core language of the web: variables, functions, objects, and ES6+ features.",
     "durationHours": 20,
@@ -7,6 +8,7 @@
     "category": "Development"
   },
   {
+    "_id": "665a10000000000000000002",
     "title": "Front-End Development with React",
     "description": "Build dynamic, component-based user interfaces using React and modern tooling.",
     "durationHours": 30,
@@ -18,6 +20,7 @@
     "category": "Development"
   },
   {
+    "_id": "665a10000000000000000003",
     "title": "Back-End Development with Node.js",
     "description": "Master server-side JavaScript, Express.js, and working with MongoDB via Mongoose.",
     "durationHours": 25,
@@ -29,6 +32,7 @@
     "category": "Development"
   },
   {
+    "_id": "665a10000000000000000004",
     "title": "Full-Stack Web Application Bootcamp",
     "description": "End-to-end web development: build, deploy and secure a MERN-stack application.",
     "durationHours": 50,
@@ -36,6 +40,7 @@
     "category": "Development"
   },
   {
+    "_id": "665a10000000000000000005",
     "title": "UI/UX Design Essentials",
     "description": "Principles of user interface and user experience design, prototyping in Figma and Adobe XD.",
     "durationHours": 15,
@@ -48,6 +53,7 @@
     "category": "Design"
   },
   {
+    "_id": "665a10000000000000000006",
     "title": "Digital Marketing Fundamentals",
     "description": "Explore SEO, social media, and content strategies to grow your brand online.",
     "durationHours": 18,
@@ -60,6 +66,7 @@
     "category": "Marketing"
   },
   {
+    "_id": "665a10000000000000000007",
     "title": "RESTful API Design with Express",
     "description": "Design, implement and secure RESTful endpoints using Express.js and JWT authentication.",
     "durationHours": 22,
@@ -67,6 +74,7 @@
     "category": "Development"
   },
   {
+    "_id": "665a10000000000000000008",
     "title": "GraphQL with Apollo Server",
     "description": "Build a GraphQL API from schema design to resolver implementation using Apollo Server.",
     "durationHours": 24,
@@ -74,6 +82,7 @@
     "category": "Development"
   },
   {
+    "_id": "665a10000000000000000009",
     "title": "Database Modeling and Relationships",
     "description": "Learn to model complex schemas, relationships, and indexing strategies in MongoDB.",
     "durationHours": 16,
@@ -81,6 +90,7 @@
     "category": "Development"
   },
   {
+    "_id": "665a1000000000000000000a",
     "title": "Testing and Debugging in Node.js",
     "description": "Write unit and integration tests with Jest and debug Node.js applications effectively.",
     "durationHours": 12,
@@ -88,6 +98,7 @@
     "category": "Development"
   },
   {
+    "_id": "665a1000000000000000000b",
     "title": "State Management with Redux",
     "description": "Implement predictable state containers in React applications using Redux and middleware.",
     "durationHours": 14,
@@ -95,6 +106,7 @@
     "category": "Development"
   },
   {
+    "_id": "665a1000000000000000000c",
     "title": "Advanced CSS and Tailwind",
     "description": "Master modern CSS techniques and utility-first styling with Tailwind CSS.",
     "durationHours": 10,
@@ -102,6 +114,7 @@
     "category": "Design"
   },
   {
+    "_id": "665a1000000000000000000d",
     "title": "Performance Optimization for Web Apps",
     "description": "Analyze and improve front-end and back-end performance for faster load and response times.",
     "durationHours": 18,
@@ -109,6 +122,7 @@
     "category": "Development"
   },
   {
+    "_id": "665a1000000000000000000e",
     "title": "DevOps Essentials with Docker",
     "description": "Containerize applications, write Dockerfiles, and orchestrate with Docker Compose.",
     "durationHours": 20,
@@ -116,6 +130,7 @@
     "category": "Development"
   },
   {
+    "_id": "665a1000000000000000000f",
     "title": "Serverless Architecture on AWS",
     "description": "Build and deploy serverless functions using AWS Lambda, API Gateway, and DynamoDB.",
     "durationHours": 26,
@@ -123,6 +138,7 @@
     "category": "Development"
   },
   {
+    "_id": "665a10000000000000000010",
     "title": "Progressive Web Apps",
     "description": "Create installable, offline-capable web apps with Service Workers and Manifest files.",
     "durationHours": 14,
@@ -130,6 +146,7 @@
     "category": "Development"
   },
   {
+    "_id": "665a10000000000000000011",
     "title": "Introduction to Programming",
     "description": "Get started with the fundamentals of programming: variables, control flow, and basic algorithms.",
     "durationHours": 8,
@@ -137,6 +154,7 @@
     "category": "Development"
   },
   {
+    "_id": "665a10000000000000000012",
     "title": "Graphic Design Basics",
     "description": "Learn the core principles of graphic design, color theory, and typography.",
     "durationHours": 12,
@@ -144,10 +162,43 @@
     "category": "Design"
   },
   {
+    "_id": "665a10000000000000000013",
     "title": "Marketing 101",
     "description": "An introductory course on marketing principles, audience segmentation, and campaign planning.",
     "durationHours": 10,
     "prerequisites": [],
     "category": "Marketing"
+  },
+  {
+    "_id": "665a10000000000000000014",
+    "title": "CI/CD with GitHub Actions",
+    "description": "Set up continuous integration and deployment pipelines for your web projects.",
+    "durationHours": 16,
+    "prerequisites": ["6651a1111111111111111111", "6651a1111111111111111112"],
+    "category": "Development"
+  },
+  {
+    "_id": "665a10000000000000000015",
+    "title": "Web Security Essentials",
+    "description": "Understand and apply security practices such as HTTPS, CORS, OWASP, and XSS protection.",
+    "durationHours": 20,
+    "prerequisites": ["6651a1111111111111111115", "6651a1111111111111111112"],
+    "category": "Development"
+  },
+  {
+    "_id": "665a10000000000000000016",
+    "title": "Agile & Scrum Fundamentals",
+    "description": "Learn agile methodologies and how Scrum teams work together to deliver fast results.",
+    "durationHours": 12,
+    "prerequisites": ["6651a1111111111111111111"],
+    "category": "Development"
+  },
+  {
+    "_id": "665a10000000000000000017",
+    "title": "React Native for Mobile Development",
+    "description": "Build cross-platform mobile apps using React Native and Expo.",
+    "durationHours": 28,
+    "prerequisites": ["6651a1111111111111111116"],
+    "category": "Development"
   }
 ]
