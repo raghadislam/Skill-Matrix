@@ -57,6 +57,11 @@ learningPathSchema.virtual('duration').get(function () {
   );
 });
 
+learningPathSchema.virtual('category').get(function () {
+  if (!this.populated('orderedCourseIds')) return '';
+  return this.orderedCourseIds[0].category;
+});
+
 learningPathSchema.pre(/^update|.*Update.*$/, function (next) {
   const update = this.getUpdate();
   if (this.isNew || !update) return next();
