@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+require('./courseModel');
 
 const learningPathSchema = new mongoose.Schema(
   {
@@ -41,14 +42,18 @@ learningPathSchema.path('createdAt').select(false);
 learningPathSchema.path('updatedAt').select(false);
 
 learningPathSchema.pre(/^find/, function (next) {
-  this.populate({ path: 'orderedCourseIds' });
+  this.populate({
+    path: 'orderedCourseIds',
+    select: '-prerequisites',
+  });
   next();
 });
 
 learningPathSchema.virtual('duration').get(function () {
   if (!this.populated('orderedCourseIds')) return 0;
   return this.orderedCourseIds.reduce(
-    (total, course) => total + course.durationHours,
+    (total, course) => total + (course.durationHours || 0),
+    0,
   );
 });
 
