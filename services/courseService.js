@@ -24,6 +24,10 @@ class CourseService {
     const query = this.#population(Course.findById(id));
     return await query.lean();
   }
+
+  async createCourse(data) {
+    return await Course.create(data);
+  }
 }
 
 module.exports = new CourseService();

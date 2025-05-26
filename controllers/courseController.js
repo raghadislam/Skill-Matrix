@@ -22,3 +22,13 @@ exports.getCourse = async (req, res, next) => {
     data: { course },
   });
 };
+
+exports.createCourse = async (req, res, next) => {
+  const newCourse = await courseService.createCourse(req.body);
+
+  sendResponse(res, {
+    statusCode: 201,
+    status: 'success',
+    data: { newCourse },
+  });
+};
