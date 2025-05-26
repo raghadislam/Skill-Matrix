@@ -40,6 +40,11 @@ const learningPathSchema = new mongoose.Schema(
 learningPathSchema.path('createdAt').select(false);
 learningPathSchema.path('updatedAt').select(false);
 
+learningPathSchema.pre(/^find/, function (next) {
+  this.populate({ path: 'orderedCourseIds' });
+  next();
+});
+
 learningPathSchema.virtual('duration').get(function () {
   if (!this.populated('orderedCourseIds')) return 0;
   return this.orderedCourseIds.reduce(
@@ -57,11 +62,6 @@ learningPathSchema.pre(/^update|.*Update.*$/, function (next) {
   };
   this.setUpdate(update);
 
-  next();
-});
-
-learningPathSchema.pre(/^find$/, function (next) {
-  this.populate({ path: 'orderedCourseIds' });
   next();
 });
 
