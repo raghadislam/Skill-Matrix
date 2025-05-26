@@ -3,6 +3,7 @@ const { z } = require('zod');
 const queryZodSchema = require('./queryValidator');
 const idParamsValidator = require('./idParamsValidator');
 const ROLE = require('../utils/role');
+const DEPT = require('../utils/departments');
 
 exports.getAllUsersZodSchema = z.object({
   query: queryZodSchema.partial(),
@@ -40,6 +41,11 @@ exports.updateUserZodSchema = z.object({
             }),
           })
           .optional(),
+        department: z.enum(Object.values(DEPT), {
+          errorMap: () => ({
+            message: `category must be one of: ${Object.values(DEPT).join(', ')}`,
+          }),
+        }),
       },
       {
         // to catch the extra keys
@@ -87,6 +93,11 @@ exports.createUserZodSchema = z.object({
           .trim(),
 
         confirmPassword: z.string().trim(),
+        department: z.enum(Object.values(DEPT), {
+          errorMap: () => ({
+            message: `category must be one of: ${Object.values(DEPT).join(', ')}`,
+          }),
+        }),
       },
       {
         // to catch the extra keys
