@@ -55,7 +55,13 @@ exports.createCourseZodSchema = z.object({
 });
 
 exports.updateCourseZodSchema = z.object({
-  body: courseBodySchema.partial().strict(),
+  body: courseBodySchema
+    .partial()
+    .strict()
+    .refine((data) => Object.keys(data).length > 0, {
+      message: 'You must provide at least one field to update',
+      path: ['body'],
+    }),
 });
 
 exports.deleteCourseZodSchema = z.object({

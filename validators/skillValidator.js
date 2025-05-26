@@ -22,7 +22,12 @@ const skillZodSchema = z.object({
 });
 
 const updateSkillZodSchema = z.object({
-  body: skillZodSchema.shape.body.partial(),
+  body: skillZodSchema.shape.body
+    .partial()
+    .refine((data) => Object.keys(data).length > 0, {
+      message: 'You must provide at least one field to update',
+      path: ['body'],
+    }),
 });
 
 module.exports = {
