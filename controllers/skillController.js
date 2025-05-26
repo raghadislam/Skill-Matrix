@@ -1,26 +1,34 @@
 const skillService = require('../services/skillServices');
 const AppError = require('../utils/appError');
-
-const sendResponse = (res, statusCode, status, data, message) => {
-  res.status(statusCode).json({ status, data, message });
-};
+const { sendResponse } = require('../utils/responseUtils');
 
 exports.getAllSkills = async (req, res, next) => {
-  const allSkills = await skillService.getAllSkills(req.query);
-  sendResponse(res, 200, 'success', allSkills);
+  const skills = await skillService.getAllSkills(req.query);
+  sendResponse(res, {
+    statusCode: 200,
+    status: 'success',
+    data: { skills },
+  });
 };
 
 exports.createSkill = async (req, res, next) => {
-  const newSkill = await skillService.createSkill(req.body);
-  sendResponse(res, 201, 'success', newSkill);
+  const skill = await skillService.createSkill(req.body);
+  sendResponse(res, {
+    statusCode: 201,
+    status: 'success',
+    data: { skill },
+  });
 };
 
 exports.updateSkill = async (req, res, next) => {
-  const updatedSkill = await skillService.updateSkill(req.params.id, req.body);
+  const skill = await skillService.updateSkill(req.params.id, req.body);
 
-  if (!updatedSkill)
-    return sendResponse(res, 404, 'fail', updatedSkill, 'Skill not found');
-  sendResponse(res, 200, 'success', updatedSkill);
+  if (!skill) return next(new AppError(`No skill found with that ID`, 404));
+  sendResponse(res, {
+    statusCode: 200,
+    status: 'success',
+    data: { skill },
+  });
 };
 
 exports.deleteSkill = async (req, res, next) => {
@@ -28,11 +36,20 @@ exports.deleteSkill = async (req, res, next) => {
   if (!skill) {
     return next(new AppError('No skill found with that ID', 404));
   }
-  sendResponse(res, 204, 'success', null);
+  sendResponse(res, {
+    statusCode: 204,
+    status: 'success',
+    data: null,
+  });
 };
 
 exports.getSkill = async (req, res, next) => {
   const skill = await skillService.getSkill(req.params.id);
   if (!skill) return next(new AppError(`No skill found with that ID`, 404));
-  sendResponse(res, 200, 'success', skill);
+
+  sendResponse(res, {
+    statusCode: 200,
+    status: 'success',
+    data: { skill },
+  });
 };
