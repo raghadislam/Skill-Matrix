@@ -1,12 +1,15 @@
 const z = require('zod');
+const mongoose = require('mongoose');
 
 const idParamsValidator = require('./idParamsValidator');
 const queryZodSchema = require('./queryValidator');
 const DEPT = require('../utils/departments');
 
-const objectIdString = z
+const objectId = z
   .string()
-  .regex(/^[0-9a-fA-F]{24}$/, 'Invalid MongoDB ObjectId');
+  .refine((val) => mongoose.Types.ObjectId.isValid(val), {
+    message: 'Invalid ObjectId format',
+  });
 
 const courseBodySchema = z.object(
   {
@@ -20,7 +23,7 @@ const courseBodySchema = z.object(
       .number({ invalid_type_error: 'durationHours must be a number' })
       .min(0, { message: 'Duration must be a positive number' }),
 
-    prerequisites: z.array(objectIdString).optional().default([]),
+    prerequisites: z.array(objectId).optional().default([]),
 
     category: z.enum(Object.values(DEPT), {
       errorMap: () => ({
@@ -55,6 +58,8 @@ exports.createCourseZodSchema = z.object({
 });
 
 exports.updateCourseZodSchema = z.object({
+  params: idParamsValidator,
+
   body: courseBodySchema
     .partial()
     .strict()
