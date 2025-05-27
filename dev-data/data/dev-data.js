@@ -5,6 +5,7 @@ const Skill = require('../../models/skillModel');
 const User = require('../../models/userModel');
 const Course = require('../../models/courseModel');
 const Path = require('../../models/learningPathModel');
+const Assessment = require('../../models/assessmentModel');
 
 dotenv.config({ path: './config.env' });
 
@@ -21,6 +22,9 @@ const skills = JSON.parse(fs.readFileSync(`${__dirname}/skills.json`));
 const users = JSON.parse(fs.readFileSync(`${__dirname}/users.json`));
 const courses = JSON.parse(fs.readFileSync(`${__dirname}/courses.json`));
 const paths = JSON.parse(fs.readFileSync(`${__dirname}/learningPaths.json`));
+const assessments = JSON.parse(
+  fs.readFileSync(`${__dirname}/assessments.json`),
+);
 
 const importData = async () => {
   try {
@@ -28,6 +32,8 @@ const importData = async () => {
     await User.create(users);
     await Course.create(courses);
     await Path.create(paths);
+    await Assessment.create(assessments);
+
     console.log('Data successfully loaded!');
     process.exit();
   } catch (err) {
@@ -43,6 +49,8 @@ const deleteData = async () => {
     await User.deleteMany();
     await Course.deleteMany();
     await Path.deleteMany();
+    await Assessment.deleteMany();
+
     console.log('Data successfully deleted!');
     process.exit();
   } catch (err) {
