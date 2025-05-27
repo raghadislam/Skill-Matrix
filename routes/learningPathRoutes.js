@@ -15,11 +15,6 @@ const {
 
 const router = express.Router();
 
-// router
-//   .route('/')
-//   .get(validate(getAllPathsZodSchema), pathController.getAllPaths)
-//   .post(validate(createPathSchema), pathController.createPath);
-
 router.get('/', validate(getAllPathsZodSchema), pathController.getAllPaths);
 router.get('/:id', validate(getPathZodSchema), pathController.getPath);
 
