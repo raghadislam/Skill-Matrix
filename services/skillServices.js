@@ -44,4 +44,4 @@ class SkillService {
   }
 }
 
-module.exports = SkillService;
+module.exports = new SkillService();
