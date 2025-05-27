@@ -1,4 +1,11 @@
 const { z } = require('zod');
+const mongoose = require('mongoose');
+
+const objectId = z
+  .string()
+  .refine((val) => mongoose.Types.ObjectId.isValid(val), {
+    message: 'Invalid ObjectId format',
+  });
 
 const queryZodSchema = require('./queryValidator');
 const idParamsValidator = require('./idParamsValidator');
@@ -26,17 +33,15 @@ const createPathSchema = z.object({
         .min(1, 'Learning path must have a description'),
 
       orderedCourseIds: z
-        .array(
-          z.string().regex(/^[a-fA-F0-9]{24}$/, {
-            message: 'Each course ID must be a valid MongoDB ObjectId',
-          }),
-        )
+        .array(objectId)
         .nonempty('Learning path must include at least one course'),
     })
     .strict(),
 });
 
 const updatePathZodSchema = z.object({
+  params: idParamsValidator,
+
   body: createPathSchema.shape.body
     .partial()
     .refine((data) => Object.keys(data).length > 0, {
