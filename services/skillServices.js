@@ -2,8 +2,16 @@ const Skill = require('../models/skillModel');
 const APIFeatures = require('../utils/apiFeatures');
 
 class SkillService {
+  #population(query) {
+    return query.populate({
+      path: 'parentSkillId',
+      select: '-__v -_id -parentSkillId',
+    });
+  }
+
   async getAllSkills(queryString) {
-    const feature = new APIFeatures(Skill.find(), queryString)
+    const query = this.#population(Skill.find());
+    const feature = new APIFeatures(query, queryString)
       .filter()
       .sort()
       .limitFields()
@@ -17,10 +25,13 @@ class SkillService {
   }
 
   async updateSkill(id, data) {
-    return await Skill.findByIdAndUpdate(id, data, {
+    let query = Skill.findByIdAndUpdate(id, data, {
       new: true,
       runValidators: true,
     });
+    query = this.#population(query);
+
+    return await query.lean();
   }
 
   async deleteSkill(id) {
@@ -28,7 +39,8 @@ class SkillService {
   }
 
   async getSkill(id) {
-    return await Skill.findById(id);
+    const query = this.#population(Skill.findById(id));
+    return await query.lean();
   }
 }
 

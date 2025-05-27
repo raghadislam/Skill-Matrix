@@ -1,6 +1,7 @@
 const z = require('zod');
 
 const ROLE = require('../utils/role');
+const DEPT = require('../utils/departments');
 
 exports.signupZodSchema = z.object({
   body: z
@@ -18,13 +19,18 @@ exports.signupZodSchema = z.object({
           .trim(),
         confirmPassword: z.string().trim(),
         role: z
-          .enum([ROLE.EMPLOYEE, ROLE.TRAINER], {
+          .enum([ROLE.EMPLOYEE], {
             errorMap: () => ({
-              message: `Role must be either "${ROLE.EMPLOYEE}" or "${ROLE.TRAINER}"`,
+              message: `Role must be "${ROLE.EMPLOYEE}"`,
             }),
           })
           .optional()
-          .default(ROLE.TRAINER),
+          .default(ROLE.EMPLOYEE),
+        department: z.enum(Object.values(DEPT), {
+          errorMap: () => ({
+            message: `category must be one of: ${Object.values(DEPT).join(', ')}`,
+          }),
+        }),
       },
       {
         // to catch the extra keys
