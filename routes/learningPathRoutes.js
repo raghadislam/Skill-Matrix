@@ -1,10 +1,9 @@
 const express = require('express');
 const pathController = require('../controllers/learningPathController');
 const validate = require('../middlewares/validate');
-// const {
-//   skillZodSchema,
-//   updateSkillZodSchema,
-// } = require('../validators/skillValidator');
+const restrictTo = require('../middlewares/auth/restrictTo');
+const protect = require('../middlewares/auth/protect');
+const ROLE = require('../utils/role');
 
 const {
   getAllPathsZodSchema,
@@ -16,14 +15,20 @@ const {
 
 const router = express.Router();
 
-router
-  .route('/')
-  .get(validate(getAllPathsZodSchema), pathController.getAllPaths)
-  .post(validate(createPathSchema), pathController.createPath);
+// router
+//   .route('/')
+//   .get(validate(getAllPathsZodSchema), pathController.getAllPaths)
+//   .post(validate(createPathSchema), pathController.createPath);
+
+router.get('/', validate(getAllPathsZodSchema), pathController.getAllPaths);
+router.get('/:id', validate(getPathZodSchema), pathController.getPath);
+
+router.use(protect, restrictTo(ROLE.MANAGER, ROLE.ADMIN));
+
+router.post('/', validate(createPathSchema), pathController.createPath);
 
 router
   .route('/:id')
-  .get(validate(getPathZodSchema), pathController.getPath)
   .patch(validate(updatePathZodSchema), pathController.updatePath)
   .delete(validate(deletePathZodSchema), pathController.deletePath);
 
