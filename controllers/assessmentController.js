@@ -26,3 +26,13 @@ exports.getAssessment = async (req, res, next) => {
     },
   });
 };
+
+exports.createAssessment = async (req, res, next) => {
+  const newAssessment = await assessmentService.createAssessment(req.body);
+
+  sendResponse(res, {
+    statusCode: 201,
+    status: 'success',
+    data: { newAssessment },
+  });
+};

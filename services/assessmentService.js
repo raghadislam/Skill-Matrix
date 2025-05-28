@@ -24,6 +24,10 @@ class AssessmentService {
     const query = this.#population(Assessment.findById(id));
     return query.lean();
   }
+
+  async createAssessment(data) {
+    return await Assessment.create(data);
+  }
 }
 
 module.exports = new AssessmentService();

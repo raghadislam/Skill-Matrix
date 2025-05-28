@@ -8,20 +8,30 @@ const validate = require('../middlewares/validate');
 const {
   getAllAssessmentsZodSchema,
   getAssessmentZodSchema,
+  createAssessmentZodSchema,
 } = require('../validators/assessmentValidator');
 
 const router = express.Router();
 
-router.use(protect, restrictTo(ROLE.ADMIN, ROLE.MANAGER, ROLE.TRAINER));
+router.use(protect, restrictTo(ROLE.ADMIN, ROLE.TRAINER));
 
-router
-  .route('/')
-  .get(
-    validate(getAllAssessmentsZodSchema),
-    assessmentController.getAllAssessments,
-  );
+router.post(
+  '/',
+  validate(createAssessmentZodSchema),
+  assessmentController.createAssessment,
+);
 
-router
-  .route('/:id')
-  .get(validate(getAssessmentZodSchema), assessmentController.getAssessment);
+router.use(restrictTo(ROLE.MANAGE));
+
+router.get(
+  '/',
+  validate(getAllAssessmentsZodSchema),
+  assessmentController.getAllAssessments,
+);
+router.get(
+  '/:id',
+  validate(getAssessmentZodSchema),
+  assessmentController.getAssessment,
+);
+
 module.exports = router;
