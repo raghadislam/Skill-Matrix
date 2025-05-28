@@ -112,88 +112,6 @@
     "timeLimitMinutes": 90
   },
   {
-    "courseId": "665a10000000000000000001",
-    "questions": [
-      {
-        "question": "Question 1 for JavaScript Fundamentals",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 0
-      },
-      {
-        "question": "Question 2 for JavaScript Fundamentals",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 1
-      },
-      {
-        "question": "Question 3 for JavaScript Fundamentals",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 2
-      },
-      {
-        "question": "Question 4 for JavaScript Fundamentals",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 3
-      },
-      {
-        "question": "Question 5 for JavaScript Fundamentals",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 0
-      },
-      {
-        "question": "Question 6 for JavaScript Fundamentals",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 1
-      },
-      {
-        "question": "Question 7 for JavaScript Fundamentals",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 2
-      },
-      {
-        "question": "Question 8 for JavaScript Fundamentals",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 3
-      },
-      {
-        "question": "Question 9 for JavaScript Fundamentals",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 0
-      },
-      {
-        "question": "Question 10 for JavaScript Fundamentals",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 1
-      },
-      {
-        "question": "Question 11 for JavaScript Fundamentals",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 2
-      },
-      {
-        "question": "Question 12 for JavaScript Fundamentals",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 3
-      },
-      {
-        "question": "Question 13 for JavaScript Fundamentals",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 0
-      },
-      {
-        "question": "Question 14 for JavaScript Fundamentals",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 1
-      },
-      {
-        "question": "Question 15 for JavaScript Fundamentals",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 2
-      }
-    ],
-    "passingScore": 12,
-    "timeLimitMinutes": 90
-  },
-  {
     "courseId": "665a10000000000000000002",
     "questions": [
       {
@@ -272,7 +190,7 @@
         "correctOptionIndex": 2
       }
     ],
-    "passingScore": 12,
+    "passingScore": 9,
     "timeLimitMinutes": 90
   },
   {
@@ -354,7 +272,7 @@
         "correctOptionIndex": 2
       }
     ],
-    "passingScore": 12,
+    "passingScore": 9,
     "timeLimitMinutes": 90
   },
   {
@@ -436,7 +354,7 @@
         "correctOptionIndex": 2
       }
     ],
-    "passingScore": 12,
+    "passingScore": 9,
     "timeLimitMinutes": 90
   },
   {
@@ -518,7 +436,7 @@
         "correctOptionIndex": 2
       }
     ],
-    "passingScore": 12,
+    "passingScore": 9,
     "timeLimitMinutes": 90
   },
   {
@@ -600,7 +518,7 @@
         "correctOptionIndex": 2
       }
     ],
-    "passingScore": 12,
+    "passingScore": 9,
     "timeLimitMinutes": 90
   },
   {
@@ -682,7 +600,7 @@
         "correctOptionIndex": 2
       }
     ],
-    "passingScore": 12,
+    "passingScore": 9,
     "timeLimitMinutes": 90
   },
   {
@@ -764,7 +682,7 @@
         "correctOptionIndex": 2
       }
     ],
-    "passingScore": 12,
+    "passingScore": 9,
     "timeLimitMinutes": 90
   },
   {
@@ -846,7 +764,7 @@
         "correctOptionIndex": 2
       }
     ],
-    "passingScore": 12,
+    "passingScore": 9,
     "timeLimitMinutes": 90
   },
   {
@@ -928,7 +846,7 @@
         "correctOptionIndex": 2
       }
     ],
-    "passingScore": 12,
+    "passingScore": 9,
     "timeLimitMinutes": 90
   }
 ]
