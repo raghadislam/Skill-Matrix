@@ -5,6 +5,7 @@ const questionSchema = new mongoose.Schema({
     type: String,
     trim: true,
     required: [true, 'Each question must have text'],
+    unique: true,
   },
 
   options: {
@@ -47,6 +48,7 @@ const assessmentSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Course',
       required: [true, 'An assessment must have a courseId'],
+      unique: true,
     },
 
     questions: {
@@ -69,7 +71,7 @@ const assessmentSchema = new mongoose.Schema(
         },
         {
           validator: function (score) {
-            return score <= Math.ceil(this.questions.length * 0.75);
+            return score <= Math.ceil(this.questions.length * 0.7);
           },
           message: 'Passing score cannot exceed 70% of total questions',
         },
