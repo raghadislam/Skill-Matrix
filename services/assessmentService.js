@@ -22,11 +22,23 @@ class AssessmentService {
 
   async getAssessment(id) {
     const query = this.#population(Assessment.findById(id));
-    return query.lean();
+    return await query.lean();
   }
 
   async createAssessment(data) {
     return await Assessment.create(data);
+  }
+
+  async updateAssessment(id, data) {
+    const assessment = await Assessment.findById(id);
+    if (!assessment) return;
+
+    assessment.set(data);
+
+    let query = await assessment.save();
+    query = this.#population(query);
+
+    return await query;
   }
 }
 

@@ -36,3 +36,18 @@ exports.createAssessment = async (req, res, next) => {
     data: { newAssessment },
   });
 };
+
+exports.updateAssessment = async (req, res, next) => {
+  const updatedAssessment = await assessmentService.updateAssessment(
+    req.params.id,
+    req.body,
+  );
+  if (!updatedAssessment)
+    throw new AppError(`No assessment found with that ID`, 404);
+
+  sendResponse(res, {
+    statusCode: 200,
+    status: 'success',
+    data: { updatedAssessment },
+  });
+};

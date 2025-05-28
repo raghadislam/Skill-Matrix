@@ -9,6 +9,7 @@ const {
   getAllAssessmentsZodSchema,
   getAssessmentZodSchema,
   createAssessmentZodSchema,
+  updateAssessmentZodSchema,
 } = require('../validators/assessmentValidator');
 
 const router = express.Router();
@@ -21,7 +22,14 @@ router.post(
   assessmentController.createAssessment,
 );
 
-router.use(restrictTo(ROLE.MANAGE));
+router
+  .route('/:id')
+  .patch(
+    validate(updateAssessmentZodSchema),
+    assessmentController.updateAssessment,
+  );
+
+router.use(restrictTo(ROLE.MANAGER, ROLE.ADMIN, ROLE.TRAINER));
 
 router.get(
   '/',

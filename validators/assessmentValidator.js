@@ -37,64 +37,75 @@ const questionSchema = z
       .int('correctOptionIndex must be an integer')
       .nonnegative('correctOptionIndex must be a non-negative integer'),
   })
-  .strict()
-  .refine((data) => data.correctOptionIndex < data.options.length, {
-    path: ['correctOptionIndex'],
-    message: 'correctOptionIndex must be within the range of available options',
-  });
+  .strict();
 
-const assessmentBodySchema = z
-  .object({
-    courseId: objectId,
+const baseAssessmentBody = z
+  .object(
+    {
+      courseId: objectId,
 
-    questions: z.array(questionSchema),
+      questions: z.array(questionSchema),
 
-    passingScore: z.coerce.number().int('passingScore must be an integer'),
+      passingScore: z.coerce.number().int('passingScore must be an integer'),
 
-    timeLimitMinutes: z.coerce
-      .number()
-      .int('timeLimitMinutes must be an integer'),
-  })
-  .strict()
-  .superRefine((data, ctx) => {
-    const numQs = data.questions.length;
+      timeLimitMinutes: z.coerce
+        .number()
+        .int('timeLimitMinutes must be an integer'),
+    },
+    {
+      // to catch the extra keys
+      errorMap: (issue, ctx) => {
+        if (issue.code === z.ZodIssueCode.unrecognized_keys) {
+          const extraFields = issue.keys.join(', ');
+          return {
+            message: `No extra fields are permitted in the request body: ${extraFields}`,
+          };
+        }
+        return { message: ctx.defaultError };
+      },
+    },
+  )
+  .strict();
 
-    const minPass = Math.ceil(numQs * 0.4);
-    if (data.passingScore < minPass) {
-      ctx.addIssue({
-        code: z.ZodIssueCode.custom,
-        path: ['passingScore'],
-        message: `Passing score must be at least ${minPass} (40% of ${numQs} questions)`,
-      });
-    }
+const assessmentBodySchema = baseAssessmentBody.superRefine((data, ctx) => {
+  const numQs = data.questions.length;
 
-    const maxPass = Math.ceil(numQs * 0.7);
-    if (data.passingScore > maxPass) {
-      ctx.addIssue({
-        code: z.ZodIssueCode.custom,
-        path: ['passingScore'],
-        message: `Passing score cannot exceed ${maxPass} (70% of ${numQs} questions)`,
-      });
-    }
+  const minPass = Math.ceil(numQs * 0.4);
+  if (data.passingScore < minPass) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      path: ['passingScore'],
+      message: `Passing score must be at least ${minPass} (40% of ${numQs} questions)`,
+    });
+  }
 
-    const minTime = numQs * 5;
-    if (data.timeLimitMinutes < minTime) {
-      ctx.addIssue({
-        code: z.ZodIssueCode.custom,
-        path: ['timeLimitMinutes'],
-        message: `Time limit must be at least ${minTime} minutes (5 min per question)`,
-      });
-    }
+  const maxPass = Math.ceil(numQs * 0.7);
+  if (data.passingScore > maxPass) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      path: ['passingScore'],
+      message: `Passing score cannot exceed ${maxPass} (70% of ${numQs} questions)`,
+    });
+  }
 
-    const maxTime = numQs * 8;
-    if (data.timeLimitMinutes > maxTime) {
-      ctx.addIssue({
-        code: z.ZodIssueCode.custom,
-        path: ['timeLimitMinutes'],
-        message: `Time limit cannot exceed ${maxTime} minutes (8 min per question)`,
-      });
-    }
-  });
+  const minTime = numQs * 5;
+  if (data.timeLimitMinutes < minTime) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      path: ['timeLimitMinutes'],
+      message: `Time limit must be at least ${minTime} minutes (5 min per question)`,
+    });
+  }
+
+  const maxTime = numQs * 8;
+  if (data.timeLimitMinutes > maxTime) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      path: ['timeLimitMinutes'],
+      message: `Time limit cannot exceed ${maxTime} minutes (8 min per question)`,
+    });
+  }
+});
 
 exports.getAllAssessmentsZodSchema = z.object({
   query: queryValidator,
@@ -106,4 +117,14 @@ exports.getAssessmentZodSchema = z.object({
 
 exports.createAssessmentZodSchema = z.object({
   body: assessmentBodySchema,
+});
+
+exports.updateAssessmentZodSchema = z.object({
+  params: idParamsValidator,
+  body: baseAssessmentBody
+    .partial()
+    .refine((data) => Object.keys(data).length > 0, {
+      message: 'You must provide at least one field to update',
+      path: ['body'],
+    }),
 });
