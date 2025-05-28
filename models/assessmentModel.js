@@ -5,7 +5,6 @@ const questionSchema = new mongoose.Schema({
     type: String,
     trim: true,
     required: [true, 'Each question must have text'],
-    unique: true,
   },
 
   options: {
@@ -53,10 +52,19 @@ const assessmentSchema = new mongoose.Schema(
 
     questions: {
       type: [questionSchema],
-      validate: {
-        validator: (qs) => qs.length >= 15,
-        message: 'An assessment must contain at least 15 questions',
-      },
+      validate: [
+        {
+          validator: (qs) => qs.length >= 15,
+          message: 'An assessment must contain at least 15 questions',
+        },
+        {
+          validator: function (qs) {
+            const texts = qs.map((q) => q.question);
+            return texts.length === new Set(texts).size;
+          },
+          message: 'All questions in an assessment must be unique',
+        },
+      ],
     },
 
     passingScore: {
