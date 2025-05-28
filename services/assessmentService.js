@@ -19,6 +19,11 @@ class AssessmentService {
 
     return await feature.query.lean();
   }
+
+  async getAssessment(id) {
+    const query = this.#population(Assessment.findById(id));
+    return query.lean();
+  }
 }
 
 module.exports = new AssessmentService();
