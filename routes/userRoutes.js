@@ -15,7 +15,11 @@ const {
 
 const router = express.Router();
 
-router.use(protect, restrictTo(ROLE.ADMIN, ROLE.MANAGER));
+router.use(protect);
+
+router.get('/my-enrollments', userController.getMyEnrollments);
+
+router.use(restrictTo(ROLE.ADMIN, ROLE.MANAGER));
 
 router
   .route('/')
