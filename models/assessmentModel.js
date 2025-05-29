@@ -47,14 +47,24 @@ const assessmentSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Course',
       required: [true, 'An assessment must have a courseId'],
+      unique: true,
     },
 
     questions: {
       type: [questionSchema],
-      validate: {
-        validator: (qs) => qs.length >= 15,
-        message: 'An assessment must contain at least 15 questions',
-      },
+      validate: [
+        {
+          validator: (qs) => qs.length >= 15,
+          message: 'An assessment must contain at least 15 questions',
+        },
+        {
+          validator: function (qs) {
+            const texts = qs.map((q) => q.question);
+            return texts.length === new Set(texts).size;
+          },
+          message: 'All questions in an assessment must be unique',
+        },
+      ],
     },
 
     passingScore: {
@@ -69,7 +79,7 @@ const assessmentSchema = new mongoose.Schema(
         },
         {
           validator: function (score) {
-            return score <= Math.ceil(this.questions.length * 0.75);
+            return score <= Math.ceil(this.questions.length * 0.7);
           },
           message: 'Passing score cannot exceed 70% of total questions',
         },
