@@ -10,6 +10,7 @@ const {
   getAssessmentZodSchema,
   createAssessmentZodSchema,
   updateAssessmentZodSchema,
+  updateQuestionZodSchema,
   deleteAssessmentZodSchema,
 } = require('../validators/assessmentValidator');
 
@@ -33,6 +34,12 @@ router
     validate(deleteAssessmentZodSchema),
     assessmentController.deleteAssessment,
   );
+
+router.patch(
+  '/:assessmentId/:questionId',
+  validate(updateQuestionZodSchema),
+  assessmentController.updateQuestion,
+);
 
 router.use(restrictTo(ROLE.MANAGER, ROLE.ADMIN, ROLE.TRAINER));
 

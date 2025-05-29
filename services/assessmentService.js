@@ -22,7 +22,7 @@ class AssessmentService {
 
   async getAssessment(id) {
     const query = this.#population(Assessment.findById(id));
-    return await query.lean();
+    return await query;
   }
 
   async createAssessment(data) {
@@ -34,6 +34,18 @@ class AssessmentService {
     if (!assessment) return;
 
     assessment.set(data);
+
+    let query = await assessment.save();
+    query = this.#population(query);
+
+    return await query;
+  }
+
+  async updateQuestion(assessment, questionId, data) {
+    const question = assessment.questions.id(questionId);
+    if (!question) return;
+
+    question.set(data);
 
     let query = await assessment.save();
     query = this.#population(query);

@@ -52,6 +52,31 @@ exports.updateAssessment = async (req, res, next) => {
   });
 };
 
+exports.updateQuestion = async (req, res, next) => {
+  const assessment = await assessmentService.getAssessment(
+    req.params.assessmentId,
+  );
+  if (!assessment) throw new AppError(`No assessment found with that ID`, 404);
+
+  const updatedAssessment = await assessmentService.updateQuestion(
+    assessment,
+    req.params.questionId,
+    req.body,
+  );
+
+  if (!updatedAssessment)
+    throw new AppError(
+      `No question found with that ID in this assessment`,
+      404,
+    );
+
+  sendResponse(res, {
+    statusCode: 200,
+    status: 'success',
+    data: { updatedAssessment },
+  });
+};
+
 exports.deleteAssessment = async (req, res, next) => {
   const assessment = await assessmentService.deleteAssessment(req.params.id);
   if (!assessment) throw new AppError(`No assessment found with that ID`, 404);
