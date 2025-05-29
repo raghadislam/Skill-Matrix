@@ -27,7 +27,7 @@ quizResultSchema.pre(/^find/, function (next) {
     path: 'assessmentId',
   }).populate({
     path: 'userId',
-    select: 'name email',
+    select: 'name email role department',
   });
   next();
 });
