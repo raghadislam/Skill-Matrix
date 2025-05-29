@@ -57,8 +57,8 @@ exports.deleteCourse = async (req, res) => {
   });
 };
 
-exports.getAssessments = async (req, res) => {
-  const assessment = await courseService.getAssessments(req.params.courseId);
+exports.getCourseAssessment = async (req, res) => {
+  const assessment = await courseService.getAssessments(req.params.id);
   if (!assessment)
     throw new AppError('No assessment found for this course ID', 404);
 

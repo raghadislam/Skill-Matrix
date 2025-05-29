@@ -22,9 +22,9 @@ router.get(
 );
 router.get('/:id', validate(getCourseZodSchema), courseController.getCourse);
 router.get(
-  '/:courseId/assessments',
+  '/:id/assessments',
   validate(getCourseZodSchema),
-  courseController.getAssessments,
+  courseController.getCourseAssessment,
 );
 
 router.use(protect, restrictTo(ROLE.TRAINER, ROLE.ADMIN));
