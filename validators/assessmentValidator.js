@@ -128,3 +128,7 @@ exports.updateAssessmentZodSchema = z.object({
       path: ['body'],
     }),
 });
+
+exports.deleteAssessmentZodSchema = z.object({
+  params: idParamsValidator,
+});

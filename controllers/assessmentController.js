@@ -51,3 +51,13 @@ exports.updateAssessment = async (req, res, next) => {
     data: { updatedAssessment },
   });
 };
+
+exports.deleteAssessment = async (req, res, next) => {
+  const assessment = await assessmentService.deleteAssessment(req.params.id);
+  if (!assessment) throw new AppError(`No assessment found with that ID`, 404);
+
+  sendResponse(res, {
+    statusCode: 204,
+    status: 'success',
+  });
+};

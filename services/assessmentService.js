@@ -40,6 +40,10 @@ class AssessmentService {
 
     return await query;
   }
+
+  async deleteAssessment(id) {
+    return await Assessment.findByIdAndDelete(id);
+  }
 }
 
 module.exports = new AssessmentService();
