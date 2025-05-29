@@ -33,4 +33,14 @@ const enrollmentSchema = new mongoose.Schema(
   },
 );
 
+enrollmentSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: 'userId',
+    select: 'name email role department',
+  }).populate({
+    path: 'courseId',
+    select: 'title',
+  });
+});
+
 module.exports = mongoose.model('Enrollment', enrollmentSchema);
