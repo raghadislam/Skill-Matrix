@@ -8,6 +8,7 @@ const skillRouter = require('./routes/skillRoutes');
 const courseRouter = require('./routes/courseRoutes');
 const pathRouter = require('./routes/learningPathRoutes');
 const assessmentRouter = require('./routes/assessmentRoutes');
+const enrollmentRouter = require('./routes/enrollmentRoutes');
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.use('/api/v1/skills', skillRouter);
 app.use('/api/v1/courses', courseRouter);
 app.use('/api/v1/learning-paths', pathRouter);
 app.use('/api/v1/assessments', assessmentRouter);
+app.use('/api/v1/enrollments', enrollmentRouter);
 
 app.use(globalErrorHandler);
 
