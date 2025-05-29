@@ -36,20 +36,6 @@ const skillSchema = new mongoose.Schema(
 skillSchema.path('createdAt').select(false);
 skillSchema.path('updatedAt').select(false);
 
-skillSchema.pre(/^update|.*Update.*$/, function (next) {
-  const update = this.getUpdate();
-  if (this.isNew || !update) return next();
-
-  update.$set = {
-    ...(update.$set || {}),
-    updatedAt: Date.now(),
-  };
-
-  this.setUpdate(update);
-
-  next();
-});
-
 const Skill = mongoose.model('Skill', skillSchema);
 
 module.exports = Skill;

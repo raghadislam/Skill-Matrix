@@ -47,18 +47,5 @@ const courseSchema = new mongoose.Schema(
 courseSchema.path('createdAt').select(false);
 courseSchema.path('updatedAt').select(false);
 
-courseSchema.pre(/^update|.*Update.*$/, function (next) {
-  const update = this.getUpdate();
-  if (this.isNew || !update) return next();
-
-  update.$set = {
-    ...(update.$set || {}),
-    changedAt: Date.now(),
-  };
-  this.setUpdate(update);
-
-  next();
-});
-
 const Course = mongoose.model('Course', courseSchema);
 module.exports = Course;

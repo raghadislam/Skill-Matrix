@@ -62,18 +62,5 @@ learningPathSchema.virtual('category').get(function () {
   return this.orderedCourseIds[0].category;
 });
 
-learningPathSchema.pre(/^update|.*Update.*$/, function (next) {
-  const update = this.getUpdate();
-  if (this.isNew || !update) return next();
-
-  update.$set = {
-    ...(update.$set || {}),
-    changedAt: Date.now(),
-  };
-  this.setUpdate(update);
-
-  next();
-});
-
 const learningPath = mongoose.model('LearningPath', learningPathSchema);
 module.exports = learningPath;

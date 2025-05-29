@@ -1,6 +1,5 @@
 const express = require('express');
 
-const authController = require('../controllers/authController');
 const userController = require('../controllers/userController');
 const validate = require('../middlewares/validate');
 const protect = require('../middlewares/auth/protect');
@@ -13,15 +12,8 @@ const {
   updateUserZodSchema,
   createUserZodSchema,
 } = require('../validators/userValidator');
-const {
-  signupZodSchema,
-  loginZodSchema,
-} = require('../validators/authValidator');
 
 const router = express.Router();
-
-router.post('/signup', validate(signupZodSchema), authController.signup);
-router.post('/login', validate(loginZodSchema), authController.login);
 
 router.use(protect, restrictTo(ROLE.ADMIN, ROLE.MANAGER));
 
