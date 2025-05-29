@@ -33,6 +33,8 @@ const enrollmentSchema = new mongoose.Schema(
   },
 );
 
+enrollmentSchema.index({ userId: 1, courseId: 1 }, { unique: true });
+
 enrollmentSchema.pre(/^find/, function (next) {
   this.populate({
     path: 'userId',
