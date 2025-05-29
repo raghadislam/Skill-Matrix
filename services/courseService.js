@@ -1,5 +1,6 @@
 const ApiFeatures = require('../utils/apiFeatures');
 const Course = require('../models/courseModel');
+const Assessment = require('../models/assessmentModel');
 
 class CourseService {
   #population(query) {
@@ -41,6 +42,10 @@ class CourseService {
 
   async deleteCourse(id) {
     return await Course.findByIdAndDelete(id);
+  }
+
+  async getAssessments(courseId) {
+    return await Assessment.findOne({ courseId });
   }
 }
 
