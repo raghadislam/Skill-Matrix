@@ -43,6 +43,7 @@ enrollmentSchema.pre(/^find/, function (next) {
     path: 'courseId',
     select: 'title',
   });
+  next();
 });
 
 module.exports = mongoose.model('Enrollment', enrollmentSchema);

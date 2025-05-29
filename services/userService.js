@@ -1,4 +1,5 @@
 const User = require('../models/userModel');
+const Enrollment = require('../models/enrollmentModel');
 const APIFeatures = require('../utils/apiFeatures');
 
 class UserService {
@@ -32,6 +33,10 @@ class UserService {
     newUser.password = undefined;
 
     return newUser;
+  }
+
+  async getEnrollments(userId) {
+    return await Enrollment.find({ userId });
   }
 }
 

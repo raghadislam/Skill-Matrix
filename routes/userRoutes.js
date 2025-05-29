@@ -28,4 +28,10 @@ router
   .delete(validate(deleteUserZodSchema), userController.deleteUser)
   .patch(validate(updateUserZodSchema), userController.updateUser);
 
+router.get(
+  '/:id/enrollments',
+  validate(getUserZodSchema),
+  userController.getEnrollments,
+);
+
 module.exports = router;
