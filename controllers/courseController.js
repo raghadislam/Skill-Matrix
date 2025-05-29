@@ -48,8 +48,8 @@ exports.updateCourse = async (req, res, next) => {
 };
 
 exports.deleteCourse = async (req, res, next) => {
-  const user = await courseService.deleteCourse(req.params.id);
-  if (!user) return next(new AppError(`No course found with that ID`, 404));
+  const course = await courseService.deleteCourse(req.params.id);
+  if (!course) return next(new AppError(`No course found with that ID`, 404));
 
   sendResponse(res, {
     statusCode: 204,
