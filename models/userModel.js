@@ -56,19 +56,6 @@ const userSchema = new mongoose.Schema(
 userSchema.path('createdAt').select(false);
 userSchema.path('updatedAt').select(false);
 
-userSchema.pre(/^update|.*Update.*$/, function (next) {
-  const update = this.getUpdate();
-  if (this.isNew || !update) return next();
-
-  update.$set = {
-    ...(update.$set || {}),
-    updatedAt: Date.now(),
-  };
-  this.setUpdate(update);
-
-  next();
-});
-
 userSchema.pre('save', async function (next) {
   if (!this.isModified('password')) return next();
 
