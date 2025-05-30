@@ -35,7 +35,7 @@ router
 router.get(
   '/:id/enrollments',
   validate(getUserZodSchema),
-  userController.getEnrollments,
+  userController.getUserEnrollments,
 );
 
 module.exports = router;

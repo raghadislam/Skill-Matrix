@@ -54,7 +54,7 @@ exports.createUser = async (req, res, next) => {
   });
 };
 
-exports.getEnrollments = async (req, res) => {
+exports.getUserEnrollments = async (req, res) => {
   const enrollments = await userService.getEnrollments(req.params.id);
 
   sendResponse(res, {
