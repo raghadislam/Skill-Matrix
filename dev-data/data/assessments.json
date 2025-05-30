@@ -1,5 +1,6 @@
 [
   {
+    "_id": "64df1a2b3c4d5e6f7a8b9c01",
     "courseId": "665a10000000000000000001",
     "questions": [
       {
@@ -112,6 +113,7 @@
     "timeLimitMinutes": 90
   },
   {
+    "_id": "64df1a2b3c4d5e6f7a8b9c02",
     "courseId": "665a10000000000000000002",
     "questions": [
       {
@@ -194,6 +196,7 @@
     "timeLimitMinutes": 90
   },
   {
+    "_id": "64df1a2b3c4d5e6f7a8b9c03",
     "courseId": "665a10000000000000000003",
     "questions": [
       {
@@ -276,6 +279,7 @@
     "timeLimitMinutes": 90
   },
   {
+    "_id": "64df1a2b3c4d5e6f7a8b9c04",
     "courseId": "665a10000000000000000004",
     "questions": [
       {
@@ -358,6 +362,7 @@
     "timeLimitMinutes": 90
   },
   {
+    "_id": "64df1a2b3c4d5e6f7a8b9c05",
     "courseId": "665a10000000000000000005",
     "questions": [
       {
@@ -440,6 +445,7 @@
     "timeLimitMinutes": 90
   },
   {
+    "_id": "64df1a2b3c4d5e6f7a8b9c06",
     "courseId": "665a10000000000000000006",
     "questions": [
       {
@@ -522,88 +528,7 @@
     "timeLimitMinutes": 90
   },
   {
-    "courseId": "665a10000000000000000007",
-    "questions": [
-      {
-        "question": "Question 1 for RESTful API Design with Express",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 0
-      },
-      {
-        "question": "Question 2 for RESTful API Design with Express",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 1
-      },
-      {
-        "question": "Question 3 for RESTful API Design with Express",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 2
-      },
-      {
-        "question": "Question 4 for RESTful API Design with Express",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 3
-      },
-      {
-        "question": "Question 5 for RESTful API Design with Express",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 0
-      },
-      {
-        "question": "Question 6 for RESTful API Design with Express",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 1
-      },
-      {
-        "question": "Question 7 for RESTful API Design with Express",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 2
-      },
-      {
-        "question": "Question 8 for RESTful API Design with Express",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 3
-      },
-      {
-        "question": "Question 9 for RESTful API Design with Express",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 0
-      },
-      {
-        "question": "Question 10 for RESTful API Design with Express",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 1
-      },
-      {
-        "question": "Question 11 for RESTful API Design with Express",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 2
-      },
-      {
-        "question": "Question 12 for RESTful API Design with Express",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 3
-      },
-      {
-        "question": "Question 13 for RESTful API Design with Express",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 0
-      },
-      {
-        "question": "Question 14 for RESTful API Design with Express",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 1
-      },
-      {
-        "question": "Question 15 for RESTful API Design with Express",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 2
-      }
-    ],
-    "passingScore": 9,
-    "timeLimitMinutes": 90
-  },
-  {
+    "_id": "64df1a2b3c4d5e6f7a8b9c08",
     "courseId": "665a10000000000000000008",
     "questions": [
       {
@@ -686,6 +611,7 @@
     "timeLimitMinutes": 90
   },
   {
+    "_id": "64df1a2b3c4d5e6f7a8b9c09",
     "courseId": "665a10000000000000000009",
     "questions": [
       {
@@ -768,6 +694,7 @@
     "timeLimitMinutes": 90
   },
   {
+    "_id": "64df1a2b3c4d5e6f7a8b9c0a",
     "courseId": "665a1000000000000000000a",
     "questions": [
       {
