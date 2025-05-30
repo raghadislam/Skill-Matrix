@@ -1,7 +1,15 @@
 const Enrollment = require('../models/enrollmentModel');
 const AppError = require('../utils/appError');
+const ROLE = require('../utils/role');
 
 module.exports = (req, res, next) => {
+  if (
+    req.user.role === ROLE.ADMIN ||
+    req.user.role === ROLE.TRAINER ||
+    req.user.role === ROLE.MANAGER
+  )
+    next();
+
   const enrollment = Enrollment.findOne({
     courseId: req.params.id,
     userId: req.user.id,
