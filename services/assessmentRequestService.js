@@ -1,4 +1,4 @@
-const AssessmentRequest = require('../models/assessmentRequest');
+const AssessmentRequest = require('../models/assessmentRequestModel');
 const ApiFeatures = require('../utils/apiFeatures');
 
 class AssessmentRequestService {
