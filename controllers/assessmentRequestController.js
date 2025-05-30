@@ -47,3 +47,12 @@ exports.updateAssessmentRequest = async (req, res) => {
     data: { updatedRequest },
   });
 };
+
+exports.deleteAssessmentRequest = async (req, res) => {
+  await assessmentRequestService.deleteRequest(req.params.id);
+
+  sendResponse(res, {
+    statusCode: 204,
+    status: 'success',
+  });
+};

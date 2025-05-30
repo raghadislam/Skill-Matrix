@@ -10,6 +10,7 @@ const {
   getRequestZodSchema,
   createRequestZodSchema,
   updateRequestZodSchema,
+  deleteRequestZodSchema,
 } = require('../validators/assessmentRequestValidator');
 
 const router = express.Router();
@@ -38,6 +39,10 @@ router
   .patch(
     validate(updateRequestZodSchema),
     assessmentRequestController.updateAssessmentRequest,
+  )
+  .delete(
+    validate(deleteRequestZodSchema),
+    assessmentRequestController.deleteAssessmentRequest,
   );
 
 module.exports = router;

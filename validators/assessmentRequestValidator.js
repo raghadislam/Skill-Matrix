@@ -47,10 +47,15 @@ const updateRequestZodSchema = z.object({
 
   body: createRequestZodSchema.shape.body
     .partial()
+    .strict()
     .refine((data) => Object.keys(data).length > 0, {
       message: 'You must provide at least one field to update',
       path: ['body'],
     }),
+});
+
+const deleteRequestZodSchema = z.object({
+  params: idParamsValidator,
 });
 
 module.exports = {
@@ -58,4 +63,5 @@ module.exports = {
   getRequestZodSchema,
   createRequestZodSchema,
   updateRequestZodSchema,
+  deleteRequestZodSchema,
 };

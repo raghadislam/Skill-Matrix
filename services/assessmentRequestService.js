@@ -46,6 +46,12 @@ class AssessmentRequestService {
 
     return updatedRequest;
   }
+
+  async deleteRequest(id) {
+    const request = await AssessmentRequest.findByIdAndDelete(id);
+    if (!request)
+      throw new AppError(`No assessment request found with that ID`, 404);
+  }
 }
 
 module.exports = new AssessmentRequestService();
