@@ -8,6 +8,7 @@ const validate = require('../middlewares/validate');
 const {
   getAllRequestsZodSchema,
   getRequestZodSchema,
+  createRequestZodSchema,
 } = require('../validators/assessmentRequestValidator');
 
 const router = express.Router();
@@ -21,6 +22,10 @@ router
   .get(
     validate(getAllRequestsZodSchema),
     assessmentRequestController.getAllAssessmentRequests,
+  )
+  .post(
+    validate(createRequestZodSchema),
+    assessmentRequestController.createAssessmentRequest,
   );
 
 router

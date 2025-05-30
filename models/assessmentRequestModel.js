@@ -51,6 +51,14 @@ assessmentRequestSchema.pre(/^find/, function (next) {
   next();
 });
 
+assessmentRequestSchema.pre('save', async function (next) {
+  await this.populate({
+    path: 'user',
+    select: 'name role department -_id',
+  });
+  next();
+});
+
 const AssessmentRequest = mongoose.model(
   'AssessmentRequest',
   assessmentRequestSchema,

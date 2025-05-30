@@ -15,6 +15,10 @@ class AssessmentRequestService {
   async getRequest(id) {
     return await AssessmentRequest.findById(id).lean();
   }
+
+  async createRequest(data) {
+    return await AssessmentRequest.create(data);
+  }
 }
 
 module.exports = new AssessmentRequestService();
