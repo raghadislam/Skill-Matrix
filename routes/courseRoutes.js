@@ -12,6 +12,7 @@ const {
   createCourseZodSchema,
   updateCourseZodSchema,
   deleteCourseZodSchema,
+  answersSchema,
 } = require('../validators/courseValidator');
 
 const router = express.Router();
@@ -30,6 +31,14 @@ router.get(
   validate(getCourseZodSchema),
   isEnrolled,
   courseController.getCourseAssessment,
+);
+
+router.post(
+  '/:id/assessments/submit',
+  validate(getCourseZodSchema),
+  validate(answersSchema),
+  isEnrolled,
+  courseController.submitCourseAssessment,
 );
 
 router.use(restrictTo(ROLE.TRAINER, ROLE.ADMIN));

@@ -21,5 +21,6 @@ module.exports = async (req, res, next) => {
       401,
     );
   }
+  req.enrollmentStatus = enrollment.status;
   next();
 };

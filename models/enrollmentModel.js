@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const STATUS = require('../utils/assesmentStatus');
+const STATUS = require('../utils/courseStatus');
 
 const enrollmentSchema = new mongoose.Schema(
   {
