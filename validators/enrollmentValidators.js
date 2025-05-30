@@ -1,5 +1,7 @@
 const z = require('zod');
 const mongoose = require('mongoose');
+const idParamsValidator = require('./idParamsValidator');
+const queryZodSchema = require('./queryValidator');
 
 const objectId = z
   .string()
@@ -29,6 +31,26 @@ const enrollSchema = z.object({
     .strict(),
 });
 
+const getAllEnrollmentsZodSchema = z.object({
+  query: queryZodSchema,
+});
+
+const getEnrollmentZodSchema = z.object({
+  params: idParamsValidator,
+});
+
+const updateEnrollmentZodSchema = z.object({
+  params: idParamsValidator,
+});
+
+const deleteCourseZodSchema = z.object({
+  params: idParamsValidator,
+});
+
 module.exports = {
   enrollSchema,
+  getAllEnrollmentsZodSchema,
+  getEnrollmentZodSchema,
+  updateEnrollmentZodSchema,
+  deleteCourseZodSchema,
 };
