@@ -49,12 +49,17 @@ class CourseService {
     return await Course.findByIdAndDelete(id);
   }
 
-  async getAssessments(courseId) {
-    return await Assessment.findOne({ courseId });
-  }
+  async requestCourseAssessment(courseId, userId) {
+    const assessment = await Assessment.findOne({ courseId });
+    if (!assessment)
+      throw new AppError('No assessment found for this course ID', 404);
 
-  async createQuizResult(data) {
-    return await QuizResult.create(data);
+    const data = await assessmentRequestService.createRequest({
+      assessment: assessment._id,
+      user: userId,
+    });
+
+    return { data };
   }
 
   async subminCourseAssessment({
@@ -97,7 +102,7 @@ class CourseService {
       }
     }
 
-    const result = await this.createQuizResult({
+    const result = await QuizResult.create({
       assessmentId: assessment._id,
       userId,
       score,

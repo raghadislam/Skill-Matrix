@@ -1,7 +1,5 @@
 const courseService = require('../services/courseService');
-const QuizResult = require('../models/quizResultModel');
 const { sendResponse } = require('../utils/responseUtils');
-const STATUS = require('../utils/courseStatus');
 const AppError = require('../utils/appError');
 
 exports.getAllCourses = async (req, res) => {
@@ -60,17 +58,10 @@ exports.deleteCourse = async (req, res) => {
 };
 
 exports.getCourseAssessment = async (req, res) => {
-  const assessment = await courseService.getAssessments(req.params.id);
-  if (!assessment)
-    throw new AppError('No assessment found for this course ID', 404);
-
-  let data = assessment;
-
-  if (req.enrollmentStatus === STATUS.COMPLETED) {
-    data = await QuizResult.findOne({ assessmentId: assessment._id });
-  }
-
-  if (!data) throw new AppError('Unexpected Error', 500);
+  const { data } = await courseService.requestCourseAssessment(
+    req.params.id,
+    req.user._id,
+  );
 
   sendResponse(res, {
     statusCode: 200,

@@ -29,6 +29,7 @@ router.use(protect);
 
 router.get(
   '/:id/assessments',
+  restrictTo(ROLE.EMPLOYEE),
   validate(getCourseZodSchema),
   isEnrolled,
   courseController.getCourseAssessment,
