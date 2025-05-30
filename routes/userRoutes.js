@@ -15,7 +15,11 @@ const {
 
 const router = express.Router();
 
-router.use(protect, restrictTo(ROLE.ADMIN, ROLE.MANAGER));
+router.use(protect);
+
+router.get('/my-enrollments', userController.getMyEnrollments);
+
+router.use(restrictTo(ROLE.ADMIN, ROLE.MANAGER));
 
 router
   .route('/')
@@ -27,5 +31,11 @@ router
   .get(validate(getUserZodSchema), userController.getUser)
   .delete(validate(deleteUserZodSchema), userController.deleteUser)
   .patch(validate(updateUserZodSchema), userController.updateUser);
+
+router.get(
+  '/:id/enrollments',
+  validate(getUserZodSchema),
+  userController.getUserEnrollments,
+);
 
 module.exports = router;

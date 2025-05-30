@@ -53,3 +53,23 @@ exports.createUser = async (req, res, next) => {
     data: { newUser },
   });
 };
+
+exports.getUserEnrollments = async (req, res) => {
+  const enrollments = await userService.getEnrollments(req.params.id);
+
+  sendResponse(res, {
+    statusCode: 200,
+    status: 'success',
+    data: { enrollments },
+  });
+};
+
+exports.getMyEnrollments = async (req, res) => {
+  const enrollments = await userService.getEnrollments(req.user._id);
+
+  sendResponse(res, {
+    statusCode: 200,
+    status: 'success',
+    data: { enrollments },
+  });
+};

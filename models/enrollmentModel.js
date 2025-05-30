@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const STATUS = require('../utils/assesmentStatus');
+const STATUS = require('../utils/courseStatus');
 
 const enrollmentSchema = new mongoose.Schema(
   {
@@ -32,5 +32,18 @@ const enrollmentSchema = new mongoose.Schema(
     versionKey: false,
   },
 );
+
+enrollmentSchema.index({ userId: 1, courseId: 1 }, { unique: true });
+
+enrollmentSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: 'userId',
+    select: 'name email role department',
+  }).populate({
+    path: 'courseId',
+    select: 'title',
+  });
+  next();
+});
 
 module.exports = mongoose.model('Enrollment', enrollmentSchema);

@@ -1,9 +1,13 @@
-exports.sendResponse = (res, { statusCode, status, message, token, data }) => {
+exports.sendResponse = (
+  res,
+  { statusCode, status, message, token, data, assessmentStatus },
+) => {
   res.status(statusCode).json({
     status,
     token,
     message,
     data,
+    assessmentStatus,
   });
 };
 

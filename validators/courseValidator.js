@@ -72,3 +72,17 @@ exports.updateCourseZodSchema = z.object({
 exports.deleteCourseZodSchema = z.object({
   params: idParamsValidator,
 });
+
+exports.answersSchema = z.object({
+  body: z.object({
+    answers: z
+      .array(
+        z.coerce
+          .number()
+          .int()
+          .nonnegative({ message: 'Answers must be non-negative integers' })
+          .max(4, { message: 'Each answer must be less than or equal to 4' }),
+      )
+      .length(15, { message: 'You must provide exactly 15 answers' }),
+  }),
+});

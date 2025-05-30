@@ -1,0 +1,46 @@
+const express = require('express');
+
+const enrollmentController = require('../controllers/enrollmentController');
+const validate = require('../middlewares/validate');
+const protect = require('../middlewares/auth/protect');
+const ROLE = require('../utils/role');
+const restrictTo = require('../middlewares/auth/restrictTo');
+const {
+  enrollSchema,
+  getAllEnrollmentsZodSchema,
+  getEnrollmentZodSchema,
+  updateEnrollmentZodSchema,
+  deleteCourseZodSchema,
+} = require('../validators/enrollmentValidators');
+
+const router = express.Router();
+
+router.use(protect);
+
+router
+  .route('/')
+  .get(
+    validate(getAllEnrollmentsZodSchema),
+    restrictTo(ROLE.ADMIN),
+    enrollmentController.getAllEnrollments,
+  )
+  .post(
+    restrictTo(ROLE.EMPLOYEE),
+    validate(enrollSchema),
+    enrollmentController.enroll,
+  );
+
+restrictTo(ROLE.ADMIN);
+router
+  .route('/:id')
+  .get(validate(getEnrollmentZodSchema), enrollmentController.getEnrollment)
+  .patch(
+    validate(updateEnrollmentZodSchema),
+    enrollmentController.updateEnrollment,
+  )
+  .delete(
+    validate(deleteCourseZodSchema),
+    enrollmentController.deleteEnrollment,
+  );
+
+module.exports = router;

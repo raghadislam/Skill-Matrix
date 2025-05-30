@@ -3,6 +3,7 @@ const express = require('express');
 const courseController = require('../controllers/courseController');
 const restrictTo = require('../middlewares/auth/restrictTo');
 const protect = require('../middlewares/auth/protect');
+const isEnrolled = require('../middlewares/enrolled');
 const validate = require('../middlewares/validate');
 const ROLE = require('../utils/role');
 const {
@@ -11,6 +12,7 @@ const {
   createCourseZodSchema,
   updateCourseZodSchema,
   deleteCourseZodSchema,
+  answersSchema,
 } = require('../validators/courseValidator');
 
 const router = express.Router();
@@ -22,7 +24,24 @@ router.get(
 );
 router.get('/:id', validate(getCourseZodSchema), courseController.getCourse);
 
-router.use(protect, restrictTo(ROLE.TRAINER, ROLE.ADMIN));
+router.use(protect);
+
+router.get(
+  '/:id/assessments',
+  validate(getCourseZodSchema),
+  isEnrolled,
+  courseController.getCourseAssessment,
+);
+
+router.post(
+  '/:id/assessments/submit',
+  validate(getCourseZodSchema),
+  validate(answersSchema),
+  isEnrolled,
+  courseController.submitCourseAssessment,
+);
+
+router.use(restrictTo(ROLE.TRAINER, ROLE.ADMIN));
 
 router.post(
   '/',

@@ -24,12 +24,17 @@ const quizResultSchema = new mongoose.Schema(
 );
 quizResultSchema.pre(/^find/, function (next) {
   this.populate({
-    path: 'assessmentId',
-  }).populate({
     path: 'userId',
-    select: 'name email',
+    select: 'name email role department',
   });
   next();
+});
+
+quizResultSchema.post('save', function () {
+  this.populate({
+    path: 'userId',
+    select: 'name email department',
+  });
 });
 
 quizResultSchema.virtual('status').get(function () {
