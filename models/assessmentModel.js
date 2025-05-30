@@ -124,5 +124,13 @@ assessmentSchema.virtual('fullMark').get(function () {
   return this.questions.length;
 });
 
+assessmentSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: 'courseId',
+    select: 'title -_id',
+  });
+  next();
+});
+
 const Assessment = mongoose.model('Assessment', assessmentSchema);
 module.exports = Assessment;

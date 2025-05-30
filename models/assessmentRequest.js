@@ -43,10 +43,10 @@ assessmentRequestSchema.index({ deadline: 1 }, { expireAfterSeconds: 0 });
 assessmentRequestSchema.pre(/^find/, function (next) {
   this.populate({
     path: 'user',
-    select: 'name email role department',
+    select: 'name role department -_id',
   }).populate({
     path: 'assessment',
-    select: 'title timeLimitMinutes',
+    select: 'courseId timeLimitMinutes -_id',
   });
   next();
 });
