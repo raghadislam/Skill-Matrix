@@ -6,7 +6,7 @@ const User = require('../../models/userModel');
 const Course = require('../../models/courseModel');
 const Path = require('../../models/learningPathModel');
 const Assessment = require('../../models/assessmentModel');
-const AssessmentRequest = require('../../models/assessmentRequest');
+const AssessmentRequest = require('../../models/assessmentRequestModel');
 
 dotenv.config({ path: './config.env' });
 
