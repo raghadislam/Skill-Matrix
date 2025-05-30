@@ -1,6 +1,5 @@
 const assessmentRequestService = require('../services/assessmentRequestService');
 const { sendResponse } = require('../utils/responseUtils');
-const AppError = require('../utils/appError');
 
 exports.getAllAssessmentRequests = async (req, res) => {
   const requests = await assessmentRequestService.getAllRequests(req.query);
@@ -16,8 +15,6 @@ exports.getAllAssessmentRequests = async (req, res) => {
 
 exports.getAssessmentRequest = async (req, res) => {
   const request = await assessmentRequestService.getRequest(req.params.id);
-  if (!request)
-    throw new AppError(`No assessment request found with that ID`, 404);
 
   sendResponse(res, {
     statusCode: 200,
@@ -35,5 +32,18 @@ exports.createAssessmentRequest = async (req, res) => {
     statusCode: 201,
     status: 'success',
     data: { newRequest },
+  });
+};
+
+exports.updateAssessmentRequest = async (req, res) => {
+  const updatedRequest = await assessmentRequestService.updateRequest(
+    req.params.id,
+    req.body,
+  );
+
+  sendResponse(res, {
+    statusCode: 200,
+    status: 'success',
+    data: { updatedRequest },
   });
 };

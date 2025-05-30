@@ -9,6 +9,7 @@ const {
   getAllRequestsZodSchema,
   getRequestZodSchema,
   createRequestZodSchema,
+  updateRequestZodSchema,
 } = require('../validators/assessmentRequestValidator');
 
 const router = express.Router();
@@ -33,6 +34,10 @@ router
   .get(
     validate(getRequestZodSchema),
     assessmentRequestController.getAssessmentRequest,
+  )
+  .patch(
+    validate(updateRequestZodSchema),
+    assessmentRequestController.updateAssessmentRequest,
   );
 
 module.exports = router;

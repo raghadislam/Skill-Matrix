@@ -20,16 +20,42 @@ const getRequestZodSchema = z.object({
 
 const createRequestZodSchema = z.object({
   body: z
-    .object({
-      user: objectId,
+    .object(
+      {
+        user: objectId,
 
-      assessment: objectId,
-    })
+        assessment: objectId,
+      },
+      {
+        // to catch the extra keys
+        errorMap: (issue, ctx) => {
+          if (issue.code === z.ZodIssueCode.unrecognized_keys) {
+            const extraFields = issue.keys.join(', ');
+            return {
+              message: `No extra fields are permitted in the request body: ${extraFields}`,
+            };
+          }
+          return { message: ctx.defaultError };
+        },
+      },
+    )
     .strict(),
+});
+
+const updateRequestZodSchema = z.object({
+  params: idParamsValidator,
+
+  body: createRequestZodSchema.shape.body
+    .partial()
+    .refine((data) => Object.keys(data).length > 0, {
+      message: 'You must provide at least one field to update',
+      path: ['body'],
+    }),
 });
 
 module.exports = {
   getAllRequestsZodSchema,
   getRequestZodSchema,
   createRequestZodSchema,
+  updateRequestZodSchema,
 };

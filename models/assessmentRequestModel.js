@@ -30,8 +30,19 @@ assessmentRequestSchema.path('updatedAt').select(false);
 assessmentRequestSchema.index({ user: 1, assessment: 1 }, { unique: true });
 
 assessmentRequestSchema.pre('save', async function (next) {
+  await this.populate({
+    path: 'user',
+    select: 'name role department -_id',
+  });
+  await this.populate({
+    path: 'assessment',
+    select: 'courseId timeLimitMinutes -_id',
+  });
+  next();
+});
+
+assessmentRequestSchema.pre('save', async function (next) {
   if (this.isNew || this.isModified('assessment')) {
-    await this.populate({ path: 'assessment' });
     const limit = this.assessment.timeLimitMinutes;
     this.deadline = new Date(this.createdAt.getTime() + limit * 60 * 1000);
   }
@@ -47,14 +58,6 @@ assessmentRequestSchema.pre(/^find/, function (next) {
   }).populate({
     path: 'assessment',
     select: 'courseId timeLimitMinutes -_id',
-  });
-  next();
-});
-
-assessmentRequestSchema.pre('save', async function (next) {
-  await this.populate({
-    path: 'user',
-    select: 'name role department -_id',
   });
   next();
 });
