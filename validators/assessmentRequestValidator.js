@@ -1,9 +1,14 @@
 const z = require('zod');
 
 const queryValidator = require('./queryValidator');
+const idParamsValidator = require('./idParamsValidator');
 
 const getAllRequestsZodSchema = z.object({
   query: queryValidator,
 });
 
-module.exports = { getAllRequestsZodSchema };
+const getRequestZodSchema = z.object({
+  params: idParamsValidator,
+});
+
+module.exports = { getAllRequestsZodSchema, getRequestZodSchema };

@@ -11,6 +11,10 @@ class AssessmentRequestService {
 
     return await feature.query.lean();
   }
+
+  async getRequest(id) {
+    return await AssessmentRequest.findById(id).lean();
+  }
 }
 
 module.exports = new AssessmentRequestService();

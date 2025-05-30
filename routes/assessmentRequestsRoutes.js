@@ -7,6 +7,7 @@ const ROLE = require('../utils/role');
 const validate = require('../middlewares/validate');
 const {
   getAllRequestsZodSchema,
+  getRequestZodSchema,
 } = require('../validators/assessmentRequestValidator');
 
 const router = express.Router();
@@ -20,6 +21,13 @@ router
   .get(
     validate(getAllRequestsZodSchema),
     assessmentRequestController.getAllAssessmentRequests,
+  );
+
+router
+  .route('/:id')
+  .get(
+    validate(getRequestZodSchema),
+    assessmentRequestController.getAssessmentRequest,
   );
 
 module.exports = router;
