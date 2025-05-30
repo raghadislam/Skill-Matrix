@@ -3,6 +3,7 @@ const express = require('express');
 const courseController = require('../controllers/courseController');
 const restrictTo = require('../middlewares/auth/restrictTo');
 const protect = require('../middlewares/auth/protect');
+const isEnrolled = require('../middlewares/enrolled');
 const validate = require('../middlewares/validate');
 const ROLE = require('../utils/role');
 const {
@@ -21,13 +22,17 @@ router.get(
   courseController.getAllCourses,
 );
 router.get('/:id', validate(getCourseZodSchema), courseController.getCourse);
+
+router.use(protect);
+
 router.get(
   '/:id/assessments',
   validate(getCourseZodSchema),
+  isEnrolled,
   courseController.getCourseAssessment,
 );
 
-router.use(protect, restrictTo(ROLE.TRAINER, ROLE.ADMIN));
+router.use(restrictTo(ROLE.TRAINER, ROLE.ADMIN));
 
 router.post(
   '/',
