@@ -9,7 +9,7 @@ const objectId = z
     message: 'Invalid ObjectId format',
   });
 
-const enrollSchema = z.object({
+const endorseSchema = z.object({
   body: z
     .object(
       {
@@ -31,26 +31,26 @@ const enrollSchema = z.object({
     .strict(),
 });
 
-const getAllEnrollmentsZodSchema = z.object({
+const getAllEndorsementsZodSchema = z.object({
   query: queryZodSchema,
 });
 
-const getEnrollmentZodSchema = z.object({
+const getEndorsementZodSchema = z.object({
   params: idParamsValidator,
 });
 
-const updateEnrollmentZodSchema = z.object({
+const updateEndorsementZodSchema = z.object({
   params: idParamsValidator,
 });
 
-const deleteEnrollmentZodSchema = z.object({
+const deleteEndorsementZodSchema = z.object({
   params: idParamsValidator,
 });
 
 module.exports = {
-  enrollSchema,
-  getAllEnrollmentsZodSchema,
-  getEnrollmentZodSchema,
-  updateEnrollmentZodSchema,
-  deleteEnrollmentZodSchema,
+  endorseSchema,
+  getAllEndorsementsZodSchema,
+  getEndorsementZodSchema,
+  updateEndorsementZodSchema,
+  deleteEndorsementZodSchema,
 };

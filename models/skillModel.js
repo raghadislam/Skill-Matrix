@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const DEPT = require('../utils/departments');
 
 const skillSchema = new mongoose.Schema(
   {
@@ -21,8 +22,8 @@ const skillSchema = new mongoose.Schema(
       type: String,
       required: [true, 'A skill must have a category'],
       enum: {
-        values: ['Development', 'Design', 'Marketing'],
-        message: 'category must be either Development, Design, or Marketing',
+        values: Object.values(DEPT),
+        message: `Category must be one of ${Object.values(DEPT).join(', ')}`,
       },
     },
   },
