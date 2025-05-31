@@ -121,7 +121,16 @@ assessmentSchema.path('createdAt').select(false);
 assessmentSchema.path('updatedAt').select(false);
 
 assessmentSchema.virtual('fullMark').get(function () {
-  return this.questions.length;
+  const qs = this.questions || [];
+  return Array.isArray(qs) ? qs.length : 0;
+});
+
+assessmentSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: 'courseId',
+    select: 'title -_id',
+  });
+  next();
 });
 
 const Assessment = mongoose.model('Assessment', assessmentSchema);
