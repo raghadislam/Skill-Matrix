@@ -43,7 +43,7 @@ const updateEnrollmentZodSchema = z.object({
   params: idParamsValidator,
 });
 
-const deleteCourseZodSchema = z.object({
+const deleteEnrollmentZodSchema = z.object({
   params: idParamsValidator,
 });
 
@@ -52,5 +52,5 @@ module.exports = {
   getAllEnrollmentsZodSchema,
   getEnrollmentZodSchema,
   updateEnrollmentZodSchema,
-  deleteCourseZodSchema,
+  deleteEnrollmentZodSchema,
 };

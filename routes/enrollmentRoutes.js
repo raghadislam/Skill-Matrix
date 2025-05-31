@@ -10,7 +10,7 @@ const {
   getAllEnrollmentsZodSchema,
   getEnrollmentZodSchema,
   updateEnrollmentZodSchema,
-  deleteCourseZodSchema,
+  deleteEnrollmentZodSchema,
 } = require('../validators/enrollmentValidators');
 
 const router = express.Router();
@@ -39,7 +39,7 @@ router
     enrollmentController.updateEnrollment,
   )
   .delete(
-    validate(deleteCourseZodSchema),
+    validate(deleteEnrollmentZodSchema),
     enrollmentController.deleteEnrollment,
   );
 
