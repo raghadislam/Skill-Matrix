@@ -5,6 +5,7 @@ const restrictTo = require('../middlewares/auth/restrictTo');
 const protect = require('../middlewares/auth/protect');
 const isEnrolled = require('../middlewares/enrolled');
 const validate = require('../middlewares/validate');
+const isRequested = require('../middlewares/requested');
 const ROLE = require('../utils/role');
 const {
   getAllCoursesZodSchema,
@@ -28,6 +29,7 @@ router.use(protect);
 
 router.get(
   '/:id/assessments',
+  restrictTo(ROLE.EMPLOYEE),
   validate(getCourseZodSchema),
   isEnrolled,
   courseController.getCourseAssessment,
@@ -35,9 +37,11 @@ router.get(
 
 router.post(
   '/:id/assessments/submit',
+  restrictTo(ROLE.EMPLOYEE),
   validate(getCourseZodSchema),
   validate(answersSchema),
   isEnrolled,
+  isRequested,
   courseController.submitCourseAssessment,
 );
 
