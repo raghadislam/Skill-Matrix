@@ -1,6 +1,5 @@
 const endorsementService = require('../services/endorsementService');
 const { sendResponse } = require('../utils/responseUtils');
-// const STATUS = require('../utils/courseStatus');
 const AppError = require('../utils/appError');
 
 exports.getAllEndorsements = async (req, res) => {
@@ -47,5 +46,25 @@ exports.deleteEndorsement = async (req, res) => {
   sendResponse(res, {
     statusCode: 204,
     status: 'success',
+  });
+};
+
+exports.endorse = async (req, res) => {
+  const endorsement = await endorsementService.endors(
+    req.user._id,
+    req.body.endorseeId,
+    req.params.id,
+  );
+
+  if (!endorsement)
+    throw new AppError(
+      `Endorsement failed! Make sure both the endorsee Id and the skill Id are correct`,
+      404,
+    );
+
+  sendResponse(res, {
+    statusCode: 201,
+    status: 'success',
+    data: { endorsement },
   });
 };

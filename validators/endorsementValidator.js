@@ -13,7 +13,7 @@ const endorseSchema = z.object({
   body: z
     .object(
       {
-        courseId: objectId,
+        endorseeId: objectId,
       },
       {
         // to catch the extra keys
