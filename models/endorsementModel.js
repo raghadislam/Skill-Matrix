@@ -25,6 +25,10 @@ const endorsementSchema = new mongoose.Schema(
     versionKey: false,
   },
 );
+endorsementSchema.index(
+  { endorserId: 1, endorseeId: 1, skillId: 1 },
+  { unique: true },
+);
 
 endorsementSchema.path('createdAt').select(false);
 endorsementSchema.path('updatedAt').select(false);

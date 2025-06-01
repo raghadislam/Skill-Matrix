@@ -3,8 +3,16 @@ const Enrollment = require('../models/enrollmentModel');
 const APIFeatures = require('../utils/apiFeatures');
 
 class UserService {
+  #population(query) {
+    return query.populate({
+      path: 'skills',
+      select: 'name',
+    });
+  }
+
   async getAllUsers(queryString) {
-    const feature = new APIFeatures(User.find(), queryString)
+    const query = this.#population(User.find());
+    const feature = new APIFeatures(query, queryString)
       .filter()
       .sort()
       .limitFields()
@@ -14,7 +22,8 @@ class UserService {
   }
 
   async getUser(id) {
-    return await User.findById(id);
+    const query = this.#population(User.findById(id));
+    return await query.lean();
   }
 
   async deleteUser(id) {
@@ -22,10 +31,13 @@ class UserService {
   }
 
   async updateUser(id, data) {
-    return await User.findByIdAndUpdate(id, data, {
+    let query = User.findByIdAndUpdate(id, data, {
       new: true,
       runValidators: true,
     });
+    query = this.#population(query);
+
+    return await query.lean();
   }
 
   async createUser(data) {

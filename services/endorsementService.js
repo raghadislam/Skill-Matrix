@@ -1,5 +1,7 @@
 const ApiFeatures = require('../utils/apiFeatures');
 const Endorsement = require('../models/endorsementModel');
+const User = require('../models/userModel');
+const Skill = require('../models/skillModel');
 
 class EndorsementService {
   #population(query) {
@@ -48,6 +50,35 @@ class EndorsementService {
 
   async deleteEndorsement(id) {
     return await Endorsement.findByIdAndDelete(id);
+  }
+
+  async endors(endorserId, endorseeId, skillId) {
+    const endorsee = await User.findById(endorseeId);
+    if (!endorsee) return undefined;
+
+    const skill = await Skill.findById(skillId);
+    if (!skill) return undefined;
+
+    const skillExists = endorsee.skills.some(
+      (id) => id.toString() === skillId.toString(),
+    );
+
+    if (!skillExists) {
+      endorsee.skills.push(skillId);
+      await endorsee.save();
+    }
+
+    const endorsement = await Endorsement.create({
+      skillId,
+      endorserId,
+      endorseeId,
+    });
+
+    return await endorsement.populate([
+      { path: 'skillId', select: 'name' },
+      { path: 'endorserId', select: 'name' },
+      { path: 'endorseeId', select: 'name' },
+    ]);
   }
 }
 
