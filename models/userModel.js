@@ -40,12 +40,11 @@ const userSchema = new mongoose.Schema(
         message: `Department must be one of ${Object.values(DEPT).join(', ')}`,
       },
     },
-    skills: [
-      {
-        type: mongoose.Schema.ObjectId,
-        ref: 'Skill',
-      },
-    ],
+    webhookUrl: {
+      type: String,
+      trim: true,
+      default: null,
+    },
     passwordChangedAt: Date,
   },
   {
