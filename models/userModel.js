@@ -46,6 +46,11 @@ const userSchema = new mongoose.Schema(
         ref: 'Skill',
       },
     ],
+    webhookUrl: {
+      type: String,
+      trim: true,
+      default: null,
+    },
     passwordChangedAt: Date,
   },
   {

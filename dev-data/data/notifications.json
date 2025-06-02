@@ -1,0 +1,50 @@
+[
+  {
+    "user": "60f5a3c2e1b1c8001c4d0001",
+    "type": "COURSE_DEADLINE",
+    "message": "Reminder: Your course 'Node.js Basics' is due on 2025-06-05.",
+    "isRead": false
+  },
+  {
+    "user": "60f5a3c2e1b1c8001c4d0002",
+    "type": "SYSTEM_ALERT",
+    "message": "The system will undergo maintenance on 2025-06-10 from 02:00 to 04:00 UTC.",
+    "isRead": false
+  },
+  {
+    "user": "60f5a3c2e1b1c8001c4d0003",
+    "type": "ENROLLMENT_CONFIRMED",
+    "message": "Your enrollment in 'Advanced Marketing Strategies' has been confirmed.",
+    "isRead": false
+  },
+  {
+    "user": "60f5a3c2e1b1c8001c4d0004",
+    "type": "ENROLLMENT_COMPLETED",
+    "message": "Congratulations! You have completed the course 'Full-Stack Fundamentals'.",
+    "isRead": true
+  },
+  {
+    "user": "60f5a3c2e1b1c8001c4d0005",
+    "type": "ASSESSMENT_ASSIGNED",
+    "message": "A new assessment 'JavaScript Fundamentals Quiz' has been assigned to you.",
+    "isRead": false
+  },
+  {
+    "user": "60f5a3c2e1b1c8001c4d0006",
+    "type": "ASSESSMENT_PASSED",
+    "message": "You scored 88% on the 'Database Design' assessment and passed.",
+    "isRead": true
+  },
+  {
+    "user": "60f5a3c2e1b1c8001c4d0007",
+    "type": "ASSESSMENT_FAILED",
+    "message": "You scored 45% on the 'Marketing Basics' assessment. Please review and retake.",
+    "isRead": false
+  },
+  {
+    "user": "60f5a3c2e1b1c8001c4d0008",
+    "type": "QUIZ_RESULT",
+    "message": "Your quiz 'React Basics' has been graded: 78%.",
+    "isRead": false
+  }
+]

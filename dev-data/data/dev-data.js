@@ -7,6 +7,7 @@ const Course = require('../../models/courseModel');
 const Path = require('../../models/learningPathModel');
 const Assessment = require('../../models/assessmentModel');
 const AssessmentRequest = require('../../models/assessmentRequestModel');
+const Notification = require('../../models/notificationModel');
 
 dotenv.config({ path: './config.env' });
 
@@ -29,6 +30,9 @@ const assessments = JSON.parse(
 const assessmentRequests = JSON.parse(
   fs.readFileSync(`${__dirname}/assessmentRequests.json`),
 );
+const notifications = JSON.parse(
+  fs.readFileSync(`${__dirname}/notifications.json`),
+);
 
 const importData = async () => {
   try {
@@ -38,6 +42,7 @@ const importData = async () => {
     await Path.create(paths);
     await Assessment.create(assessments);
     await AssessmentRequest.create(assessmentRequests);
+    await Notification.create(notifications);
 
     console.log('Data successfully loaded!');
     process.exit();
@@ -56,6 +61,7 @@ const deleteData = async () => {
     await Path.deleteMany();
     await Assessment.deleteMany();
     await AssessmentRequest.deleteMany();
+    await Notification.deleteMany();
 
     console.log('Data successfully deleted!');
     process.exit();
