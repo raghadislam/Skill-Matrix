@@ -44,7 +44,7 @@ notificationSchema.path('updatedAt').select(false);
 notificationSchema.pre(/^find/, function (next) {
   this.populate({
     path: 'user',
-    select: 'name -id',
+    select: 'name -_id',
   });
   next();
 });
