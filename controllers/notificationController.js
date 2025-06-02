@@ -1,8 +1,8 @@
-const NotificationService = require('../services/notificationService');
+const notificationService = require('../services/notificationService');
 const { sendResponse } = require('../utils/responseUtils');
 
 exports.getAllNotifications = async (req, res) => {
-  const notifications = await NotificationService.getAllNotifications(
+  const notifications = await notificationService.getAllNotifications(
     req.query,
   );
 
