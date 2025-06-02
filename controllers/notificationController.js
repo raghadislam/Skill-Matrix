@@ -26,3 +26,12 @@ exports.getNotification = async (req, res) => {
     },
   });
 };
+
+exports.deleteNotification = async (req, res) => {
+  await notificationService.deleteNotification(req.params.id);
+
+  sendResponse(res, {
+    statusCode: 204,
+    status: 'success',
+  });
+};

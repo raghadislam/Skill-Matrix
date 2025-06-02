@@ -11,7 +11,12 @@ const getNotificationZodSchema = z.object({
   params: idParamsValidator,
 });
 
+const deleteNotificationZodSchema = z.object({
+  params: idParamsValidator,
+});
+
 module.exports = {
   getAllNotificationZodSchema,
   getNotificationZodSchema,
+  deleteNotificationZodSchema,
 };

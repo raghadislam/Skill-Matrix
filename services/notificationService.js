@@ -20,6 +20,12 @@ class NotificationService {
 
     return notification;
   }
+
+  async deleteNotification(id) {
+    const notification = await Notification.findByIdAndDelete(id);
+    if (!notification)
+      throw new AppError(`No notification found with that ID`, 404);
+  }
 }
 
 module.exports = new NotificationService();
