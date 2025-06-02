@@ -14,3 +14,15 @@ exports.getAllNotifications = async (req, res) => {
     },
   });
 };
+
+exports.getNotification = async (req, res) => {
+  const notification = await notificationService.getNotification(req.params.id);
+
+  sendResponse(res, {
+    statusCode: 200,
+    status: 'success',
+    data: {
+      notification,
+    },
+  });
+};

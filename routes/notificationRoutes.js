@@ -7,6 +7,7 @@ const ROLE = require('../utils/role');
 const validate = require('../middlewares/validate');
 const {
   getAllNotificationZodSchema,
+  getNotificationZodSchema,
 } = require('../validators/notificationValidator');
 
 const router = express.Router();
@@ -20,6 +21,13 @@ router
   .get(
     validate(getAllNotificationZodSchema),
     notificationController.getAllNotifications,
+  );
+
+router
+  .route('/:id')
+  .get(
+    validate(getNotificationZodSchema),
+    notificationController.getNotification,
   );
 
 module.exports = router;
