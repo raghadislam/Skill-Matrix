@@ -5,18 +5,19 @@ const Skill = require('../models/skillModel');
 
 class EndorsementService {
   #population(query) {
-    query.populate({
-      path: 'skillId',
-      select: 'name category',
-    });
+    query.populate([
+      { path: 'skill', select: 'name' },
+      { path: 'endorser', select: 'name' },
+      { path: 'endorsee', select: 'name' },
+    ]);
 
     query.populate({
-      path: 'endorserId',
+      path: 'endorser',
       select: 'name email department',
     });
 
     query.populate({
-      path: 'endorseeId',
+      path: 'endorsee',
       select: 'name email department',
     });
     return query;
@@ -52,32 +53,32 @@ class EndorsementService {
     return await Endorsement.findByIdAndDelete(id);
   }
 
-  async endors(endorserId, endorseeId, skillId) {
-    const endorsee = await User.findById(endorseeId);
-    if (!endorsee) return undefined;
+  async endors(endorser, endorsee, skill) {
+    const endorseeQuery = await User.findById(endorsee);
+    if (!endorseeQuery) return undefined;
 
-    const skill = await Skill.findById(skillId);
-    if (!skill) return undefined;
+    const skillQuery = await Skill.findById(skill);
+    if (!skillQuery) return undefined;
 
-    const skillExists = endorsee.skills.some(
-      (id) => id.toString() === skillId.toString(),
+    const skillExists = endorseeQuery.skills.some(
+      (id) => id.toString() === skill.toString(),
     );
 
     if (!skillExists) {
-      endorsee.skills.push(skillId);
-      await endorsee.save();
+      endorseeQuery.skills.push(skill);
+      await endorseeQuery.save();
     }
 
     const endorsement = await Endorsement.create({
-      skillId,
-      endorserId,
-      endorseeId,
+      skill,
+      endorser,
+      endorsee,
     });
 
     return await endorsement.populate([
-      { path: 'skillId', select: 'name' },
-      { path: 'endorserId', select: 'name' },
-      { path: 'endorseeId', select: 'name' },
+      { path: 'skill', select: 'name' },
+      { path: 'endorser', select: 'name' },
+      { path: 'endorsee', select: 'name' },
     ]);
   }
 }
