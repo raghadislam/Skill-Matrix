@@ -81,6 +81,29 @@ class EndorsementService {
       { path: 'endorsee', select: 'name' },
     ]);
   }
+
+  async getSkillsAndEndorsements(userId) {
+    const user = await User.findOne({ _id: userId })
+      .populate({
+        path: 'skills',
+        select: 'name',
+      })
+      .lean();
+    if (!user) return undefined;
+
+    const { skills } = user;
+
+    const endorsement = await this.#population(
+      Endorsement.find({ endorsee: userId }),
+    ).lean();
+
+    const data = {
+      skills: skills,
+      endorsement,
+    };
+
+    return data;
+  }
 }
 
 module.exports = new EndorsementService();
