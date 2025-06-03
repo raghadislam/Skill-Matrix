@@ -22,7 +22,7 @@ class AssessmentService {
 
   async getAssessment(id) {
     const query = this.#population(Assessment.findById(id));
-    return await query;
+    return await query.lean();
   }
 
   async createAssessment(data) {

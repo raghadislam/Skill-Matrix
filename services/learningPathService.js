@@ -9,11 +9,11 @@ class LearningPathService {
       .limitFields()
       .paginate();
 
-    return await feature.query;
+    return await feature.query.lean();
   }
 
   async getLearningPath(id) {
-    return await LearningPath.findById(id);
+    return await LearningPath.findById(id).lean();
   }
 
   async createLearningPath(data) {
@@ -25,10 +25,11 @@ class LearningPathService {
   }
 
   async updateLearningPath(id, data) {
-    return await LearningPath.findByIdAndUpdate(id, data, {
+    const query = LearningPath.findByIdAndUpdate(id, data, {
       new: true,
       runValidators: true,
     });
+    return await query.lean();
   }
 
   async deleteLearningPath(id) {

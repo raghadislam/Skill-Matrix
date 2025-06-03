@@ -2,19 +2,19 @@ const mongoose = require('mongoose');
 
 const endorsementSchema = new mongoose.Schema(
   {
-    skillId: {
+    skill: {
       type: mongoose.Schema.Types.ObjectId,
       required: [true, 'An Endrosement should have a skill'],
       ref: 'Skill',
     },
 
-    endorserId: {
+    endorser: {
       type: mongoose.Schema.Types.ObjectId,
       required: [true, 'An Endrosement should have an endorser'],
       ref: 'User',
     },
 
-    endorseeId: {
+    endorsee: {
       type: mongoose.Schema.Types.ObjectId,
       required: [true, 'An Endrosement should have an endorsee'],
       ref: 'User',

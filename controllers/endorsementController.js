@@ -68,3 +68,18 @@ exports.endorse = async (req, res) => {
     data: { endorsement },
   });
 };
+
+exports.getSkillsAndEndorsements = async (req, res) => {
+  const data = await endorsementService.getSkillsAndEndorsements(req.params.id);
+  if (!data)
+    throw new AppError(
+      `Endorsement failed! Make sure both the endorsee Id and the skill Id are correct`,
+      404,
+    );
+
+  sendResponse(res, {
+    statusCode: 200,
+    status: 'success',
+    data,
+  });
+};
