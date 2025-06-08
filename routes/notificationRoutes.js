@@ -8,7 +8,7 @@ const validate = require('../middlewares/validate');
 const {
   getAllNotificationZodSchema,
   getNotificationZodSchema,
-  deleteNotificationZodSchema,
+  createNotificationZodSchema,
 } = require('../validators/notificationValidator');
 
 const router = express.Router();
@@ -22,6 +22,10 @@ router
   .get(
     validate(getAllNotificationZodSchema),
     notificationController.getAllNotifications,
+  )
+  .post(
+    validate(createNotificationZodSchema),
+    notificationController.createNotification,
   );
 
 router
@@ -29,10 +33,6 @@ router
   .get(
     validate(getNotificationZodSchema),
     notificationController.getNotification,
-  )
-  .delete(
-    validate(deleteNotificationZodSchema),
-    notificationController.deleteNotification,
   );
 
 module.exports = router;

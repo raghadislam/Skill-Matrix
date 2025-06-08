@@ -27,11 +27,16 @@ exports.getNotification = async (req, res) => {
   });
 };
 
-exports.deleteNotification = async (req, res) => {
-  await notificationService.deleteNotification(req.params.id);
+exports.createNotification = async (req, res) => {
+  const newNotification = await notificationService.createNotification(
+    req.body.user,
+    req.body.type,
+    req.body.message,
+  );
 
   sendResponse(res, {
-    statusCode: 204,
+    statusCode: 201,
     status: 'success',
+    data: { newNotification },
   });
 };

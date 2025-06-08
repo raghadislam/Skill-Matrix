@@ -50,8 +50,7 @@
     "email": "frank.wilson@example.com",
     "role": "trainer",
     "password": "pass1111",
-    "department": "Development",
-    "webhookUrl": null
+    "department": "Development"
   },
   {
     "_id": "60f5a3c2e1b1c8001c4d0007",
@@ -59,8 +58,7 @@
     "email": "grace.chen@example.com",
     "role": "employee",
     "password": "pass1111",
-    "department": "Marketing",
-    "webhookUrl": null
+    "department": "Marketing"
   },
   {
     "_id": "60f5a3c2e1b1c8001c4d0008",
@@ -68,8 +66,7 @@
     "email": "henry.davis@example.com",
     "role": "admin",
     "password": "pass1111",
-    "department": "Design",
-    "webhookUrl": null
+    "department": "Design"
   },
   {
     "_id": "60f5a3c2e1b1c8001c4d0009",
@@ -77,8 +74,7 @@
     "email": "isabella.garcia@example.com",
     "role": "trainer",
     "password": "pass1111",
-    "department": "Development",
-    "webhookUrl": null
+    "department": "Development"
   },
   {
     "_id": "60f5a3c2e1b1c8001c4d000a",
@@ -86,8 +82,7 @@
     "email": "jack.martinez@example.com",
     "role": "employee",
     "password": "pass1111",
-    "department": "Marketing",
-    "webhookUrl": null
+    "department": "Marketing"
   },
   {
     "_id": "60f5a3c2e1b1c8001c4d000b",
@@ -95,8 +90,7 @@
     "email": "katherine.brown@example.com",
     "role": "trainer",
     "password": "pass1111",
-    "department": "Development",
-    "webhookUrl": null
+    "department": "Development"
   },
   {
     "_id": "60f5a3c2e1b1c8001c4d000c",
@@ -104,8 +98,7 @@
     "email": "liam.wilson@example.com",
     "role": "admin",
     "password": "pass1111",
-    "department": "Design",
-    "webhookUrl": null
+    "department": "Design"
   },
   {
     "_id": "60f5a3c2e1b1c8001c4d000d",
@@ -113,8 +106,7 @@
     "email": "mia.thompson@example.com",
     "role": "employee",
     "password": "pass1111",
-    "department": "Marketing",
-    "webhookUrl": null
+    "department": "Marketing"
   },
   {
     "_id": "60f5a3c2e1b1c8001c4d000e",
@@ -122,8 +114,7 @@
     "email": "noah.moore@example.com",
     "role": "trainer",
     "password": "pass1111",
-    "department": "Development",
-    "webhookUrl": null
+    "department": "Development"
   },
   {
     "_id": "60f5a3c2e1b1c8001c4d000f",
@@ -131,8 +122,7 @@
     "email": "olivia.taylor@example.com",
     "role": "employee",
     "password": "pass1111",
-    "department": "Marketing",
-    "webhookUrl": null
+    "department": "Marketing"
   },
   {
     "_id": "60f5a3c2e1b1c8001c4d0010",
@@ -140,7 +130,6 @@
     "email": "paul.hernandez@example.com",
     "role": "admin",
     "password": "pass1111",
-    "department": "Design",
-    "webhookUrl": null
+    "department": "Design"
   }
 ]
