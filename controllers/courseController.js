@@ -72,7 +72,7 @@ exports.getCourseAssessment = async (req, res) => {
 
 exports.submitCourseAssessment = async (req, res) => {
   const { result, message, assessmentStatus } =
-    await courseService.subminCourseAssessment({
+    await courseService.submitCourseAssessment({
       courseId: req.params.id,
       userId: req.user._id,
       answers: req.body.answers,

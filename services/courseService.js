@@ -62,7 +62,7 @@ class CourseService {
     return { data };
   }
 
-  async subminCourseAssessment({
+  async submitCourseAssessment({
     courseId,
     userId,
     answers,
