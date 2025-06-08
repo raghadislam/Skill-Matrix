@@ -15,7 +15,15 @@ const router = express.Router();
 
 router.route();
 
-router.use(protect, restrictTo(ROLE.ADMIN, ROLE.MANAGER));
+router.use(protect);
+
+router.patch(
+  '/:id/mark-read',
+  validate(getNotificationZodSchema),
+  notificationController.markNotificationAsRead,
+);
+
+router.use(restrictTo(ROLE.ADMIN, ROLE.MANAGER));
 
 router
   .route('/')

@@ -35,3 +35,18 @@ exports.deleteNotification = async (req, res) => {
     status: 'success',
   });
 };
+
+exports.markNotificationAsRead = async (req, res) => {
+  const notification = await notificationService.markRead(
+    req.params.id,
+    req.user._id,
+  );
+
+  sendResponse(res, {
+    statusCode: 200,
+    status: 'success',
+    data: {
+      notification,
+    },
+  });
+};
