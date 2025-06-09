@@ -1,12 +1,26 @@
 const Enrollment = require('../models/enrollmentModel');
+const notificationService = require('./notificationService');
 const ApiFeatures = require('../utils/apiFeatures');
+const TYPE = require('../utils/notificationType');
 
 class EnrollmentService {
-  async enroll(req) {
-    return await Enrollment.create({
-      courseId: req.body.courseId,
-      userId: req.user._id,
+  async enroll(courseId, userId) {
+    const enrollment = await Enrollment.create({
+      courseId,
+      userId,
     });
+
+    notificationService
+      .createNotification(
+        userId,
+        TYPE.ENROLLMENT_CONFIRMED,
+        'Your enrollment is confirmed!',
+      )
+      .catch((err) => {
+        console.error('Notification failed', err);
+      });
+
+    return enrollment;
   }
 
   #population(query) {

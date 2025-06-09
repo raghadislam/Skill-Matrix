@@ -6,6 +6,8 @@ const QuizResult = require('../models/quizResultModel');
 const STATUS = require('../utils/courseStatus');
 const AppError = require('../utils/appError');
 const assessmentRequestService = require('./assessmentRequestService');
+const notificationService = require('./notificationService');
+const TYPE = require('../utils/notificationType');
 
 class CourseService {
   #population(query) {
@@ -58,6 +60,24 @@ class CourseService {
       assessment: assessment._id,
       user: userId,
     });
+
+    const deadlineDate = new Date(data.deadline);
+    const formattedDeadline = deadlineDate.toLocaleDateString('en-GB', {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      timeZone: 'Africa/Cairo',
+    });
+    const message = `Your assessment request has been received. Please complete it by ${formattedDeadline}.`;
+
+    notificationService
+      .createNotification(userId, TYPE.ASSESSMENT_DEADLINE, message)
+      .catch((err) => {
+        console.error('Notification failed', err);
+      });
 
     return { data };
   }
