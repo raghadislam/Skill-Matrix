@@ -17,7 +17,7 @@ module.exports = async (req, res, next) => {
 
   if (!enrollment) {
     throw new AppError(
-      'You did not enroll to this coursr! Please enroll to get access.',
+      'You did not enroll to this course! Please enroll to get access.',
       401,
     );
   }
