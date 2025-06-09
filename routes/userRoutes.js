@@ -19,6 +19,7 @@ const router = express.Router();
 router.use(protect);
 
 router.get('/my-enrollments', userController.getMyEnrollments);
+router.get('/inbox', userController.getMyNotifications);
 
 router.use(restrictTo(ROLE.ADMIN, ROLE.MANAGER));
 

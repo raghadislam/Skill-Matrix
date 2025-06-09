@@ -21,10 +21,14 @@ class NotificationService {
     return notification;
   }
 
-  async deleteNotification(id) {
-    const notification = await Notification.findByIdAndDelete(id);
-    if (!notification)
-      throw new AppError(`No notification found with that ID`, 404);
+  async createNotification(userId, type, message) {
+    const newNotification = await Notification.create({
+      user: userId,
+      type,
+      message,
+    });
+
+    return newNotification;
   }
 
   async createNotification(userId, type, message) {

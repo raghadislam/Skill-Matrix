@@ -3,7 +3,10 @@ const AppError = require('../utils/appError');
 const { sendResponse } = require('../utils/responseUtils');
 
 exports.enroll = async (req, res) => {
-  const enrollment = await enrollmentService.enroll(req);
+  const enrollment = await enrollmentService.enroll(
+    req.body.courseId,
+    req.user._id,
+  );
 
   sendResponse(res, {
     statusCode: 201,

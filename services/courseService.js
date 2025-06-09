@@ -61,6 +61,24 @@ class CourseService {
       user: userId,
     });
 
+    const deadlineDate = new Date(data.deadline);
+    const formattedDeadline = deadlineDate.toLocaleDateString('en-GB', {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      timeZone: 'Africa/Cairo',
+    });
+    const message = `Your assessment request has been received. Please complete it by ${formattedDeadline}.`;
+
+    notificationService
+      .createNotification(userId, TYPE.ASSESSMENT_DEADLINE, message)
+      .catch((err) => {
+        console.error('Notification failed', err);
+      });
+
     return { data };
   }
 

@@ -1,5 +1,6 @@
 const User = require('../models/userModel');
 const Enrollment = require('../models/enrollmentModel');
+const Notification = require('../models/notificationModel');
 const APIFeatures = require('../utils/apiFeatures');
 
 class UserService {
@@ -49,6 +50,13 @@ class UserService {
 
   async getEnrollments(userId) {
     return await Enrollment.find({ userId });
+  }
+
+  async getNotifications(userId, onlyUnread) {
+    const filter = { user: userId };
+    if (onlyUnread) filter.isRead = 0;
+
+    return await Notification.find(filter);
   }
 }
 

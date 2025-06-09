@@ -73,3 +73,16 @@ exports.getMyEnrollments = async (req, res) => {
     data: { enrollments },
   });
 };
+
+exports.getMyNotifications = async (req, res) => {
+  const notifications = await userService.getNotifications(
+    req.user._id,
+    req.query.onlyUnRead,
+  );
+
+  sendResponse(res, {
+    statusCode: 200,
+    status: 'success',
+    data: { notifications },
+  });
+};
