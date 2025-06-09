@@ -4,8 +4,10 @@ const Assessment = require('../models/assessmentModel');
 const Enrollment = require('../models/enrollmentModel');
 const QuizResult = require('../models/quizResultModel');
 const STATUS = require('../utils/courseStatus');
+const TYPE = require('../utils/notificationType');
 const AppError = require('../utils/appError');
 const assessmentRequestService = require('./assessmentRequestService');
+const notificationService = require('./notificationService');
 
 class CourseService {
   #population(query) {
@@ -109,6 +111,7 @@ class CourseService {
     });
 
     let assessmentStatus = 'fail';
+    let notificationType = TYPE.ASSESSMENT_FAILED;
     // mark as completed
     if (score >= assessment.passingScore) {
       await Enrollment.findOneAndUpdate(
@@ -120,9 +123,16 @@ class CourseService {
         { new: true, runValidators: true },
       );
       assessmentStatus = 'pass';
+      notificationType = TYPE.ASSESSMENT_PASSED;
 
       await assessmentRequestService.deleteRequest(requestId);
     }
+
+    await notificationService.createNotification(
+      userId,
+      notificationType,
+      `You scored ${(score * 100) / assessment.fullMark}% on the '${assessment.courseId.title}' assessment. Please review and retake.`,
+    );
 
     return { result, assessmentStatus };
   }
