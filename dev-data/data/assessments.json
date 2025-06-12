@@ -1,7 +1,7 @@
 [
   {
     "_id": "64df1a2b3c4d5e6f7a8b9c01",
-    "courseId": "665a10000000000000000001",
+    "course": "665a10000000000000000001",
     "questions": [
       {
         "question": "Which keyword is used to declare a variable in ES6?",
@@ -114,7 +114,7 @@
   },
   {
     "_id": "64df1a2b3c4d5e6f7a8b9c02",
-    "courseId": "665a10000000000000000002",
+    "course": "665a10000000000000000002",
     "questions": [
       {
         "question": "Question 1 for Front-End Development with React",
@@ -197,7 +197,7 @@
   },
   {
     "_id": "64df1a2b3c4d5e6f7a8b9c03",
-    "courseId": "665a10000000000000000003",
+    "course": "665a10000000000000000003",
     "questions": [
       {
         "question": "Question 1 for Back-End Development with Node.js",
@@ -280,7 +280,7 @@
   },
   {
     "_id": "64df1a2b3c4d5e6f7a8b9c04",
-    "courseId": "665a10000000000000000004",
+    "course": "665a10000000000000000004",
     "questions": [
       {
         "question": "Question 1 for Full-Stack Web Application Bootcamp",
@@ -363,7 +363,7 @@
   },
   {
     "_id": "64df1a2b3c4d5e6f7a8b9c05",
-    "courseId": "665a10000000000000000005",
+    "course": "665a10000000000000000005",
     "questions": [
       {
         "question": "Question 1 for UI/UX Design Essentials",
@@ -446,7 +446,7 @@
   },
   {
     "_id": "64df1a2b3c4d5e6f7a8b9c06",
-    "courseId": "665a10000000000000000006",
+    "course": "665a10000000000000000006",
     "questions": [
       {
         "question": "Question 1 for Digital Marketing Fundamentals",
@@ -529,7 +529,7 @@
   },
   {
     "_id": "64df1a2b3c4d5e6f7a8b9c08",
-    "courseId": "665a10000000000000000008",
+    "course": "665a10000000000000000008",
     "questions": [
       {
         "question": "Question 1 for GraphQL with Apollo Server",
@@ -612,7 +612,7 @@
   },
   {
     "_id": "64df1a2b3c4d5e6f7a8b9c09",
-    "courseId": "665a10000000000000000009",
+    "course": "665a10000000000000000009",
     "questions": [
       {
         "question": "Question 1 for Database Modeling and Relationships",
@@ -695,7 +695,7 @@
   },
   {
     "_id": "64df1a2b3c4d5e6f7a8b9c0a",
-    "courseId": "665a1000000000000000000a",
+    "course": "665a1000000000000000000a",
     "questions": [
       {
         "question": "Question 1 for Testing and Debugging in Node.js",

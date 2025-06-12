@@ -4,8 +4,8 @@ const APIFeatures = require('../utils/apiFeatures');
 class SkillService {
   #population(query) {
     return query.populate({
-      path: 'parentSkillId',
-      select: '-__v -_id -parentSkillId',
+      path: 'parentSkill',
+      select: '-__v -_id -parentSkill',
     });
   }
 

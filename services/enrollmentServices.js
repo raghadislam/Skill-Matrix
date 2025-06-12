@@ -6,8 +6,8 @@ const TYPE = require('../utils/notificationType');
 class EnrollmentService {
   async enroll(courseId, userId) {
     const enrollment = await Enrollment.create({
-      courseId,
-      userId,
+      course: courseId,
+      user: userId,
     });
 
     notificationService
@@ -25,10 +25,10 @@ class EnrollmentService {
 
   #population(query) {
     query.populate({
-      path: 'userId',
+      path: 'user',
     });
     return query.populate({
-      path: 'courseId',
+      path: 'course',
       select: 'title',
     });
   }

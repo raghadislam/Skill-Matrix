@@ -13,7 +13,7 @@ const enrollSchema = z.object({
   body: z
     .object(
       {
-        courseId: objectId,
+        course: objectId,
       },
       {
         // to catch the extra keys

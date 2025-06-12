@@ -13,7 +13,7 @@ const learningPathSchema = new mongoose.Schema(
       type: String,
       required: [true, 'Learning path must have a description'],
     },
-    orderedCourseIds: {
+    orderedCourses: {
       type: [
         {
           type: mongoose.Schema.Types.ObjectId,
@@ -43,23 +43,23 @@ learningPathSchema.path('updatedAt').select(false);
 
 learningPathSchema.pre(/^find/, function (next) {
   this.populate({
-    path: 'orderedCourseIds',
+    path: 'orderedCourses',
     select: '-prerequisites',
   });
   next();
 });
 
 learningPathSchema.virtual('duration').get(function () {
-  if (!this.populated('orderedCourseIds')) return 0;
-  return this.orderedCourseIds.reduce(
+  if (!this.populated('orderedCourses')) return 0;
+  return this.orderedCourses.reduce(
     (total, course) => total + (course.durationHours || 0),
     0,
   );
 });
 
 learningPathSchema.virtual('category').get(function () {
-  if (!this.populated('orderedCourseIds')) return '';
-  return this.orderedCourseIds[0].category;
+  if (!this.populated('orderedCourses')) return '';
+  return this.orderedCourses[0].category;
 });
 
 const learningPath = mongoose.model('LearningPath', learningPathSchema);

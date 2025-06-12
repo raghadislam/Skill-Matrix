@@ -49,7 +49,7 @@ class UserService {
   }
 
   async getEnrollments(userId) {
-    return await Enrollment.find({ userId });
+    return await Enrollment.find({ user: userId });
   }
 
   async getNotifications(userId, onlyUnread) {

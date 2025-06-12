@@ -32,7 +32,7 @@ const createPathSchema = z.object({
         .trim()
         .min(1, 'Learning path must have a description'),
 
-      orderedCourseIds: z
+      orderedCourses: z
         .array(objectId)
         .nonempty('Learning path must include at least one course'),
     })

@@ -31,16 +31,6 @@ class NotificationService {
     return newNotification;
   }
 
-  async createNotification(userId, type, message) {
-    const newNotification = await Notification.create({
-      user: userId,
-      type,
-      message,
-    });
-
-    return newNotification;
-  }
-
   async markRead(notificationId, userId) {
     const notification = await Notification.findById(notificationId);
     if (!notification)

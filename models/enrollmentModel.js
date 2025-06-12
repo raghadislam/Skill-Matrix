@@ -3,12 +3,12 @@ const STATUS = require('../utils/courseStatus');
 
 const enrollmentSchema = new mongoose.Schema(
   {
-    userId: {
+    user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
       required: true,
     },
-    courseId: {
+    course: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Course',
       required: true,
@@ -33,14 +33,14 @@ const enrollmentSchema = new mongoose.Schema(
   },
 );
 
-enrollmentSchema.index({ userId: 1, courseId: 1 }, { unique: true });
+enrollmentSchema.index({ user: 1, course: 1 }, { unique: true });
 
 enrollmentSchema.pre(/^find/, function (next) {
   this.populate({
-    path: 'userId',
+    path: 'user',
     select: 'name email role department',
   }).populate({
-    path: 'courseId',
+    path: 'course',
     select: 'title',
   });
   next();
