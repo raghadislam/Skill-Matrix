@@ -54,6 +54,11 @@ const userSchema = new mongoose.Schema(
           `${props.value} is not a valid LinkedIn profile URL!`,
       },
     },
+    active: {
+      type: Boolean,
+      default: true,
+      select: false,
+    },
     department: {
       type: String,
       required: [true, 'A user must have a department'],
