@@ -2,7 +2,7 @@
   {
     "name": "Frontend Engineer Track",
     "description": "Master the essentials of frontend development from basics to advanced topics.",
-    "orderedCourseIds": [
+    "orderedCourses": [
       "665a10000000000000000001",
       "665a1000000000000000000c",
       "665a10000000000000000002",
@@ -15,7 +15,7 @@
   {
     "name": "Backend Engineer Track",
     "description": "Build scalable backend systems with modern JavaScript and DevOps practices.",
-    "orderedCourseIds": [
+    "orderedCourses": [
       "665a10000000000000000001",
       "665a10000000000000000003",
       "665a10000000000000000009",
@@ -28,7 +28,7 @@
   {
     "name": "Full-Stack Developer Program",
     "description": "Become a versatile MERN developer with a complete end-to-end curriculum.",
-    "orderedCourseIds": [
+    "orderedCourses": [
       "665a10000000000000000001",
       "665a10000000000000000002",
       "665a10000000000000000003",
@@ -41,7 +41,7 @@
   {
     "name": "Mobile App Developer Track",
     "description": "Build cross-platform mobile applications using React Native.",
-    "orderedCourseIds": [
+    "orderedCourses": [
       "665a10000000000000000001",
       "665a10000000000000000002",
       "665a10000000000000000017"
@@ -50,7 +50,7 @@
   {
     "name": "Agile Dev Team Starter",
     "description": "Learn modern project management with Agile, GitHub Actions and backend practices.",
-    "orderedCourseIds": [
+    "orderedCourses": [
       "665a10000000000000000016",
       "665a10000000000000000014",
       "665a10000000000000000003",

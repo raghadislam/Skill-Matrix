@@ -4,7 +4,7 @@ const ApiFeatures = require('../utils/apiFeatures');
 class AssessmentService {
   #population(query) {
     return query.populate({
-      path: 'courseId',
+      path: 'course',
       select: 'title category description -_id',
     });
   }

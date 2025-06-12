@@ -36,7 +36,7 @@ assessmentRequestSchema.pre('save', async function (next) {
   });
   await this.populate({
     path: 'assessment',
-    select: 'courseId timeLimitMinutes -_id',
+    select: 'course timeLimitMinutes -_id',
   });
   next();
 });
@@ -57,7 +57,7 @@ assessmentRequestSchema.pre(/^find/, function (next) {
     select: 'name role department -_id',
   }).populate({
     path: 'assessment',
-    select: 'courseId timeLimitMinutes -_id',
+    select: 'course timeLimitMinutes -_id',
   });
   next();
 });

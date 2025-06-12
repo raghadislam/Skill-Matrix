@@ -4,7 +4,7 @@ const { sendResponse } = require('../utils/responseUtils');
 
 exports.enroll = async (req, res) => {
   const enrollment = await enrollmentService.enroll(
-    req.body.courseId,
+    req.body.course,
     req.user._id,
   );
 

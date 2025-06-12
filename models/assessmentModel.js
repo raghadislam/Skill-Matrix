@@ -43,10 +43,10 @@ const questionSchema = new mongoose.Schema({
 
 const assessmentSchema = new mongoose.Schema(
   {
-    courseId: {
+    course: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Course',
-      required: [true, 'An assessment must have a courseId'],
+      required: [true, 'An assessment must have a course'],
       unique: true,
     },
 
@@ -127,7 +127,7 @@ assessmentSchema.virtual('fullMark').get(function () {
 
 assessmentSchema.pre(/^find/, function (next) {
   this.populate({
-    path: 'courseId',
+    path: 'course',
     select: 'title -_id',
   });
   next();

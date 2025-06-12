@@ -3,7 +3,7 @@ const Assessment = require('../models/assessmentModel');
 const AppError = require('../utils/appError');
 
 module.exports = async (req, res, next) => {
-  const assessment = await Assessment.findOne({ courseId: req.params.id });
+  const assessment = await Assessment.findOne({ course: req.params.id });
   if (!assessment)
     throw new AppError('No assessment found for this course ID', 404);
 

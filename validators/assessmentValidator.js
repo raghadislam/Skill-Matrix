@@ -56,7 +56,7 @@ const questionSchema = z
 const baseAssessmentBody = z
   .object(
     {
-      courseId: objectId,
+      course: objectId,
 
       questions: z.array(questionSchema),
 

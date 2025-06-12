@@ -19,7 +19,7 @@ class LearningPathService {
   async createLearningPath(data) {
     const path = await LearningPath.create(data);
     return path.populate({
-      path: 'orderedCourseIds',
+      path: 'orderedCourses',
       select: '-prerequisites',
     });
   }

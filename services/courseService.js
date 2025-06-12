@@ -52,7 +52,7 @@ class CourseService {
   }
 
   async requestCourseAssessment(courseId, userId) {
-    const assessment = await Assessment.findOne({ courseId });
+    const assessment = await Assessment.findOne({ course: courseId });
     if (!assessment)
       throw new AppError('No assessment found for this course ID', 404);
 
@@ -134,7 +134,7 @@ class CourseService {
     if (score >= assessment.passingScore) {
       await Enrollment.findOneAndUpdate(
         {
-          courseId,
+          course: courseId,
           userId,
         },
         { $set: { status: STATUS.COMPLETED } },
@@ -149,7 +149,7 @@ class CourseService {
     await notificationService.createNotification(
       userId,
       notificationType,
-      `You scored ${(score * 100) / assessment.fullMark}% on the '${assessment.courseId.title}' assessment. Please review and retake.`,
+      `You scored ${(score * 100) / assessment.fullMark}% on the '${assessment.course.title}' assessment. Please review and retake.`,
     );
 
     return { result, assessmentStatus };
