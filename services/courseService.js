@@ -13,7 +13,7 @@ class CourseService {
   #population(query) {
     return query.populate({
       path: 'prerequisites',
-      select: '-_id -__v -parentSkillId',
+      select: '-_id -__v -parentSkill',
     });
   }
 

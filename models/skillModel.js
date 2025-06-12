@@ -12,7 +12,7 @@ const skillSchema = new mongoose.Schema(
       type: String,
       trim: true,
     },
-    parentSkillId: [
+    parentSkill: [
       {
         type: mongoose.Schema.ObjectId,
         ref: 'Skill',

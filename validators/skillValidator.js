@@ -12,7 +12,7 @@ const skillZodSchema = z.object({
   body: z.object({
     name: z.string().min(1, 'A skill must have a name'),
     description: z.string().optional(),
-    parentSkillId: z.array(objectId).optional(),
+    parentSkill: z.array(objectId).optional(),
     category: z.enum([DEPT.DEVELOPMENT, DEPT.DESIGN, DEPT.MARKETING], {
       errorMap: () => ({
         message: `Category must be either "${DEPT.DEVELOPMENT}", "${DEPT.DESIGN}" or "${DEPT.MARKETING}"`,

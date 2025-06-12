@@ -26,7 +26,7 @@ const endorsementSchema = new mongoose.Schema(
   },
 );
 endorsementSchema.index(
-  { endorserId: 1, endorseeId: 1, skillId: 1 },
+  { endorser: 1, endorsee: 1, skill: 1 },
   { unique: true },
 );
 
