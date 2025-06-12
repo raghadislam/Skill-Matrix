@@ -2,8 +2,8 @@ const { fromError } = require('zod-validation-error');
 
 const AppError = require('../utils/appError');
 
-module.exports = (schema) => (req, res, next) => {
-  const result = schema.safeParse({
+module.exports = (schema) => async (req, res, next) => {
+  const result = await schema.safeParseAsync({
     body: req.body,
     params: req.params,
     query: req.query,
