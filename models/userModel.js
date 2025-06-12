@@ -32,6 +32,28 @@ const userSchema = new mongoose.Schema(
       ],
       select: false,
     },
+    photo: {
+      type: String,
+      trim: true,
+      default: 'default.jpg',
+    },
+    resume: {
+      type: String,
+      trim: true,
+    },
+    linkedIn: {
+      type: String,
+      trim: true,
+      validate: {
+        validator: function (v) {
+          return /^https:\/\/(www\.)?linkedin\.com\/(in|pub)\/[a-zA-Z0-9_-]+\/?$/.test(
+            v,
+          );
+        },
+        message: (props) =>
+          `${props.value} is not a valid LinkedIn profile URL!`,
+      },
+    },
     department: {
       type: String,
       required: [true, 'A user must have a department'],
