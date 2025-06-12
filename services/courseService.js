@@ -124,7 +124,7 @@ class CourseService {
 
     const result = await QuizResult.create({
       assessmentId: assessment._id,
-      userId,
+      user: userId,
       score,
     });
 
@@ -135,7 +135,7 @@ class CourseService {
       await Enrollment.findOneAndUpdate(
         {
           course: courseId,
-          userId,
+          user: userId,
         },
         { $set: { status: STATUS.COMPLETED } },
         { new: true, runValidators: true },

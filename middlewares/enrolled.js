@@ -12,7 +12,7 @@ module.exports = async (req, res, next) => {
 
   const enrollment = await Enrollment.findOne({
     course: req.params.id,
-    userId: req.user.id,
+    user: req.user.id,
   });
 
   if (!enrollment) {

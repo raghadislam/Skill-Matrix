@@ -7,7 +7,7 @@ class EnrollmentService {
   async enroll(courseId, userId) {
     const enrollment = await Enrollment.create({
       course: courseId,
-      userId,
+      user: userId,
     });
 
     notificationService
@@ -25,7 +25,7 @@ class EnrollmentService {
 
   #population(query) {
     query.populate({
-      path: 'userId',
+      path: 'user',
     });
     return query.populate({
       path: 'course',

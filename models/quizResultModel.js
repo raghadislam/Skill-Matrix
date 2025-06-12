@@ -7,7 +7,7 @@ const quizResultSchema = new mongoose.Schema(
       ref: 'Assessment',
       required: true,
     },
-    userId: {
+    user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
       required: true,
@@ -24,7 +24,7 @@ const quizResultSchema = new mongoose.Schema(
 );
 quizResultSchema.pre(/^find/, function (next) {
   this.populate({
-    path: 'userId',
+    path: 'user',
     select: 'name email role department',
   });
   next();
@@ -32,7 +32,7 @@ quizResultSchema.pre(/^find/, function (next) {
 
 quizResultSchema.post('save', function () {
   this.populate({
-    path: 'userId',
+    path: 'user',
     select: 'name email department',
   });
 });
