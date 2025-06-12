@@ -33,6 +33,11 @@ const courseSchema = new mongoose.Schema(
         message: `category must be one of ${Object.values(DEPT).join(', ')}`,
       },
     },
+    skillGained: {
+      type: mongoose.Schema.ObjectId,
+      ref: 'Skill',
+      required: [true, 'A course must specify the skill gained'],
+    },
   },
   {
     timestamps: true,
@@ -46,6 +51,14 @@ const courseSchema = new mongoose.Schema(
 
 courseSchema.path('createdAt').select(false);
 courseSchema.path('updatedAt').select(false);
+
+courseSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: 'skillGained',
+    select: 'name -_id',
+  });
+  next();
+});
 
 const Course = mongoose.model('Course', courseSchema);
 module.exports = Course;
