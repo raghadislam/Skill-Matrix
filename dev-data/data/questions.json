@@ -1,0 +1,352 @@
+[
+  {
+    "_id": "665b20000000000000000001",
+    "question": "What is the output of `typeof []` in JavaScript?",
+    "options": ["array", "object", "undefined", "null"],
+    "topic": "6651a1111111111111111115",
+    "difficulty": "easy",
+    "correctOptionIndex": 1
+  },
+  {
+    "_id": "665b20000000000000000002",
+    "question": "Which React hook is used to manage state in a functional component?",
+    "options": ["useContext", "useEffect", "useState", "useReducer"],
+    "topic": "6651a1111111111111111116",
+    "difficulty": "medium",
+    "correctOptionIndex": 2
+  },
+  {
+    "_id": "665b20000000000000000003",
+    "question": "In Mongoose, which method triggers validation?",
+    "options": ["findOne", "save", "updateOne", "deleteMany"],
+    "topic": "6651a1111111111111111114",
+    "difficulty": "medium",
+    "correctOptionIndex": 1
+  },
+  {
+    "_id": "665b20000000000000000004",
+    "question": "What HTTP status code indicates a successful GET request?",
+    "options": ["200", "201", "400", "404"],
+    "topic": "6651a1111111111111111112",
+    "difficulty": "easy",
+    "correctOptionIndex": 0
+  },
+  {
+    "_id": "665b20000000000000000005",
+    "question": "Which operator is used to check for strict equality in JavaScript?",
+    "options": ["=", "==", "===", "!=="],
+    "topic": "6651a1111111111111111115",
+    "difficulty": "easy",
+    "correctOptionIndex": 2
+  },
+  {
+    "_id": "665b20000000000000000006",
+    "question": "Which CSS property is used to create a flexible box layout?",
+    "options": ["flex", "grid", "box", "layout"],
+    "topic": "6651a1111111111111111113",
+    "difficulty": "easy",
+    "correctOptionIndex": 0
+  },
+  {
+    "_id": "665b20000000000000000007",
+    "question": "What is the purpose of the `$match` stage in MongoDB aggregation pipelines?",
+    "options": [
+      "Filter documents",
+      "Project fields",
+      "Sort documents",
+      "Group documents"
+    ],
+    "topic": "6651a1111111111111111114",
+    "difficulty": "hard",
+    "correctOptionIndex": 0
+  },
+  {
+    "_id": "665b20000000000000000008",
+    "question": "Which AWS service is serverless and event-driven?",
+    "options": ["EC2", "Lambda", "RDS", "S3"],
+    "topic": "6651a1111111111111111117",
+    "difficulty": "medium",
+    "correctOptionIndex": 1
+  },
+  {
+    "_id": "665b20000000000000000009",
+    "question": "In Git, which command creates a new branch?",
+    "options": [
+      "git init",
+      "git branch <name>",
+      "git checkout -b <name>",
+      "git commit -b"
+    ],
+    "topic": "6651a1111111111111111111",
+    "difficulty": "easy",
+    "correctOptionIndex": 2
+  },
+  {
+    "_id": "665b2000000000000000000a",
+    "question": "What does JSON stand for?",
+    "options": [
+      "JavaScript Online Notation",
+      "JavaScript Object Notation",
+      "Java Simple Object Notation",
+      "JavaScript Oriented Notation"
+    ],
+    "topic": "6651a1111111111111111111",
+    "difficulty": "easy",
+    "correctOptionIndex": 1
+  },
+  {
+    "_id": "665b2000000000000000000b",
+    "question": "What keyword is used to declare a constant in JavaScript?",
+    "options": ["var", "let", "const", "static"],
+    "topic": "6651a1111111111111111115",
+    "difficulty": "easy",
+    "correctOptionIndex": 2
+  },
+  {
+    "_id": "665b2000000000000000000c",
+    "question": "Which HTTP method is idempotent?",
+    "options": ["POST", "PUT", "PATCH", "CONNECT"],
+    "topic": "6651a1111111111111111112",
+    "difficulty": "medium",
+    "correctOptionIndex": 1
+  },
+  {
+    "_id": "665b2000000000000000000d",
+    "question": "What does the `--save-dev` flag do when installing npm packages?",
+    "options": [
+      "Saves to dependencies",
+      "Saves to devDependencies",
+      "Installs globally",
+      "Installs and logs errors"
+    ],
+    "topic": "6651a1111111111111111115",
+    "difficulty": "medium",
+    "correctOptionIndex": 1
+  },
+  {
+    "_id": "665b2000000000000000000e",
+    "question": "Which MongoDB operator is used to update an element in an array by its index?",
+    "options": ["$set", "$push", "$inc", "$pull"],
+    "topic": "6651a1111111111111111114",
+    "difficulty": "hard",
+    "correctOptionIndex": 0
+  },
+  {
+    "_id": "665b2000000000000000000f",
+    "question": "In CSS Grid, which property defines the number of columns?",
+    "options": [
+      "grid-template-columns",
+      "grid-columns",
+      "column-count",
+      "grid-cols"
+    ],
+    "topic": "6651a1111111111111111113",
+    "difficulty": "medium",
+    "correctOptionIndex": 0
+  },
+  {
+    "_id": "665b20000000000000000010",
+    "question": "What is the difference between `==` and `===` in JavaScript?",
+    "options": [
+      "No difference",
+      "`===` checks type and value",
+      "`==` checks type",
+      "Both check only value"
+    ],
+    "topic": "6651a1111111111111111115",
+    "difficulty": "easy",
+    "correctOptionIndex": 1
+  },
+  {
+    "_id": "665b20000000000000000011",
+    "question": "Which command initializes a new Node.js project?",
+    "options": ["npm install", "npm start", "npm init", "npm create"],
+    "topic": "6651a1111111111111111117",
+    "difficulty": "easy",
+    "correctOptionIndex": 2
+  },
+  {
+    "_id": "665b20000000000000000012",
+    "question": "In Express.js, which function mounts middleware at the root path?",
+    "options": ["app.use", "app.get", "app.post", "app.middleware"],
+    "topic": "6651a1111111111111111117",
+    "difficulty": "medium",
+    "correctOptionIndex": 0
+  },
+  {
+    "_id": "665b20000000000000000013",
+    "question": "What tag is used to insert a CSS stylesheet in HTML?",
+    "options": ["<script>", "<link>", "<style>", "<css>"],
+    "topic": "6651a1111111111111111113",
+    "difficulty": "easy",
+    "correctOptionIndex": 1
+  },
+  {
+    "_id": "665b20000000000000000014",
+    "question": "Which MongoDB function retrieves all documents matching a query?",
+    "options": ["findOne()", "find()", "get()", "query()"],
+    "topic": "6651a1111111111111111114",
+    "difficulty": "medium",
+    "correctOptionIndex": 1
+  },
+  {
+    "_id": "665b20000000000000000015",
+    "question": "What is the default port for HTTP?",
+    "options": ["80", "443", "3000", "8080"],
+    "topic": "6651a1111111111111111112",
+    "difficulty": "easy",
+    "correctOptionIndex": 0
+  },
+  {
+    "_id": "665b20000000000000000016",
+    "question": "Which React method is used to render components to the DOM?",
+    "options": [
+      "React.createElement",
+      "ReactDOM.render",
+      "ReactDOM.createRoot",
+      "ReactDOM.mount"
+    ],
+    "topic": "6651a1111111111111111116",
+    "difficulty": "easy",
+    "correctOptionIndex": 1
+  },
+  {
+    "_id": "665b20000000000000000017",
+    "question": "Which HTTP status code indicates that a resource was not found?",
+    "options": ["200", "204", "301", "404"],
+    "topic": "6651a1111111111111111112",
+    "difficulty": "easy",
+    "correctOptionIndex": 3
+  },
+  {
+    "_id": "665b20000000000000000018",
+    "question": "What does CORS stand for?",
+    "options": [
+      "Cross-Origin Resource Sharing",
+      "Cross-Object Resource Sync",
+      "Client-Origin Resource Sharing",
+      "Cross-Option Resource Setting"
+    ],
+    "topic": "6651a1111111111111111112",
+    "difficulty": "medium",
+    "correctOptionIndex": 0
+  },
+  {
+    "_id": "665b20000000000000000019",
+    "question": "In JavaScript, what is a promise?",
+    "options": [
+      "A callback",
+      "An event",
+      "An object representing async operation",
+      "A loop"
+    ],
+    "topic": "6651a1111111111111111115",
+    "difficulty": "medium",
+    "correctOptionIndex": 2
+  },
+  {
+    "_id": "665b2000000000000000001a",
+    "question": "Which lifecycle method runs after a component updates?",
+    "options": [
+      "componentDidMount",
+      "componentDidUpdate",
+      "componentWillUnmount",
+      "componentDidCatch"
+    ],
+    "topic": "6651a1111111111111111116",
+    "difficulty": "hard",
+    "correctOptionIndex": 1
+  },
+  {
+    "_id": "665b2000000000000000001b",
+    "question": "What is the purpose of Docker Compose?",
+    "options": [
+      "Building images",
+      "Running multiple containers",
+      "Version control",
+      "Monitoring logs"
+    ],
+    "topic": "6651a1111111111111111117",
+    "difficulty": "medium",
+    "correctOptionIndex": 1
+  },
+  {
+    "_id": "665b2000000000000000001c",
+    "question": "What is hoisting in JavaScript?",
+    "options": [
+      "Moving declarations to top",
+      "Delaying execution",
+      "Removing code",
+      "Optimizing performance"
+    ],
+    "topic": "6651a1111111111111111115",
+    "difficulty": "medium",
+    "correctOptionIndex": 0
+  },
+  {
+    "_id": "665b2000000000000000001d",
+    "question": "Which HTTP header is used for content negotiation?",
+    "options": ["Accept", "Content-Type", "Authorization", "Cookies"],
+    "topic": "6651a1111111111111111112",
+    "difficulty": "hard",
+    "correctOptionIndex": 0
+  },
+  {
+    "_id": "665b2000000000000000001e",
+    "question": "In CSS, what does `rem` units stand for?",
+    "options": ["Root em", "Relative em", "Responsive em", "Real em"],
+    "topic": "6651a1111111111111111113",
+    "difficulty": "easy",
+    "correctOptionIndex": 0
+  },
+  {
+    "_id": "665b2000000000000000001f",
+    "question": "Which operator is used to combine two observables in RxJS?",
+    "options": ["merge", "concat", "zip", "forkJoin"],
+    "topic": "6651a1111111111111111116",
+    "difficulty": "hard",
+    "correctOptionIndex": 0
+  },
+  {
+    "_id": "665b2000000000000000001g",
+    "question": "What is the purpose of `async` and `await` in JavaScript?",
+    "options": [
+      "Synchronous code",
+      "Block code execution",
+      "Simplify promises",
+      "None"
+    ],
+    "topic": "6651a1111111111111111115",
+    "difficulty": "easy",
+    "correctOptionIndex": 2
+  },
+  {
+    "_id": "665b2000000000000000001h",
+    "question": "Which command lists all globally installed npm packages?",
+    "options": ["npm ls -g", "npm list", "npm list -g", "npm global list"],
+    "topic": "6651a1111111111111111117",
+    "difficulty": "medium",
+    "correctOptionIndex": 2
+  },
+  {
+    "_id": "665b2000000000000000001i",
+    "question": "What is the main purpose of Redux in React apps?",
+    "options": [
+      "Styling components",
+      "State management",
+      "HTTP requests",
+      "Routing"
+    ],
+    "topic": "6651a1111111111111111116",
+    "difficulty": "easy",
+    "correctOptionIndex": 1
+  },
+  {
+    "_id": "665b2000000000000000001j",
+    "question": "Which MongoDB data type is used to store binary data?",
+    "options": ["String", "Buffer", "BinData", "Binary"],
+    "topic": "6651a1111111111111111114",
+    "difficulty": "medium",
+    "correctOptionIndex": 2
+  }
+]
