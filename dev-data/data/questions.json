@@ -308,7 +308,7 @@
     "correctOptionIndex": 0
   },
   {
-    "_id": "665b2000000000000000001g",
+    "_id": "665b3000000000000000001a",
     "question": "What is the purpose of `async` and `await` in JavaScript?",
     "options": [
       "Synchronous code",
@@ -321,7 +321,7 @@
     "correctOptionIndex": 2
   },
   {
-    "_id": "665b2000000000000000001h",
+    "_id": "665b4000000000000000001a",
     "question": "Which command lists all globally installed npm packages?",
     "options": ["npm ls -g", "npm list", "npm list -g", "npm global list"],
     "topic": "6651a1111111111111111117",
@@ -329,7 +329,7 @@
     "correctOptionIndex": 2
   },
   {
-    "_id": "665b2000000000000000001i",
+    "_id": "665b5000000000000000001a",
     "question": "What is the main purpose of Redux in React apps?",
     "options": [
       "Styling components",
@@ -342,7 +342,7 @@
     "correctOptionIndex": 1
   },
   {
-    "_id": "665b2000000000000000001j",
+    "_id": "665b3000000000000000001b",
     "question": "Which MongoDB data type is used to store binary data?",
     "options": ["String", "Buffer", "BinData", "Binary"],
     "topic": "6651a1111111111111111114",

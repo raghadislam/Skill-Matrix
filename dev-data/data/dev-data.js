@@ -8,6 +8,7 @@ const Path = require('../../models/learningPathModel');
 const Assessment = require('../../models/assessmentModel');
 const AssessmentRequest = require('../../models/assessmentRequestModel');
 const Notification = require('../../models/notificationModel');
+const Question = require('../../models/questionModel');
 
 dotenv.config({ path: './config.env' });
 
@@ -24,6 +25,7 @@ const skills = JSON.parse(fs.readFileSync(`${__dirname}/skills.json`));
 const users = JSON.parse(fs.readFileSync(`${__dirname}/users.json`));
 const courses = JSON.parse(fs.readFileSync(`${__dirname}/courses.json`));
 const paths = JSON.parse(fs.readFileSync(`${__dirname}/learningPaths.json`));
+const questions = JSON.parse(fs.readFileSync(`${__dirname}/questions.json`));
 const assessments = JSON.parse(
   fs.readFileSync(`${__dirname}/assessments.json`),
 );
@@ -40,6 +42,7 @@ const importData = async () => {
     await User.create(users);
     await Course.create(courses);
     await Path.create(paths);
+    await Question.create(questions);
     await Assessment.create(assessments);
     await AssessmentRequest.create(assessmentRequests);
     await Notification.create(notifications);
@@ -62,6 +65,7 @@ const deleteData = async () => {
     await Assessment.deleteMany();
     await AssessmentRequest.deleteMany();
     await Notification.deleteMany();
+    await Question.deleteMany();
 
     console.log('Data successfully deleted!');
     process.exit();

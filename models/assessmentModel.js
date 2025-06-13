@@ -1,46 +1,5 @@
 const mongoose = require('mongoose');
 
-const questionSchema = new mongoose.Schema({
-  question: {
-    type: String,
-    trim: true,
-    required: [true, 'Each question must have text'],
-  },
-
-  options: {
-    type: [
-      {
-        type: String,
-        trim: true,
-      },
-    ],
-    validate: [
-      {
-        validator: (opts) => opts.length >= 2 && opts.length <= 4,
-        message: 'Each question must have between 2 and 4 options',
-      },
-      {
-        validator: (opts) =>
-          opts.every((opt) => typeof opt === 'string' && opt.trim().length > 0),
-        message: 'Options cannot be empty strings',
-      },
-    ],
-  },
-
-  correctOptionIndex: {
-    type: Number,
-    required: [true, 'Each question must specify the correct option index'],
-    min: [0, 'correctOptionIndex must be a non-negative integer'],
-    validate: {
-      validator: function (val) {
-        return val < this.options.length;
-      },
-      message:
-        'correctOptionIndex must be within the range of available options',
-    },
-  },
-});
-
 const assessmentSchema = new mongoose.Schema(
   {
     course: {
@@ -51,16 +10,22 @@ const assessmentSchema = new mongoose.Schema(
     },
 
     questions: {
-      type: [questionSchema],
+      type: [
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'Question',
+          required: [true, 'An assessment must have questions'],
+        },
+      ],
       validate: [
         {
           validator: (qs) => qs.length >= 15,
           message: 'An assessment must contain at least 15 questions',
         },
         {
-          validator: function (qs) {
-            const texts = qs.map((q) => q.question);
-            return texts.length === new Set(texts).size;
+          validator: (qs) => {
+            const ids = qs.map((id) => id.toString());
+            return ids.length === new Set(ids).size;
           },
           message: 'All questions in an assessment must be unique',
         },
@@ -103,7 +68,10 @@ const assessmentSchema = new mongoose.Schema(
             return duration <= this.questions.length * 8;
           },
           message: function () {
-            return `Time limit cannot exceed ${this.questions.length * 8} minutes (8 min per question)`;
+            const qCount = Array.isArray(this.questions)
+              ? this.questions.length
+              : 0;
+            return `Time limit cannot exceed ${qCount * 8} minutes (8 min per question)`;
           },
         },
       ],
@@ -126,10 +94,7 @@ assessmentSchema.virtual('fullMark').get(function () {
 });
 
 assessmentSchema.pre(/^find/, function (next) {
-  this.populate({
-    path: 'course',
-    select: 'title -_id',
-  });
+  this.populate('course', 'title -_id').populate('questions', 'question -_id');
   next();
 });
 

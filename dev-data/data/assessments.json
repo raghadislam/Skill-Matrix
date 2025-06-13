@@ -1,777 +1,230 @@
 [
   {
-    "_id": "64df1a2b3c4d5e6f7a8b9c01",
+    "_id": "775c30000000000000000001",
     "course": "665a10000000000000000001",
     "questions": [
-      {
-        "question": "Which keyword is used to declare a variable in ES6?",
-        "options": ["var", "let", "int", "define"],
-        "correctOptionIndex": 1
-      },
-      {
-        "question": "What will `typeof NaN` return?",
-        "options": ["\"number\"", "\"NaN\"", "\"undefined\"", "\"object\""],
-        "correctOptionIndex": 0
-      },
-      {
-        "question": "Which array method creates a new array with the results of calling a function on every element?",
-        "options": ["filter()", "map()", "forEach()", "reduce()"],
-        "correctOptionIndex": 1
-      },
-      {
-        "question": "How do you write an arrow function that returns x + y?",
-        "options": [
-          "x, y => x + y",
-          "(x, y) => { return x + y; }",
-          "(x, y) => x + y",
-          "function(x, y) => x + y"
-        ],
-        "correctOptionIndex": 2
-      },
-      {
-        "question": "Which statement stops the execution of a loop?",
-        "options": ["exit;", "break;", "stop;", "return;"],
-        "correctOptionIndex": 1
-      },
-      {
-        "question": "What is the correct syntax for a JavaScript object?",
-        "options": [
-          "let obj = {name: \"John\", age: 30};",
-          "let obj = [name: \"John\", age: 30];",
-          "let obj = (name: \"John\", age: 30);",
-          "let obj = name: \"John\", age: 30;"
-        ],
-        "correctOptionIndex": 0
-      },
-      {
-        "question": "Which method converts a JavaScript object to a JSON string?",
-        "options": [
-          "JSON.parse()",
-          "JSON.stringify()",
-          "toString()",
-          "Object.toJSON()"
-        ],
-        "correctOptionIndex": 1
-      },
-      {
-        "question": "What does `===` compare in JavaScript?",
-        "options": [
-          "Value only",
-          "Type only",
-          "Value and type",
-          "Reference only"
-        ],
-        "correctOptionIndex": 2
-      },
-      {
-        "question": "Which of the following is NOT a primitive type?",
-        "options": ["String", "Boolean", "Object", "Undefined"],
-        "correctOptionIndex": 2
-      },
-      {
-        "question": "How do you add an element to the end of an array?",
-        "options": [
-          "array.push(elem)",
-          "array.pop(elem)",
-          "array.shift(elem)",
-          "array.unshift(elem)"
-        ],
-        "correctOptionIndex": 0
-      },
-      {
-        "question": "What is the output of `2 + '2'`?",
-        "options": ["4", "\"4\"", "\"22\"", "NaN"],
-        "correctOptionIndex": 2
-      },
-      {
-        "question": "Which keyword defines a constant reference to a value?",
-        "options": ["const", "let", "var", "fixed"],
-        "correctOptionIndex": 0
-      },
-      {
-        "question": "What is a promise used for?",
-        "options": [
-          "Synchronous operations",
-          "Error handling only",
-          "Asynchronous operations",
-          "Looping constructs"
-        ],
-        "correctOptionIndex": 2
-      },
-      {
-        "question": "Which statement creates a new scope in JavaScript?",
-        "options": ["if", "for", "function", "switch"],
-        "correctOptionIndex": 2
-      },
-      {
-        "question": "How do you catch errors in a promise chain?",
-        "options": [".then()", ".catch()", ".finally()", ".error()"],
-        "correctOptionIndex": 1
-      }
+      "665b20000000000000000001",
+      "665b20000000000000000002",
+      "665b20000000000000000003",
+      "665b20000000000000000004",
+      "665b20000000000000000005",
+      "665b20000000000000000006",
+      "665b20000000000000000007",
+      "665b20000000000000000008",
+      "665b20000000000000000009",
+      "665b2000000000000000000a",
+      "665b2000000000000000000b",
+      "665b2000000000000000000c",
+      "665b2000000000000000000d",
+      "665b2000000000000000000e",
+      "665b2000000000000000000f"
     ],
     "passingScore": 9,
     "timeLimitMinutes": 90
   },
   {
-    "_id": "64df1a2b3c4d5e6f7a8b9c02",
+    "_id": "775c30000000000000000002",
     "course": "665a10000000000000000002",
     "questions": [
-      {
-        "question": "Question 1 for Front-End Development with React",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 0
-      },
-      {
-        "question": "Question 2 for Front-End Development with React",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 1
-      },
-      {
-        "question": "Question 3 for Front-End Development with React",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 2
-      },
-      {
-        "question": "Question 4 for Front-End Development with React",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 3
-      },
-      {
-        "question": "Question 5 for Front-End Development with React",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 0
-      },
-      {
-        "question": "Question 6 for Front-End Development with React",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 1
-      },
-      {
-        "question": "Question 7 for Front-End Development with React",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 2
-      },
-      {
-        "question": "Question 8 for Front-End Development with React",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 3
-      },
-      {
-        "question": "Question 9 for Front-End Development with React",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 0
-      },
-      {
-        "question": "Question 10 for Front-End Development with React",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 1
-      },
-      {
-        "question": "Question 11 for Front-End Development with React",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 2
-      },
-      {
-        "question": "Question 12 for Front-End Development with React",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 3
-      },
-      {
-        "question": "Question 13 for Front-End Development with React",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 0
-      },
-      {
-        "question": "Question 14 for Front-End Development with React",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 1
-      },
-      {
-        "question": "Question 15 for Front-End Development with React",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 2
-      }
+      "665b20000000000000000002",
+      "665b20000000000000000003",
+      "665b20000000000000000004",
+      "665b20000000000000000005",
+      "665b20000000000000000006",
+      "665b20000000000000000007",
+      "665b20000000000000000008",
+      "665b20000000000000000009",
+      "665b2000000000000000000a",
+      "665b2000000000000000000b",
+      "665b2000000000000000000c",
+      "665b2000000000000000000d",
+      "665b2000000000000000000e",
+      "665b2000000000000000000f",
+      "665b20000000000000000010"
     ],
-    "passingScore": 9,
-    "timeLimitMinutes": 90
+    "passingScore": 10,
+    "timeLimitMinutes": 100
   },
   {
-    "_id": "64df1a2b3c4d5e6f7a8b9c03",
+    "_id": "775c30000000000000000003",
     "course": "665a10000000000000000003",
     "questions": [
-      {
-        "question": "Question 1 for Back-End Development with Node.js",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 0
-      },
-      {
-        "question": "Question 2 for Back-End Development with Node.js",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 1
-      },
-      {
-        "question": "Question 3 for Back-End Development with Node.js",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 2
-      },
-      {
-        "question": "Question 4 for Back-End Development with Node.js",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 3
-      },
-      {
-        "question": "Question 5 for Back-End Development with Node.js",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 0
-      },
-      {
-        "question": "Question 6 for Back-End Development with Node.js",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 1
-      },
-      {
-        "question": "Question 7 for Back-End Development with Node.js",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 2
-      },
-      {
-        "question": "Question 8 for Back-End Development with Node.js",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 3
-      },
-      {
-        "question": "Question 9 for Back-End Development with Node.js",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 0
-      },
-      {
-        "question": "Question 10 for Back-End Development with Node.js",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 1
-      },
-      {
-        "question": "Question 11 for Back-End Development with Node.js",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 2
-      },
-      {
-        "question": "Question 12 for Back-End Development with Node.js",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 3
-      },
-      {
-        "question": "Question 13 for Back-End Development with Node.js",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 0
-      },
-      {
-        "question": "Question 14 for Back-End Development with Node.js",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 1
-      },
-      {
-        "question": "Question 15 for Back-End Development with Node.js",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 2
-      }
+      "665b20000000000000000003",
+      "665b20000000000000000004",
+      "665b20000000000000000005",
+      "665b20000000000000000006",
+      "665b20000000000000000007",
+      "665b20000000000000000008",
+      "665b20000000000000000009",
+      "665b2000000000000000000a",
+      "665b2000000000000000000b",
+      "665b2000000000000000000c",
+      "665b2000000000000000000d",
+      "665b2000000000000000000e",
+      "665b2000000000000000000f",
+      "665b20000000000000000010",
+      "665b20000000000000000011"
     ],
-    "passingScore": 9,
-    "timeLimitMinutes": 90
+    "passingScore": 8,
+    "timeLimitMinutes": 85
   },
   {
-    "_id": "64df1a2b3c4d5e6f7a8b9c04",
+    "_id": "775c30000000000000000004",
     "course": "665a10000000000000000004",
     "questions": [
-      {
-        "question": "Question 1 for Full-Stack Web Application Bootcamp",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 0
-      },
-      {
-        "question": "Question 2 for Full-Stack Web Application Bootcamp",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 1
-      },
-      {
-        "question": "Question 3 for Full-Stack Web Application Bootcamp",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 2
-      },
-      {
-        "question": "Question 4 for Full-Stack Web Application Bootcamp",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 3
-      },
-      {
-        "question": "Question 5 for Full-Stack Web Application Bootcamp",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 0
-      },
-      {
-        "question": "Question 6 for Full-Stack Web Application Bootcamp",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 1
-      },
-      {
-        "question": "Question 7 for Full-Stack Web Application Bootcamp",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 2
-      },
-      {
-        "question": "Question 8 for Full-Stack Web Application Bootcamp",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 3
-      },
-      {
-        "question": "Question 9 for Full-Stack Web Application Bootcamp",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 0
-      },
-      {
-        "question": "Question 10 for Full-Stack Web Application Bootcamp",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 1
-      },
-      {
-        "question": "Question 11 for Full-Stack Web Application Bootcamp",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 2
-      },
-      {
-        "question": "Question 12 for Full-Stack Web Application Bootcamp",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 3
-      },
-      {
-        "question": "Question 13 for Full-Stack Web Application Bootcamp",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 0
-      },
-      {
-        "question": "Question 14 for Full-Stack Web Application Bootcamp",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 1
-      },
-      {
-        "question": "Question 15 for Full-Stack Web Application Bootcamp",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 2
-      }
+      "665b20000000000000000004",
+      "665b20000000000000000005",
+      "665b20000000000000000006",
+      "665b20000000000000000007",
+      "665b20000000000000000008",
+      "665b20000000000000000009",
+      "665b2000000000000000000a",
+      "665b2000000000000000000b",
+      "665b2000000000000000000c",
+      "665b2000000000000000000d",
+      "665b2000000000000000000e",
+      "665b2000000000000000000f",
+      "665b20000000000000000010",
+      "665b20000000000000000011",
+      "665b20000000000000000012"
     ],
-    "passingScore": 9,
-    "timeLimitMinutes": 90
+    "passingScore": 11,
+    "timeLimitMinutes": 110
   },
   {
-    "_id": "64df1a2b3c4d5e6f7a8b9c05",
+    "_id": "775c30000000000000000005",
     "course": "665a10000000000000000005",
     "questions": [
-      {
-        "question": "Question 1 for UI/UX Design Essentials",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 0
-      },
-      {
-        "question": "Question 2 for UI/UX Design Essentials",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 1
-      },
-      {
-        "question": "Question 3 for UI/UX Design Essentials",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 2
-      },
-      {
-        "question": "Question 4 for UI/UX Design Essentials",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 3
-      },
-      {
-        "question": "Question 5 for UI/UX Design Essentials",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 0
-      },
-      {
-        "question": "Question 6 for UI/UX Design Essentials",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 1
-      },
-      {
-        "question": "Question 7 for UI/UX Design Essentials",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 2
-      },
-      {
-        "question": "Question 8 for UI/UX Design Essentials",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 3
-      },
-      {
-        "question": "Question 9 for UI/UX Design Essentials",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 0
-      },
-      {
-        "question": "Question 10 for UI/UX Design Essentials",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 1
-      },
-      {
-        "question": "Question 11 for UI/UX Design Essentials",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 2
-      },
-      {
-        "question": "Question 12 for UI/UX Design Essentials",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 3
-      },
-      {
-        "question": "Question 13 for UI/UX Design Essentials",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 0
-      },
-      {
-        "question": "Question 14 for UI/UX Design Essentials",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 1
-      },
-      {
-        "question": "Question 15 for UI/UX Design Essentials",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 2
-      }
+      "665b20000000000000000005",
+      "665b20000000000000000006",
+      "665b20000000000000000007",
+      "665b20000000000000000008",
+      "665b20000000000000000009",
+      "665b2000000000000000000a",
+      "665b2000000000000000000b",
+      "665b2000000000000000000c",
+      "665b2000000000000000000d",
+      "665b2000000000000000000e",
+      "665b2000000000000000000f",
+      "665b20000000000000000010",
+      "665b20000000000000000011",
+      "665b20000000000000000012",
+      "665b20000000000000000013"
     ],
-    "passingScore": 9,
-    "timeLimitMinutes": 90
+    "passingScore": 7,
+    "timeLimitMinutes": 80
   },
   {
-    "_id": "64df1a2b3c4d5e6f7a8b9c06",
+    "_id": "775c30000000000000000006",
     "course": "665a10000000000000000006",
     "questions": [
-      {
-        "question": "Question 1 for Digital Marketing Fundamentals",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 0
-      },
-      {
-        "question": "Question 2 for Digital Marketing Fundamentals",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 1
-      },
-      {
-        "question": "Question 3 for Digital Marketing Fundamentals",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 2
-      },
-      {
-        "question": "Question 4 for Digital Marketing Fundamentals",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 3
-      },
-      {
-        "question": "Question 5 for Digital Marketing Fundamentals",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 0
-      },
-      {
-        "question": "Question 6 for Digital Marketing Fundamentals",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 1
-      },
-      {
-        "question": "Question 7 for Digital Marketing Fundamentals",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 2
-      },
-      {
-        "question": "Question 8 for Digital Marketing Fundamentals",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 3
-      },
-      {
-        "question": "Question 9 for Digital Marketing Fundamentals",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 0
-      },
-      {
-        "question": "Question 10 for Digital Marketing Fundamentals",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 1
-      },
-      {
-        "question": "Question 11 for Digital Marketing Fundamentals",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 2
-      },
-      {
-        "question": "Question 12 for Digital Marketing Fundamentals",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 3
-      },
-      {
-        "question": "Question 13 for Digital Marketing Fundamentals",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 0
-      },
-      {
-        "question": "Question 14 for Digital Marketing Fundamentals",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 1
-      },
-      {
-        "question": "Question 15 for Digital Marketing Fundamentals",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 2
-      }
+      "665b20000000000000000006",
+      "665b20000000000000000007",
+      "665b20000000000000000008",
+      "665b20000000000000000009",
+      "665b2000000000000000000a",
+      "665b2000000000000000000b",
+      "665b2000000000000000000c",
+      "665b2000000000000000000d",
+      "665b2000000000000000000e",
+      "665b2000000000000000000f",
+      "665b20000000000000000010",
+      "665b20000000000000000011",
+      "665b20000000000000000012",
+      "665b20000000000000000013",
+      "665b20000000000000000014"
     ],
-    "passingScore": 9,
-    "timeLimitMinutes": 90
+    "passingScore": 8,
+    "timeLimitMinutes": 95
   },
   {
-    "_id": "64df1a2b3c4d5e6f7a8b9c08",
+    "_id": "775c30000000000000000007",
+    "course": "665a10000000000000000007",
+    "questions": [
+      "665b20000000000000000007",
+      "665b20000000000000000008",
+      "665b20000000000000000009",
+      "665b2000000000000000000a",
+      "665b2000000000000000000b",
+      "665b2000000000000000000c",
+      "665b2000000000000000000d",
+      "665b2000000000000000000e",
+      "665b2000000000000000000f",
+      "665b20000000000000000010",
+      "665b20000000000000000011",
+      "665b20000000000000000012",
+      "665b20000000000000000013",
+      "665b20000000000000000014",
+      "665b20000000000000000015"
+    ],
+    "passingScore": 9,
+    "timeLimitMinutes": 100
+  },
+  {
+    "_id": "775c30000000000000000008",
     "course": "665a10000000000000000008",
     "questions": [
-      {
-        "question": "Question 1 for GraphQL with Apollo Server",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 0
-      },
-      {
-        "question": "Question 2 for GraphQL with Apollo Server",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 1
-      },
-      {
-        "question": "Question 3 for GraphQL with Apollo Server",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 2
-      },
-      {
-        "question": "Question 4 for GraphQL with Apollo Server",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 3
-      },
-      {
-        "question": "Question 5 for GraphQL with Apollo Server",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 0
-      },
-      {
-        "question": "Question 6 for GraphQL with Apollo Server",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 1
-      },
-      {
-        "question": "Question 7 for GraphQL with Apollo Server",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 2
-      },
-      {
-        "question": "Question 8 for GraphQL with Apollo Server",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 3
-      },
-      {
-        "question": "Question 9 for GraphQL with Apollo Server",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 0
-      },
-      {
-        "question": "Question 10 for GraphQL with Apollo Server",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 1
-      },
-      {
-        "question": "Question 11 for GraphQL with Apollo Server",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 2
-      },
-      {
-        "question": "Question 12 for GraphQL with Apollo Server",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 3
-      },
-      {
-        "question": "Question 13 for GraphQL with Apollo Server",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 0
-      },
-      {
-        "question": "Question 14 for GraphQL with Apollo Server",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 1
-      },
-      {
-        "question": "Question 15 for GraphQL with Apollo Server",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 2
-      }
+      "665b20000000000000000008",
+      "665b20000000000000000009",
+      "665b2000000000000000000a",
+      "665b2000000000000000000b",
+      "665b2000000000000000000c",
+      "665b2000000000000000000d",
+      "665b2000000000000000000e",
+      "665b2000000000000000000f",
+      "665b20000000000000000010",
+      "665b20000000000000000011",
+      "665b20000000000000000012",
+      "665b20000000000000000013",
+      "665b20000000000000000014",
+      "665b20000000000000000015",
+      "665b20000000000000000016"
     ],
-    "passingScore": 9,
-    "timeLimitMinutes": 90
+    "passingScore": 10,
+    "timeLimitMinutes": 105
   },
   {
-    "_id": "64df1a2b3c4d5e6f7a8b9c09",
+    "_id": "775c30000000000000000009",
     "course": "665a10000000000000000009",
     "questions": [
-      {
-        "question": "Question 1 for Database Modeling and Relationships",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 0
-      },
-      {
-        "question": "Question 2 for Database Modeling and Relationships",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 1
-      },
-      {
-        "question": "Question 3 for Database Modeling and Relationships",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 2
-      },
-      {
-        "question": "Question 4 for Database Modeling and Relationships",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 3
-      },
-      {
-        "question": "Question 5 for Database Modeling and Relationships",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 0
-      },
-      {
-        "question": "Question 6 for Database Modeling and Relationships",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 1
-      },
-      {
-        "question": "Question 7 for Database Modeling and Relationships",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 2
-      },
-      {
-        "question": "Question 8 for Database Modeling and Relationships",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 3
-      },
-      {
-        "question": "Question 9 for Database Modeling and Relationships",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 0
-      },
-      {
-        "question": "Question 10 for Database Modeling and Relationships",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 1
-      },
-      {
-        "question": "Question 11 for Database Modeling and Relationships",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 2
-      },
-      {
-        "question": "Question 12 for Database Modeling and Relationships",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 3
-      },
-      {
-        "question": "Question 13 for Database Modeling and Relationships",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 0
-      },
-      {
-        "question": "Question 14 for Database Modeling and Relationships",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 1
-      },
-      {
-        "question": "Question 15 for Database Modeling and Relationships",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 2
-      }
+      "665b20000000000000000009",
+      "665b2000000000000000000a",
+      "665b2000000000000000000b",
+      "665b2000000000000000000c",
+      "665b2000000000000000000d",
+      "665b2000000000000000000e",
+      "665b2000000000000000000f",
+      "665b20000000000000000010",
+      "665b20000000000000000011",
+      "665b20000000000000000012",
+      "665b20000000000000000013",
+      "665b20000000000000000014",
+      "665b20000000000000000015",
+      "665b20000000000000000016",
+      "665b20000000000000000017"
     ],
-    "passingScore": 9,
-    "timeLimitMinutes": 90
+    "passingScore": 7,
+    "timeLimitMinutes": 80
   },
   {
-    "_id": "64df1a2b3c4d5e6f7a8b9c0a",
+    "_id": "775c3000000000000000000a",
     "course": "665a1000000000000000000a",
     "questions": [
-      {
-        "question": "Question 1 for Testing and Debugging in Node.js",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 0
-      },
-      {
-        "question": "Question 2 for Testing and Debugging in Node.js",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 1
-      },
-      {
-        "question": "Question 3 for Testing and Debugging in Node.js",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 2
-      },
-      {
-        "question": "Question 4 for Testing and Debugging in Node.js",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 3
-      },
-      {
-        "question": "Question 5 for Testing and Debugging in Node.js",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 0
-      },
-      {
-        "question": "Question 6 for Testing and Debugging in Node.js",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 1
-      },
-      {
-        "question": "Question 7 for Testing and Debugging in Node.js",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 2
-      },
-      {
-        "question": "Question 8 for Testing and Debugging in Node.js",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 3
-      },
-      {
-        "question": "Question 9 for Testing and Debugging in Node.js",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 0
-      },
-      {
-        "question": "Question 10 for Testing and Debugging in Node.js",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 1
-      },
-      {
-        "question": "Question 11 for Testing and Debugging in Node.js",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 2
-      },
-      {
-        "question": "Question 12 for Testing and Debugging in Node.js",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 3
-      },
-      {
-        "question": "Question 13 for Testing and Debugging in Node.js",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 0
-      },
-      {
-        "question": "Question 14 for Testing and Debugging in Node.js",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 1
-      },
-      {
-        "question": "Question 15 for Testing and Debugging in Node.js",
-        "options": ["A", "B", "C", "D"],
-        "correctOptionIndex": 2
-      }
+      "665b2000000000000000000a",
+      "665b2000000000000000000b",
+      "665b2000000000000000000c",
+      "665b2000000000000000000d",
+      "665b2000000000000000000e",
+      "665b2000000000000000000f",
+      "665b20000000000000000010",
+      "665b20000000000000000011",
+      "665b20000000000000000012",
+      "665b20000000000000000013",
+      "665b20000000000000000014",
+      "665b20000000000000000015",
+      "665b20000000000000000016",
+      "665b20000000000000000017",
+      "665b20000000000000000018"
     ],
     "passingScore": 9,
     "timeLimitMinutes": 90

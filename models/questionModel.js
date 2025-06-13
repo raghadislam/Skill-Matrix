@@ -35,7 +35,7 @@ const questionSchema = new mongoose.Schema(
     topic: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Skill',
-      required: [true, 'An assessment must have a topic'],
+      required: [true, 'A question must have a topic'],
     },
 
     difficulty: {
