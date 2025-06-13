@@ -33,11 +33,13 @@ const courseSchema = new mongoose.Schema(
         message: `category must be one of ${Object.values(DEPT).join(', ')}`,
       },
     },
-    skillGained: {
-      type: mongoose.Schema.ObjectId,
-      ref: 'Skill',
-      required: [true, 'A course must specify the skill gained'],
-    },
+    skillGained: [
+      {
+        type: mongoose.Schema.ObjectId,
+        ref: 'Skill',
+        required: [true, 'A course must specify at least one skill gained'],
+      },
+    ],
   },
   {
     timestamps: true,

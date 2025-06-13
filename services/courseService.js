@@ -149,7 +149,7 @@ class CourseService {
 
         User.findByIdAndUpdate(
           userId,
-          { $addToSet: { skills: skillGained._id } },
+          { $addToSet: { skills: { $each: skillGained } } },
           { new: true },
         ),
       ]);

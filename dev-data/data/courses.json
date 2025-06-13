@@ -6,7 +6,7 @@
     "durationHours": 20,
     "prerequisites": ["6651a1111111111111111111", "6651a1111111111111111115"],
     "category": "Development",
-    "skillGained": "6651a1111111111111111115"
+    "skillGained": ["6651a1111111111111111115"]
   },
   {
     "_id": "665a10000000000000000002",
@@ -19,7 +19,7 @@
       "6651a1111111111111111116"
     ],
     "category": "Development",
-    "skillGained": "6651a1111111111111111116"
+    "skillGained": ["6651a1111111111111111116", "6651a1111111111111111115"]
   },
   {
     "_id": "665a10000000000000000003",
@@ -32,7 +32,7 @@
       "6651a1111111111111111117"
     ],
     "category": "Development",
-    "skillGained": "6651a1111111111111111117"
+    "skillGained": ["6651a1111111111111111117", "6651a1111111111111111115"]
   },
   {
     "_id": "665a10000000000000000004",
@@ -41,7 +41,7 @@
     "durationHours": 50,
     "prerequisites": ["6651a1111111111111111116", "6651a1111111111111111117"],
     "category": "Development",
-    "skillGained": "6651a1111111111111111112"
+    "skillGained": ["6651a1111111111111111112"]
   },
   {
     "_id": "665a10000000000000000005",
@@ -55,7 +55,7 @@
       "6651a1111111111111111121"
     ],
     "category": "Design",
-    "skillGained": "6651a1111111111111111119"
+    "skillGained": ["6651a1111111111111111119"]
   },
   {
     "_id": "665a10000000000000000006",
@@ -69,7 +69,7 @@
       "6651a1111111111111111126"
     ],
     "category": "Marketing",
-    "skillGained": "6651a1111111111111111123"
+    "skillGained": ["6651a1111111111111111123"]
   },
   {
     "_id": "665a10000000000000000007",
@@ -78,7 +78,7 @@
     "durationHours": 22,
     "prerequisites": ["6651a1111111111111111114", "6651a1111111111111111117"],
     "category": "Development",
-    "skillGained": "6651a1111111111111111114"
+    "skillGained": ["6651a1111111111111111114"]
   },
   {
     "_id": "665a10000000000000000008",
@@ -87,7 +87,7 @@
     "durationHours": 24,
     "prerequisites": ["6651a1111111111111111115", "6651a1111111111111111117"],
     "category": "Development",
-    "skillGained": "6651a1111111111111111114"
+    "skillGained": ["6651a1111111111111111114"]
   },
   {
     "_id": "665a10000000000000000009",
@@ -96,7 +96,7 @@
     "durationHours": 16,
     "prerequisites": ["6651a1111111111111111114"],
     "category": "Development",
-    "skillGained": "6651a1111111111111111114"
+    "skillGained": ["6651a1111111111111111114"]
   },
   {
     "_id": "665a1000000000000000000a",
@@ -105,7 +105,7 @@
     "durationHours": 12,
     "prerequisites": ["6651a1111111111111111117"],
     "category": "Development",
-    "skillGained": "6651a1111111111111111117"
+    "skillGained": ["6651a1111111111111111117", "6651a1111111111111111114"]
   },
   {
     "_id": "665a1000000000000000000b",
@@ -114,7 +114,7 @@
     "durationHours": 14,
     "prerequisites": ["6651a1111111111111111116"],
     "category": "Development",
-    "skillGained": "6651a1111111111111111116"
+    "skillGained": ["6651a1111111111111111116", "6651a1111111111111111115"]
   },
   {
     "_id": "665a1000000000000000000c",
@@ -123,7 +123,7 @@
     "durationHours": 10,
     "prerequisites": ["6651a1111111111111111113"],
     "category": "Design",
-    "skillGained": "6651a1111111111111111113"
+    "skillGained": ["6651a1111111111111111113"]
   },
   {
     "_id": "665a1000000000000000000d",
@@ -132,7 +132,7 @@
     "durationHours": 18,
     "prerequisites": ["6651a1111111111111111116", "6651a1111111111111111117"],
     "category": "Development",
-    "skillGained": "6651a1111111111111111112"
+    "skillGained": ["6651a1111111111111111112"]
   },
   {
     "_id": "665a1000000000000000000e",
@@ -141,7 +141,7 @@
     "durationHours": 20,
     "prerequisites": ["6651a1111111111111111117"],
     "category": "Development",
-    "skillGained": "6651a1111111111111111114"
+    "skillGained": ["6651a1111111111111111114"]
   },
   {
     "_id": "665a1000000000000000000f",
@@ -150,7 +150,7 @@
     "durationHours": 26,
     "prerequisites": ["6651a1111111111111111117"],
     "category": "Development",
-    "skillGained": "6651a1111111111111111114"
+    "skillGained": ["6651a1111111111111111114"]
   },
   {
     "_id": "665a10000000000000000010",
@@ -159,7 +159,7 @@
     "durationHours": 14,
     "prerequisites": ["6651a1111111111111111116"],
     "category": "Development",
-    "skillGained": "6651a1111111111111111112"
+    "skillGained": ["6651a1111111111111111112"]
   },
   {
     "_id": "665a10000000000000000011",
@@ -168,7 +168,7 @@
     "durationHours": 8,
     "prerequisites": [],
     "category": "Development",
-    "skillGained": "6651a1111111111111111111"
+    "skillGained": ["6651a1111111111111111111"]
   },
   {
     "_id": "665a10000000000000000012",
@@ -177,7 +177,7 @@
     "durationHours": 12,
     "prerequisites": [],
     "category": "Design",
-    "skillGained": "6651a1111111111111111118"
+    "skillGained": ["6651a1111111111111111118"]
   },
   {
     "_id": "665a10000000000000000013",
@@ -186,42 +186,6 @@
     "durationHours": 10,
     "prerequisites": [],
     "category": "Marketing",
-    "skillGained": "6651a1111111111111111123"
-  },
-  {
-    "_id": "665a10000000000000000014",
-    "title": "CI/CD with GitHub Actions",
-    "description": "Set up continuous integration and deployment pipelines for your web projects.",
-    "durationHours": 16,
-    "prerequisites": ["6651a1111111111111111111", "6651a1111111111111111112"],
-    "category": "Development",
-    "skillGained": "6651a1111111111111111114"
-  },
-  {
-    "_id": "665a10000000000000000015",
-    "title": "Web Security Essentials",
-    "description": "Understand and apply security practices such as HTTPS, CORS, OWASP, and XSS protection.",
-    "durationHours": 20,
-    "prerequisites": ["6651a1111111111111111115", "6651a1111111111111111112"],
-    "category": "Development",
-    "skillGained": "6651a1111111111111111112"
-  },
-  {
-    "_id": "665a10000000000000000016",
-    "title": "Agile & Scrum Fundamentals",
-    "description": "Learn agile methodologies and how Scrum teams work together to deliver fast results.",
-    "durationHours": 12,
-    "prerequisites": ["6651a1111111111111111111"],
-    "category": "Development",
-    "skillGained": "6651a1111111111111111111"
-  },
-  {
-    "_id": "665a10000000000000000017",
-    "title": "React Native for Mobile Development",
-    "description": "Build cross-platform mobile apps using React Native and Expo.",
-    "durationHours": 28,
-    "prerequisites": ["6651a1111111111111111116"],
-    "category": "Development",
-    "skillGained": "6651a1111111111111111116"
+    "skillGained": ["6651a1111111111111111123"]
   }
 ]
