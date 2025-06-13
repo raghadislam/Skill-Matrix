@@ -2,6 +2,15 @@ const userService = require('../services/userService');
 const { sendResponse } = require('../utils/responseUtils');
 const AppError = require('../utils/appError');
 
+// TODO -> get rid of this and handle it using ZOD
+const filterObj = (obj, ...allowedFields) => {
+  const newObj = {};
+  Object.keys(obj).forEach((el) => {
+    if (allowedFields.includes(el)) newObj[el] = obj[el];
+  });
+  return newObj;
+};
+
 exports.getAllUsers = async (req, res, next) => {
   const users = await userService.getAllUsers(req.query);
 
@@ -84,5 +93,28 @@ exports.getMyNotifications = async (req, res) => {
     statusCode: 200,
     status: 'success',
     data: { notifications },
+  });
+};
+
+exports.updateMe = async (req, res) => {
+  // TODO -> get rid of this and handle it using ZOD
+  const filteredObj = filterObj(req.body, 'name', 'email');
+  if (req.file) {
+    filteredObj.photo = req.file.filename;
+  }
+  const updatedUser = await userService.updateMe(req.user.id, filteredObj);
+
+  sendResponse(res, {
+    statusCode: 200,
+    status: 'success',
+    data: { updatedUser },
+  });
+};
+
+exports.deleteMe = async (req, res) => {
+  await userService.deleteMe(req.user.id);
+  sendResponse(res, {
+    statusCode: 204,
+    status: 'success',
   });
 };

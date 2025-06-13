@@ -58,6 +58,18 @@ class UserService {
 
     return await Notification.find(filter);
   }
+
+  async updateMe(id, updatedData) {
+    const updatedUser = await User.findByIdAndUpdate(id, updatedData, {
+      new: true,
+      runValidators: true,
+    });
+    return updatedUser;
+  }
+
+  async deleteMe(id) {
+    await User.findByIdAndUpdate(id, { active: false });
+  }
 }
 
 module.exports = new UserService();
