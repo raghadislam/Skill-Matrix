@@ -120,3 +120,59 @@ exports.createUserZodSchema = z.object({
 
     .transform(({ confirmPassword, ...data }) => data),
 });
+
+exports.changeMeZodSchema = z.object({
+  body: z
+    .object(
+      {
+        name: z
+          .string()
+          .min(3, 'Name must be at least 3 characters long')
+          .max(30, 'Name must not be more than 30 characters long')
+          .trim()
+          .optional(),
+
+        photo: z
+          .string()
+          .trim()
+          .regex(
+            /\.(jpg|jpeg|png|webp)$/i,
+            'Photo must be a valid image file (jpg, jpeg, png, or webp)',
+          )
+          .optional(),
+
+        resume: z
+          .string()
+          .trim()
+          .regex(
+            /\.(pdf|doc|docx)$/i,
+            'Resume must be a valid document file (pdf, doc, or docx)',
+          )
+          .optional(),
+
+        linkedIn: z
+          .string()
+          .trim()
+          .regex(
+            /^https:\/\/(www\.)?linkedin\.com\/(in|pub)\/[a-zA-Z0-9_-]+\/?$/,
+            'LinkedIn URL must be a valid LinkedIn profile link (e.g., https://www.linkedin.com/in/username)',
+          )
+          .optional(),
+      },
+      {
+        errorMap: (issue, ctx) => {
+          if (issue.code === z.ZodIssueCode.unrecognized_keys) {
+            const extraFields = issue.keys.join(', ');
+            return {
+              message: `No extra fields are permitted in the request body: ${extraFields}`,
+            };
+          }
+          return { message: ctx.defaultError };
+        },
+      },
+    )
+    .strict()
+    .refine((data) => Object.keys(data).length > 0, {
+      message: 'Request body must contain at least one field to update',
+    }),
+});
