@@ -1,6 +1,7 @@
 const ApiFeatures = require('../utils/apiFeatures');
 const Course = require('../models/courseModel');
 const Assessment = require('../models/assessmentModel');
+const User = require('../models/userModel');
 const Enrollment = require('../models/enrollmentModel');
 const QuizResult = require('../models/quizResultModel');
 const STATUS = require('../utils/courseStatus');
@@ -130,20 +131,31 @@ class CourseService {
 
     let assessmentStatus = 'fail';
     let notificationType = TYPE.ASSESSMENT_FAILED;
+
     // mark as completed
     if (score >= assessment.passingScore) {
-      await Enrollment.findOneAndUpdate(
-        {
-          course: courseId,
-          user: userId,
-        },
-        { $set: { status: STATUS.COMPLETED } },
-        { new: true, runValidators: true },
-      );
+      const { skillGained } = await Course.findById(courseId)
+        .select('skillGained')
+        .lean();
+
+      await Promise.all([
+        Enrollment.findOneAndUpdate(
+          { course: courseId, user: userId },
+          { status: STATUS.COMPLETED },
+          { new: true, runValidators: true },
+        ),
+
+        assessmentRequestService.deleteRequest(requestId),
+
+        User.findByIdAndUpdate(
+          userId,
+          { $addToSet: { skills: skillGained._id } },
+          { new: true },
+        ),
+      ]);
+
       assessmentStatus = 'pass';
       notificationType = TYPE.ASSESSMENT_PASSED;
-
-      await assessmentRequestService.deleteRequest(requestId);
     }
 
     await notificationService.createNotification(

@@ -55,7 +55,7 @@ courseSchema.path('updatedAt').select(false);
 courseSchema.pre(/^find/, function (next) {
   this.populate({
     path: 'skillGained',
-    select: 'name -_id',
+    select: 'name _id',
   });
   next();
 });
