@@ -32,6 +32,10 @@ const assessmentSchema = new mongoose.Schema(
       ],
     },
 
+    fullMark: {
+      type: Number,
+    },
+
     passingScore: {
       type: Number,
       required: [true, 'An assessment must have a passing score'],
@@ -88,15 +92,15 @@ const assessmentSchema = new mongoose.Schema(
 assessmentSchema.path('createdAt').select(false);
 assessmentSchema.path('updatedAt').select(false);
 
-assessmentSchema.virtual('fullMark').get(function () {
-  const qs = this.questions || [];
-  return Array.isArray(qs) ? qs.length : 0;
+assessmentSchema.pre('save', function (next) {
+  this.fullMark = Array.isArray(this.questions) ? this.questions.length : 0;
+  next();
 });
 
 assessmentSchema.query.findPopulate = function () {
-  return this.populate('course', 'title category description -_id').populate(
+  return this.populate('course', 'title category description').populate(
     'questions',
-    'question options -_id',
+    'question options',
   );
 };
 
