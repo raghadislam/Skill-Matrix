@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 
+const Question = require('./questionModel');
+
 const assessmentSchema = new mongoose.Schema(
   {
     course: {
@@ -23,11 +25,18 @@ const assessmentSchema = new mongoose.Schema(
           message: 'An assessment must contain at least 15 questions',
         },
         {
-          validator: (qs) => {
+          validator: function (qs) {
             const ids = qs.map((id) => id.toString());
             return ids.length === new Set(ids).size;
           },
           message: 'All questions in an assessment must be unique',
+        },
+        {
+          validator: async function (qs) {
+            const count = await Question.countDocuments({ _id: { $in: qs } });
+            return count === qs.length;
+          },
+          message: 'One or more question IDs are invalid',
         },
       ],
     },
