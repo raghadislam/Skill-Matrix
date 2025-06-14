@@ -6,7 +6,7 @@ const protect = require('../middlewares/auth/protect');
 const isEnrolled = require('../middlewares/enrolled');
 const validate = require('../middlewares/validate');
 const isRequested = require('../middlewares/requested');
-const ROLE = require('../utils/role');
+const { ROLE } = require('../utils/enums');
 const {
   getAllCoursesZodSchema,
   getCourseZodSchema,

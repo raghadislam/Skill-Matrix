@@ -42,7 +42,9 @@ class AssessmentService {
   async createAssessment(data) {
     await this.#ensureAllIdsExist(data.questions);
 
-    return await Assessment.create(data);
+    const assessment = await Assessment.create(data);
+
+    return Assessment.findById(assessment._id).findPopulate().lean();
   }
 
   async updateAssessment(id, data) {

@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-const DEPT = require('../utils/departments');
+
+const { DEPT } = require('../utils/enums');
 
 const skillSchema = new mongoose.Schema(
   {

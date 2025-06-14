@@ -3,7 +3,7 @@ const express = require('express');
 const assessmentRequestController = require('../controllers/assessmentRequestController');
 const protect = require('../middlewares/auth/protect');
 const restrictTo = require('../middlewares/auth/restrictTo');
-const ROLE = require('../utils/role');
+const { ROLE } = require('../utils/enums');
 const validate = require('../middlewares/validate');
 const {
   getAllRequestsZodSchema,

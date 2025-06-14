@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const TYPE = require('../utils/notificationType');
+const { TYPE } = require('../utils/enums');
 
 const notificationSchema = new mongoose.Schema(
   {

@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-const DIFFICULTY = require('../utils/difficulty');
+
+const { DIFFICULTY } = require('../utils/enums');
 
 function validOptions(opts) {
   return (

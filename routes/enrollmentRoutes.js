@@ -3,7 +3,7 @@ const express = require('express');
 const enrollmentController = require('../controllers/enrollmentController');
 const validate = require('../middlewares/validate');
 const protect = require('../middlewares/auth/protect');
-const ROLE = require('../utils/role');
+const { ROLE } = require('../utils/enums');
 const restrictTo = require('../middlewares/auth/restrictTo');
 const {
   enrollSchema,

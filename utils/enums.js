@@ -1,0 +1,46 @@
+const DIFFICULTY = {
+  EASY: 'easy',
+  MEDIUM: 'medium',
+  HARD: 'hard',
+};
+
+const ROLE = {
+  EMPLOYEE: 'employee',
+  TRAINER: 'trainer',
+  MANAGER: 'manager',
+  ADMIN: 'admin',
+};
+
+const TYPE = {
+  COURSE_DEADLINE: 'COURSE_DEADLINE',
+  SYSTEM_ALERT: 'SYSTEM_ALERT',
+
+  ENROLLMENT_CONFIRMED: 'ENROLLMENT_CONFIRMED',
+  ENROLLMENT_COMPLETED: 'ENROLLMENT_COMPLETED',
+
+  ASSESSMENT_DEADLINE: 'ASSESSMENT_DEADLINE',
+  ASSESSMENT_ASSIGNED: 'ASSESSMENT_ASSIGNED',
+  ASSESSMENT_PASSED: 'ASSESSMENT_PASSED',
+  ASSESSMENT_FAILED: 'ASSESSMENT_FAILED',
+  QUIZ_RESULT: 'QUIZ_RESULT',
+};
+
+const DEPT = {
+  MARKETING: 'Marketing',
+  DESIGN: 'Design',
+  DEVELOPMENT: 'Development',
+};
+
+const STATUS = {
+  ENROLLED: 'enrolled',
+  IN_PROGRESS: 'in progress',
+  COMPLETED: 'completed',
+};
+
+module.exports = {
+  ROLE,
+  DEPT,
+  STATUS,
+  TYPE,
+  DIFFICULTY,
+};

@@ -3,7 +3,7 @@ const pathController = require('../controllers/learningPathController');
 const validate = require('../middlewares/validate');
 const restrictTo = require('../middlewares/auth/restrictTo');
 const protect = require('../middlewares/auth/protect');
-const ROLE = require('../utils/role');
+const { ROLE } = require('../utils/enums');
 
 const {
   getAllPathsZodSchema,

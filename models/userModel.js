@@ -2,8 +2,7 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 const bcrypt = require('bcryptjs');
 
-const ROLE = require('../utils/role');
-const DEPT = require('../utils/departments');
+const { ROLE, DEPT } = require('../utils/enums');
 
 const userSchema = new mongoose.Schema(
   {

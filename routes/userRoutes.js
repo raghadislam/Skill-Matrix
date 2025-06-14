@@ -5,7 +5,7 @@ const endorsementController = require('../controllers/endorsementController');
 const validate = require('../middlewares/validate');
 const protect = require('../middlewares/auth/protect');
 const restrictTo = require('../middlewares/auth/restrictTo');
-const ROLE = require('../utils/role');
+const { ROLE } = require('../utils/enums');
 const {
   getAllUsersZodSchema,
   getUserZodSchema,

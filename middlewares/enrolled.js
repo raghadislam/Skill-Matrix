@@ -1,6 +1,6 @@
 const Enrollment = require('../models/enrollmentModel');
 const AppError = require('../utils/appError');
-const ROLE = require('../utils/role');
+const { ROLE } = require('../utils/enums');
 
 module.exports = async (req, res, next) => {
   if (

@@ -2,8 +2,7 @@ const { z } = require('zod');
 
 const queryZodSchema = require('./queryValidator');
 const idParamsValidator = require('./idParamsValidator');
-const ROLE = require('../utils/role');
-const DEPT = require('../utils/departments');
+const { DEPT, ROLE } = require('../utils/enums');
 
 exports.getAllUsersZodSchema = z.object({
   query: queryZodSchema.partial(),
