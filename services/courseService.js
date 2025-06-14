@@ -92,7 +92,7 @@ class CourseService {
     assessment,
   }) {
     if (status === STATUS.COMPLETED) {
-      const result = await QuizResult.findOne({ assessmentId: assessment._id });
+      const result = await QuizResult.findOne({ assessment: assessment._id });
       if (!result) throw new AppError('Unexpected Error', 500);
 
       return {

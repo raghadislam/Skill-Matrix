@@ -93,10 +93,16 @@ assessmentSchema.virtual('fullMark').get(function () {
   return Array.isArray(qs) ? qs.length : 0;
 });
 
-assessmentSchema.pre(/^find/, function (next) {
-  this.populate('course', 'title -_id').populate('questions', 'question -_id');
-  next();
-});
+assessmentSchema.query.findPopulate = function () {
+  return this.populate('course', 'title -_id').populate(
+    'questions',
+    'question options -_id',
+  );
+};
+
+assessmentSchema.query.submitPopulate = function () {
+  return this.populate('questions', 'correctOptionIndex');
+};
 
 const Assessment = mongoose.model('Assessment', assessmentSchema);
 module.exports = Assessment;
