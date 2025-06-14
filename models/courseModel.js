@@ -54,13 +54,5 @@ const courseSchema = new mongoose.Schema(
 courseSchema.path('createdAt').select(false);
 courseSchema.path('updatedAt').select(false);
 
-courseSchema.pre(/^find/, function (next) {
-  this.populate({
-    path: 'skillGained',
-    select: 'name',
-  });
-  next();
-});
-
 const Course = mongoose.model('Course', courseSchema);
 module.exports = Course;

@@ -94,7 +94,7 @@ assessmentSchema.virtual('fullMark').get(function () {
 });
 
 assessmentSchema.query.findPopulate = function () {
-  return this.populate('course', 'title -_id').populate(
+  return this.populate('course', 'title category description -_id').populate(
     'questions',
     'question options -_id',
   );

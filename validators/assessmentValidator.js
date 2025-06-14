@@ -149,13 +149,11 @@ exports.updateQuestionZodSchema = z.object({
     questionId: objectId,
   }),
 
-  body: questionSchema
-    .partial()
-    .strict()
-    .refine((data) => Object.keys(data).length > 0, {
-      message: 'You must provide at least one field to update',
-      path: ['body'],
-    }),
+  body: z
+    .object({
+      newQuestion: objectId,
+    })
+    .strict(),
 });
 
 exports.deleteAssessmentZodSchema = z.object({
