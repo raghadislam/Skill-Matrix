@@ -83,6 +83,7 @@ const assessmentSchema = new mongoose.Schema(
   },
   {
     timestamps: true,
+    id: false,
     versionKey: false,
     toJSON: { virtuals: true },
     toObject: { virtuals: true },

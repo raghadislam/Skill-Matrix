@@ -19,6 +19,7 @@ const quizResultSchema = new mongoose.Schema(
   },
   {
     timestamps: true,
+    id: false,
     versionKey: false,
   },
 );

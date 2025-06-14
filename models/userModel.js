@@ -79,6 +79,9 @@ const userSchema = new mongoose.Schema(
     // ===> This turns on automatic createdAt & updatedAt
     timestamps: true,
 
+    // don’t add an `id` getter
+    id: false,
+
     toJSON: { virtuals: true },
     toObject: { virtuals: true },
 
