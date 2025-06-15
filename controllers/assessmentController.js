@@ -1,6 +1,5 @@
 const assessmentService = require('../services/assessmentService');
 const { sendResponse } = require('../utils/responseUtils');
-const AppError = require('../utils/appError');
 
 exports.getAllAssessments = async (req, res, next) => {
   const assessments = await assessmentService.getAllAssessments(req.query);
@@ -16,7 +15,6 @@ exports.getAllAssessments = async (req, res, next) => {
 
 exports.getAssessment = async (req, res, next) => {
   const assessment = await assessmentService.getAssessment(req.params.id);
-  if (!assessment) throw new AppError(`No assessment found with that ID`, 404);
 
   sendResponse(res, {
     statusCode: 200,
@@ -42,8 +40,6 @@ exports.updateAssessment = async (req, res, next) => {
     req.params.id,
     req.body,
   );
-  if (!updatedAssessment)
-    throw new AppError(`No assessment found with that ID`, 404);
 
   sendResponse(res, {
     statusCode: 200,
@@ -53,22 +49,11 @@ exports.updateAssessment = async (req, res, next) => {
 };
 
 exports.updateQuestion = async (req, res, next) => {
-  const assessment = await assessmentService.getAssessment(
-    req.params.assessmentId,
-  );
-  if (!assessment) throw new AppError(`No assessment found with that ID`, 404);
-
   const updatedAssessment = await assessmentService.updateQuestion(
-    assessment,
+    req.params.assessmentId,
     req.params.questionId,
-    req.body,
+    req.body.newQuestion,
   );
-
-  if (!updatedAssessment)
-    throw new AppError(
-      `No question found with that ID in this assessment`,
-      404,
-    );
 
   sendResponse(res, {
     statusCode: 200,
@@ -78,8 +63,7 @@ exports.updateQuestion = async (req, res, next) => {
 };
 
 exports.deleteAssessment = async (req, res, next) => {
-  const assessment = await assessmentService.deleteAssessment(req.params.id);
-  if (!assessment) throw new AppError(`No assessment found with that ID`, 404);
+  await assessmentService.deleteAssessment(req.params.id);
 
   sendResponse(res, {
     statusCode: 204,

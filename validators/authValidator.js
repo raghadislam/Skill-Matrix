@@ -1,7 +1,6 @@
 const z = require('zod');
 
-const ROLE = require('../utils/role');
-const DEPT = require('../utils/departments');
+const { ROLE, DEPT } = require('../utils/enums');
 
 exports.signupZodSchema = z.object({
   body: z

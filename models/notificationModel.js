@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const TYPE = require('../utils/notificationType');
+const { TYPE } = require('../utils/enums');
 
 const notificationSchema = new mongoose.Schema(
   {
@@ -32,6 +32,7 @@ const notificationSchema = new mongoose.Schema(
   },
   {
     timestamps: true,
+    id: false,
     toJSON: { virtuals: true },
     toObject: { virtuals: true },
     versionKey: false,

@@ -29,6 +29,7 @@ const enrollmentSchema = new mongoose.Schema(
   },
   {
     timestamps: false,
+    id: false,
     versionKey: false,
   },
 );

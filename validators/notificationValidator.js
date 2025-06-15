@@ -1,7 +1,7 @@
 const z = require('zod');
 const mongoose = require('mongoose');
 
-const TYPE = require('../utils/notificationType');
+const { TYPE } = require('../utils/enums');
 const queryZodSchema = require('./queryValidator');
 const idParamsValidator = require('./idParamsValidator');
 

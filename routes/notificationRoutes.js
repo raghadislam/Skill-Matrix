@@ -3,7 +3,7 @@ const express = require('express');
 const notificationController = require('../controllers/notificationController');
 const protect = require('../middlewares/auth/protect');
 const restrictTo = require('../middlewares/auth/restrictTo');
-const ROLE = require('../utils/role');
+const { ROLE } = require('../utils/enums');
 const validate = require('../middlewares/validate');
 const {
   getAllNotificationZodSchema,

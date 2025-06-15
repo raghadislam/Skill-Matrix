@@ -1,6 +1,7 @@
 const { z } = require('zod');
 const mongoose = require('mongoose');
-const DEPT = require('../utils/departments');
+
+const { DEPT } = require('../utils/enums');
 
 const objectId = z
   .string()

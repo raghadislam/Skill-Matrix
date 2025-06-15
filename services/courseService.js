@@ -5,7 +5,7 @@ const User = require('../models/userModel');
 const Enrollment = require('../models/enrollmentModel');
 const QuizResult = require('../models/quizResultModel');
 const STATUS = require('../utils/courseStatus');
-const TYPE = require('../utils/notificationType');
+const { TYPE } = require('../utils/enums');
 const AppError = require('../utils/appError');
 const assessmentRequestService = require('./assessmentRequestService');
 const notificationService = require('./notificationService');
@@ -92,7 +92,7 @@ class CourseService {
     assessment,
   }) {
     if (status === STATUS.COMPLETED) {
-      const result = await QuizResult.findOne({ assessmentId: assessment._id });
+      const result = await QuizResult.findOne({ assessment: assessment._id });
       if (!result) throw new AppError('Unexpected Error', 500);
 
       return {

@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-const DEPT = require('../utils/departments');
+
+const { DEPT } = require('../utils/enums');
 
 const skillSchema = new mongoose.Schema(
   {
@@ -29,6 +30,7 @@ const skillSchema = new mongoose.Schema(
   },
   {
     timestamps: true,
+    id: false,
     toJSON: { virtuals: true },
     toObject: { virtuals: true },
   },

@@ -1,60 +1,96 @@
+const Question = require('../models/questionModel');
 const Assessment = require('../models/assessmentModel');
 const ApiFeatures = require('../utils/apiFeatures');
+const AppError = require('../utils/appError');
 
 class AssessmentService {
-  #population(query) {
-    return query.populate({
-      path: 'course',
-      select: 'title category description -_id',
-    });
+  async #ensureAllIdsExist(questions) {
+    const uniqueIds = [...new Set(questions.map(String))];
+
+    const count = await Question.countDocuments({ _id: { $in: uniqueIds } });
+
+    if (count !== uniqueIds.length) {
+      const found = await Question.find({ _id: { $in: uniqueIds } }).select(
+        '_id',
+      );
+
+      const foundSet = new Set(found.map((q) => q._id.toString()));
+      const missing = uniqueIds.filter((id) => !foundSet.has(id));
+
+      throw new AppError(`Invalid question IDs: ${missing.join(', ')}`, 400);
+    }
   }
 
   async getAllAssessments(queryString) {
-    const query = this.#population(Assessment.find());
-    const feature = new ApiFeatures(query, queryString)
+    const feature = new ApiFeatures(Assessment.find(), queryString)
       .filter()
       .sort()
       .limitFields()
       .paginate();
 
-    return await feature.query.lean();
+    return await feature.query.findPopulate().lean();
   }
 
   async getAssessment(id) {
-    const query = this.#population(Assessment.findById(id));
-    return await query.lean();
+    const assessment = await Assessment.findById(id).findPopulate().lean();
+    if (!assessment)
+      throw new AppError(`No assessment found with that ID`, 404);
+
+    return assessment;
   }
 
   async createAssessment(data) {
-    return await Assessment.create(data);
+    await this.#ensureAllIdsExist(data.questions);
+
+    const assessment = await Assessment.create(data);
+
+    return Assessment.findById(assessment._id).findPopulate().lean();
   }
 
   async updateAssessment(id, data) {
     const assessment = await Assessment.findById(id);
-    if (!assessment) return;
+    if (!assessment)
+      throw new AppError(`No assessment found with that ID`, 404);
+
+    await this.#ensureAllIdsExist(data.questions || []);
 
     assessment.set(data);
 
-    let query = await assessment.save();
-    query = this.#population(query);
+    await assessment.save();
 
-    return await query;
+    return await this.getAssessment(id);
   }
 
-  async updateQuestion(assessment, questionId, data) {
-    const question = assessment.questions.id(questionId);
-    if (!question) return;
+  async updateQuestion(assessmentId, oldQuestionId, newQuestionId) {
+    const assessment = await Assessment.findById(assessmentId);
+    if (!assessment) {
+      throw new AppError(`No assessment found with that ID`, 404);
+    }
 
-    question.set(data);
+    if (!(await Question.exists({ _id: newQuestionId })))
+      throw new AppError(`No question found with ID ${newQuestionId}`, 404);
 
-    let query = await assessment.save();
-    query = this.#population(query);
+    const idx = assessment.questions.findIndex(
+      (qId) => qId.toString() === oldQuestionId.toString(),
+    );
+    if (idx === -1)
+      throw new AppError(
+        `No question found with ID ${oldQuestionId} in this assessment`,
+        404,
+      );
 
-    return await query;
+    assessment.questions.splice(idx, 1);
+    assessment.questions.push(newQuestionId);
+
+    await assessment.save();
+
+    return await this.getAssessment(assessmentId);
   }
 
   async deleteAssessment(id) {
-    return await Assessment.findByIdAndDelete(id);
+    const assessment = await Assessment.findByIdAndDelete(id);
+    if (!assessment)
+      throw new AppError(`No assessment found with that ID`, 404);
   }
 }
 

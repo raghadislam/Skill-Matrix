@@ -1,45 +1,6 @@
 const mongoose = require('mongoose');
 
-const questionSchema = new mongoose.Schema({
-  question: {
-    type: String,
-    trim: true,
-    required: [true, 'Each question must have text'],
-  },
-
-  options: {
-    type: [
-      {
-        type: String,
-        trim: true,
-      },
-    ],
-    validate: [
-      {
-        validator: (opts) => opts.length >= 2 && opts.length <= 4,
-        message: 'Each question must have between 2 and 4 options',
-      },
-      {
-        validator: (opts) =>
-          opts.every((opt) => typeof opt === 'string' && opt.trim().length > 0),
-        message: 'Options cannot be empty strings',
-      },
-    ],
-  },
-
-  correctOptionIndex: {
-    type: Number,
-    required: [true, 'Each question must specify the correct option index'],
-    min: [0, 'correctOptionIndex must be a non-negative integer'],
-    validate: {
-      validator: function (val) {
-        return val < this.options.length;
-      },
-      message:
-        'correctOptionIndex must be within the range of available options',
-    },
-  },
-});
+const Question = require('./questionModel');
 
 const assessmentSchema = new mongoose.Schema(
   {
@@ -51,7 +12,13 @@ const assessmentSchema = new mongoose.Schema(
     },
 
     questions: {
-      type: [questionSchema],
+      type: [
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'Question',
+          required: [true, 'An assessment must have questions'],
+        },
+      ],
       validate: [
         {
           validator: (qs) => qs.length >= 15,
@@ -59,12 +26,23 @@ const assessmentSchema = new mongoose.Schema(
         },
         {
           validator: function (qs) {
-            const texts = qs.map((q) => q.question);
-            return texts.length === new Set(texts).size;
+            const ids = qs.map((id) => id.toString());
+            return ids.length === new Set(ids).size;
           },
           message: 'All questions in an assessment must be unique',
         },
+        {
+          validator: async function (qs) {
+            const count = await Question.countDocuments({ _id: { $in: qs } });
+            return count === qs.length;
+          },
+          message: 'One or more question IDs are invalid',
+        },
       ],
+    },
+
+    fullMark: {
+      type: Number,
     },
 
     passingScore: {
@@ -103,7 +81,10 @@ const assessmentSchema = new mongoose.Schema(
             return duration <= this.questions.length * 8;
           },
           message: function () {
-            return `Time limit cannot exceed ${this.questions.length * 8} minutes (8 min per question)`;
+            const qCount = Array.isArray(this.questions)
+              ? this.questions.length
+              : 0;
+            return `Time limit cannot exceed ${qCount * 8} minutes (8 min per question)`;
           },
         },
       ],
@@ -111,6 +92,7 @@ const assessmentSchema = new mongoose.Schema(
   },
   {
     timestamps: true,
+    id: false,
     versionKey: false,
     toJSON: { virtuals: true },
     toObject: { virtuals: true },
@@ -120,18 +102,21 @@ const assessmentSchema = new mongoose.Schema(
 assessmentSchema.path('createdAt').select(false);
 assessmentSchema.path('updatedAt').select(false);
 
-assessmentSchema.virtual('fullMark').get(function () {
-  const qs = this.questions || [];
-  return Array.isArray(qs) ? qs.length : 0;
-});
-
-assessmentSchema.pre(/^find/, function (next) {
-  this.populate({
-    path: 'course',
-    select: 'title -_id',
-  });
+assessmentSchema.pre('save', function (next) {
+  this.fullMark = Array.isArray(this.questions) ? this.questions.length : 0;
   next();
 });
+
+assessmentSchema.query.findPopulate = function () {
+  return this.populate('course', 'title category description').populate(
+    'questions',
+    'question options',
+  );
+};
+
+assessmentSchema.query.submitPopulate = function () {
+  return this.populate('questions', 'correctOptionIndex');
+};
 
 const Assessment = mongoose.model('Assessment', assessmentSchema);
 module.exports = Assessment;

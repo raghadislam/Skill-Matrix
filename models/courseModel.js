@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const DEPT = require('../utils/departments');
+const { DEPT } = require('../utils/enums');
 
 const courseSchema = new mongoose.Schema(
   {
@@ -44,6 +44,7 @@ const courseSchema = new mongoose.Schema(
   {
     timestamps: true,
 
+    id: false,
     toJSON: { virtuals: true },
     toObject: { virtuals: true },
 
@@ -53,14 +54,6 @@ const courseSchema = new mongoose.Schema(
 
 courseSchema.path('createdAt').select(false);
 courseSchema.path('updatedAt').select(false);
-
-courseSchema.pre(/^find/, function (next) {
-  this.populate({
-    path: 'skillGained',
-    select: 'name',
-  });
-  next();
-});
 
 const Course = mongoose.model('Course', courseSchema);
 module.exports = Course;

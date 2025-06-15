@@ -10,55 +10,12 @@ const objectId = z
     message: 'Invalid ObjectId format',
   });
 
-const questionSchema = z
-  .object(
-    {
-      question: z.string().trim().min(1, 'Each question must have text'),
-
-      options: z.array(z.string().trim()).superRefine((opts, ctx) => {
-        if (opts.length < 2 || opts.length > 4) {
-          ctx.addIssue({
-            code: z.ZodIssueCode.custom,
-            path: ['options'],
-            message: 'Each question must have between 2 and 4 options',
-          });
-        }
-
-        if (opts.some((opt) => opt === '')) {
-          ctx.addIssue({
-            code: z.ZodIssueCode.custom,
-            path: ['options'],
-            message: 'Options cannot be empty strings',
-          });
-        }
-      }),
-
-      correctOptionIndex: z.coerce
-        .number()
-        .int('correctOptionIndex must be an integer')
-        .nonnegative('correctOptionIndex must be a non-negative integer'),
-    },
-    {
-      // to catch the extra keys
-      errorMap: (issue, ctx) => {
-        if (issue.code === z.ZodIssueCode.unrecognized_keys) {
-          const extraFields = issue.keys.join(', ');
-          return {
-            message: `No extra fields are permitted in the request body: ${extraFields}`,
-          };
-        }
-        return { message: ctx.defaultError };
-      },
-    },
-  )
-  .strict();
-
 const baseAssessmentBody = z
   .object(
     {
       course: objectId,
 
-      questions: z.array(questionSchema),
+      questions: z.array(objectId),
 
       passingScore: z.coerce.number().int('passingScore must be an integer'),
 
@@ -149,13 +106,11 @@ exports.updateQuestionZodSchema = z.object({
     questionId: objectId,
   }),
 
-  body: questionSchema
-    .partial()
-    .strict()
-    .refine((data) => Object.keys(data).length > 0, {
-      message: 'You must provide at least one field to update',
-      path: ['body'],
-    }),
+  body: z
+    .object({
+      newQuestion: objectId,
+    })
+    .strict(),
 });
 
 exports.deleteAssessmentZodSchema = z.object({

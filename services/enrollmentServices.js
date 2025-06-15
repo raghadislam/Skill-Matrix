@@ -1,7 +1,7 @@
 const Enrollment = require('../models/enrollmentModel');
 const notificationService = require('./notificationService');
 const ApiFeatures = require('../utils/apiFeatures');
-const TYPE = require('../utils/notificationType');
+const { TYPE } = require('../utils/enums');
 
 class EnrollmentService {
   async enroll(courseId, userId) {
