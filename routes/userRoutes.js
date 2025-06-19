@@ -14,6 +14,7 @@ const {
   deleteUserZodSchema,
   updateUserZodSchema,
   createUserZodSchema,
+  changeMeZodSchema,
 } = require('../validators/userValidator');
 
 const router = express.Router();
@@ -26,6 +27,7 @@ router.get('/me', userController.getMe);
 
 router.patch(
   '/updateMe',
+  validate(changeMeZodSchema),
   uploadService.getPhotoAndResumeUploader(),
   uploadService.resizeUserPhoto,
   uploadService.uploadResumeToCloudinary,

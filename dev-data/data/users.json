@@ -1,130 +1,164 @@
 [
   {
     "_id": "60f5a3c2e1b1c8001c4d0001",
-    "name": "Alice Johnson",
-    "email": "alice.johnson@example.com",
+    "name": "Ahmed El Sakka",
+    "email": "ahmed.elsakka@example.com",
     "role": "trainer",
     "password": "pass1111",
-    "department": "Development"
+    "department": "Development",
+    "photo": "default.jpg"
   },
   {
     "_id": "60f5a3c2e1b1c8001c4d0002",
-    "name": "Bob Smith",
-    "email": "bob.smith@example.com",
+    "name": "Mona Zaki",
+    "email": "mona.zaki@example.com",
     "role": "employee",
     "password": "pass1111",
-    "department": "Marketing"
+    "department": "Marketing",
+    "photo": "default.jpg"
   },
   {
     "_id": "60f5a3c2e1b1c8001c4d0003",
-    "name": "Carol Lee",
-    "email": "carol.lee@example.com",
-    "role": "admin",
+    "name": "Amr Diab",
+    "email": "amr.diab@example.com",
+    "role": "trainer",
     "password": "pass1111",
-    "department": "Design"
+    "department": "Design",
+    "photo": "default.jpg"
   },
   {
     "_id": "60f5a3c2e1b1c8001c4d0004",
-    "name": "David Kim",
-    "email": "david.kim@example.com",
+    "name": "Yasmine Abdelaziz",
+    "email": "yasmine.abdelaziz@example.com",
     "role": "trainer",
     "password": "pass1111",
-    "department": "Development"
+    "department": "Development",
+    "photo": "default.jpg"
   },
   {
     "_id": "60f5a3c2e1b1c8001c4d0005",
-    "name": "Eva Miller",
-    "email": "eva.miller@example.com",
+    "name": "Tamer Hosny",
+    "email": "tamer.hosny@example.com",
     "role": "employee",
     "password": "pass1111",
-    "department": "Marketing"
+    "department": "Marketing",
+    "photo": "default.jpg"
   },
   {
     "_id": "60f5a3c2e1b1c8001c4d0006",
-    "name": "Frank Wilson",
-    "email": "frank.wilson@example.com",
+    "name": "Donia Samir Ghanem",
+    "email": "donia.samirghanem@example.com",
     "role": "trainer",
     "password": "pass1111",
-    "department": "Development"
+    "department": "Development",
+    "photo": "default.jpg"
   },
   {
     "_id": "60f5a3c2e1b1c8001c4d0007",
-    "name": "Grace Chen",
-    "email": "grace.chen@example.com",
+    "name": "Mohamed Ramadan",
+    "email": "mohamed.ramadan@example.com",
     "role": "employee",
     "password": "pass1111",
-    "department": "Marketing"
+    "department": "Marketing",
+    "photo": "default.jpg"
   },
   {
     "_id": "60f5a3c2e1b1c8001c4d0008",
-    "name": "Henry Davis",
-    "email": "henry.davis@example.com",
-    "role": "admin",
+    "name": "Hend Sabry",
+    "email": "hend.sabry@example.com",
+    "role": "trainer",
     "password": "pass1111",
-    "department": "Design"
+    "department": "Design",
+    "photo": "default.jpg"
   },
   {
     "_id": "60f5a3c2e1b1c8001c4d0009",
-    "name": "Isabella Garcia",
-    "email": "isabella.garcia@example.com",
+    "name": "Karim Abdel Aziz",
+    "email": "karim.abdelaziz@example.com",
     "role": "trainer",
     "password": "pass1111",
-    "department": "Development"
+    "department": "Development",
+    "photo": "default.jpg"
   },
   {
     "_id": "60f5a3c2e1b1c8001c4d000a",
-    "name": "Jack Martinez",
-    "email": "jack.martinez@example.com",
+    "name": "Menna Shalaby",
+    "email": "menna.shalaby@example.com",
     "role": "employee",
     "password": "pass1111",
-    "department": "Marketing"
+    "department": "Marketing",
+    "photo": "default.jpg"
   },
   {
     "_id": "60f5a3c2e1b1c8001c4d000b",
-    "name": "Katherine Brown",
-    "email": "katherine.brown@example.com",
+    "name": "Ahmed Helmy",
+    "email": "ahmed.helmy@example.com",
     "role": "trainer",
     "password": "pass1111",
-    "department": "Development"
+    "department": "Development",
+    "photo": "default.jpg"
   },
   {
     "_id": "60f5a3c2e1b1c8001c4d000c",
-    "name": "Liam Wilson",
-    "email": "liam.wilson@example.com",
+    "name": "Ghada Adel",
+    "email": "ghada.adel@example.com",
     "role": "admin",
     "password": "pass1111",
-    "department": "Design"
+    "department": "Design",
+    "photo": "default.jpg"
   },
   {
     "_id": "60f5a3c2e1b1c8001c4d000d",
-    "name": "Mia Thompson",
-    "email": "mia.thompson@example.com",
+    "name": "Hany Ramzy",
+    "email": "hany.ramzy@example.com",
     "role": "employee",
     "password": "pass1111",
-    "department": "Marketing"
+    "department": "Marketing",
+    "photo": "default.jpg"
   },
   {
     "_id": "60f5a3c2e1b1c8001c4d000e",
-    "name": "Noah Moore",
-    "email": "noah.moore@example.com",
+    "name": "Mai Ezz Eldin",
+    "email": "mai.ezzeldin@example.com",
     "role": "trainer",
     "password": "pass1111",
-    "department": "Development"
+    "department": "Development",
+    "photo": "default.jpg"
   },
   {
     "_id": "60f5a3c2e1b1c8001c4d000f",
-    "name": "Olivia Taylor",
-    "email": "olivia.taylor@example.com",
+    "name": "Mohamed Henedy",
+    "email": "mohamed.henedy@example.com",
     "role": "employee",
     "password": "pass1111",
-    "department": "Marketing"
+    "department": "Marketing",
+    "photo": "default.jpg"
   },
   {
     "_id": "60f5a3c2e1b1c8001c4d0010",
-    "name": "Paul Hernandez",
-    "email": "paul.hernandez@example.com",
+    "name": "Saba Mubarak",
+    "email": "saba.mubarak@example.com",
+    "role": "trainer",
+    "password": "pass1111",
+    "department": "Design",
+    "photo": "default.jpg"
+  },
+  {
+    "_id": "60f5a3c2e1b1c8001c4d0011",
+    "name": "Samersamora",
+    "email": "samersamora@example.com",
     "role": "admin",
     "password": "pass1111",
-    "department": "Design"
+    "department": "Development",
+    "photo": "default.jpg"
+  },
+  {
+    "_id": "60f5a3c2e1b1c8001c4d0012",
+    "name": "Raghad Noser",
+    "email": "raghad.noser@example.com",
+    "role": "admin",
+    "password": "pass1111",
+    "department": "Marketing",
+    "photo": "default.jpg"
   }
 ]

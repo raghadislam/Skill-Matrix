@@ -132,23 +132,9 @@ exports.changeMeZodSchema = z.object({
           .trim()
           .optional(),
 
-        photo: z
-          .string()
-          .trim()
-          .regex(
-            /\.(jpg|jpeg|png|webp)$/i,
-            'Photo must be a valid image file (jpg, jpeg, png, or webp)',
-          )
-          .optional(),
+        photo: z.string().url('Photo must be a valid URL').optional(),
 
-        resume: z
-          .string()
-          .trim()
-          .regex(
-            /\.(pdf|doc|docx)$/i,
-            'Resume must be a valid document file (pdf, doc, or docx)',
-          )
-          .optional(),
+        resume: z.string().url('Resume must be a valid URL').optional(),
 
         linkedIn: z
           .string()
@@ -172,7 +158,5 @@ exports.changeMeZodSchema = z.object({
       },
     )
     .strict()
-    .refine((data) => Object.keys(data).length > 0, {
-      message: 'Request body must contain at least one field to update',
-    }),
+    .default({}),
 });
