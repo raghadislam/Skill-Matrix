@@ -36,7 +36,15 @@ const userSchema = new mongoose.Schema(
       trim: true,
       default: 'default.jpg',
     },
+    photoPublicId: {
+      type: String,
+      trim: true,
+    },
     resume: {
+      type: String,
+      trim: true,
+    },
+    resumePublicId: {
       type: String,
       trim: true,
     },
