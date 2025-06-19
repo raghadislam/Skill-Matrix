@@ -59,6 +59,15 @@ class UploadService {
     const photo = req.files.photo[0];
     const filename = `user-${req.user._id}-${Date.now()}`;
 
+    // delete old photo from Cloudinary if exists
+    if (req.user.photoPublicId) {
+      try {
+        await cloudinary.uploader.destroy(req.user.photoPublicId);
+      } catch (err) {
+        console.error('Failed to delete old photo from Cloudinary:', err);
+      }
+    }
+
     const sharpBuffer = await sharp(photo.buffer)
       .resize(500, 500)
       .toFormat('jpeg')
@@ -94,6 +103,17 @@ class UploadService {
 
     const file = req.files.resume[0];
     const filename = `resume-${req.user._id}-${Date.now()}`;
+
+    // delete old resume from Cloudinary if exists
+    if (req.user.resumePublicId) {
+      try {
+        await cloudinary.uploader.destroy(req.user.resumePublicId, {
+          resource_type: 'raw',
+        });
+      } catch (err) {
+        console.error('Failed to delete old resume from Cloudinary:', err);
+      }
+    }
 
     try {
       const result = await new Promise((resolve, reject) => {
