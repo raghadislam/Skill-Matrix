@@ -3,13 +3,13 @@ const { sendResponse } = require('../utils/responseUtils');
 const AppError = require('../utils/appError');
 
 // TODO -> get rid of this and handle it using ZOD
-const filterObj = (obj, ...allowedFields) => {
-  const newObj = {};
-  Object.keys(obj).forEach((el) => {
-    if (allowedFields.includes(el)) newObj[el] = obj[el];
-  });
-  return newObj;
-};
+// const filterObj = (obj, ...allowedFields) => {
+//   const newObj = {};
+//   Object.keys(obj).forEach((el) => {
+//     if (allowedFields.includes(el)) newObj[el] = obj[el];
+//   });
+//   return newObj;
+// };
 
 exports.getAllUsers = async (req, res, next) => {
   const users = await userService.getAllUsers(req.query);
@@ -97,12 +97,21 @@ exports.getMyNotifications = async (req, res) => {
 };
 
 exports.updateMe = async (req, res) => {
-  // TODO -> get rid of this and handle it using ZOD
-  const filteredObj = filterObj(req.body, 'name', 'email');
-  if (req.file) {
-    filteredObj.photo = req.file.filename;
+  const updateData = {
+    ...req.body,
+  };
+
+  if (req.uploadedPhoto) {
+    updateData.photo = req.uploadedPhoto.url;
+    updateData.photoPublicId = req.uploadedPhoto.public_id;
   }
-  const updatedUser = await userService.updateMe(req.user.id, filteredObj);
+
+  if (req.uploadedResume) {
+    updateData.resume = req.uploadedResume.url;
+    updateData.resumePublicId = req.uploadedResume.public_id;
+  }
+
+  const updatedUser = await userService.updateMe(req.user._id, updateData);
 
   sendResponse(res, {
     statusCode: 200,
