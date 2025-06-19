@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const { DIFFICULTY } = require('../utils/enums');
+const { DIFFICULTY, WEIGHT } = require('../utils/enums');
 
 function validOptions(opts) {
   return (
@@ -56,6 +56,13 @@ const questionSchema = new mongoose.Schema(
         message: 'correctOptionIndex must be within the range of options',
       },
     },
+
+    weight: {
+      type: Number,
+      default: function () {
+        return WEIGHT[this.difficulty.toUpperCase()];
+      },
+    },
   },
   {
     timestamps: true,
@@ -74,6 +81,7 @@ questionSchema.query.withTopic = function () {
 };
 
 questionSchema.index({ topic: 1, difficulty: 1 });
+questionSchema.index({ weight: 1 });
 
 const Question = mongoose.model('Question', questionSchema);
 module.exports = Question;
