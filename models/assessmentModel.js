@@ -107,6 +107,11 @@ assessmentSchema.pre('save', function (next) {
   next();
 });
 
+assessmentSchema.post('save', async (doc) => {
+  await doc.populate('course', 'title category description');
+  await doc.populate('questions', 'question options');
+});
+
 assessmentSchema.query.findPopulate = function () {
   return this.populate('course', 'title category description').populate(
     'questions',

@@ -41,10 +41,7 @@ class AssessmentService {
 
   async createAssessment(data) {
     await this.#ensureAllIdsExist(data.questions);
-
-    const assessment = await Assessment.create(data);
-
-    return Assessment.findById(assessment._id).findPopulate().lean();
+    return await Assessment.create(data);
   }
 
   async updateAssessment(id, data) {
@@ -56,9 +53,7 @@ class AssessmentService {
 
     assessment.set(data);
 
-    await assessment.save();
-
-    return await this.getAssessment(id);
+    return await assessment.save();
   }
 
   async updateQuestion(assessmentId, oldQuestionId, newQuestionId) {
@@ -82,9 +77,7 @@ class AssessmentService {
     assessment.questions.splice(idx, 1);
     assessment.questions.push(newQuestionId);
 
-    await assessment.save();
-
-    return await this.getAssessment(assessmentId);
+    return await assessment.save();
   }
 
   async deleteAssessment(id) {
