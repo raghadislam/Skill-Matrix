@@ -96,6 +96,20 @@ exports.getMyNotifications = async (req, res) => {
   });
 };
 
+exports.getMe = async (req, res) => {
+  const user = await userService.getUser(req.user._id);
+
+  if (!user) {
+    throw new AppError('User not found.', 404);
+  }
+
+  sendResponse(res, {
+    statusCode: 200,
+    status: 'success',
+    data: { user },
+  });
+};
+
 exports.updateMe = async (req, res) => {
   const updateData = {
     ...req.body,
