@@ -102,20 +102,29 @@ const assessmentSchema = new mongoose.Schema(
 assessmentSchema.path('createdAt').select(false);
 assessmentSchema.path('updatedAt').select(false);
 
-assessmentSchema.pre('save', function (next) {
-  this.fullMark = Array.isArray(this.questions) ? this.questions.length : 0;
+assessmentSchema.pre('save', async function (next) {
+  if (this.isNew || this.isModified('questions')) {
+    await this.populate('questions', 'weight');
+
+    this.fullMark = this.questions.reduce((sum, q) => sum + (q.weight || 1), 0);
+  }
   next();
+});
+
+assessmentSchema.post('save', async (doc) => {
+  await doc.populate('course', 'title category description');
+  await doc.populate('questions', 'question options weight');
 });
 
 assessmentSchema.query.findPopulate = function () {
   return this.populate('course', 'title category description').populate(
     'questions',
-    'question options',
+    'question options weight',
   );
 };
 
 assessmentSchema.query.submitPopulate = function () {
-  return this.populate('questions', 'correctOptionIndex');
+  return this.populate('questions', 'correctOptionIndex weight');
 };
 
 const Assessment = mongoose.model('Assessment', assessmentSchema);

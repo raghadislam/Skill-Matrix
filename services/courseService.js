@@ -108,6 +108,8 @@ class CourseService {
       (q) => q.correctOptionIndex * 1 + 1,
     );
 
+    const weightQuestions = assessment.questions.map((q) => q.weight * 1);
+
     if (submittedAnswers.length !== correctAnswers.length) {
       throw new AppError(
         'Number of answers does not match number of questions',
@@ -119,7 +121,7 @@ class CourseService {
     let score = 0;
     for (let iterator = 0; iterator < submittedAnswers.length; iterator += 1) {
       if (submittedAnswers[iterator] === correctAnswers[iterator]) {
-        score += 1;
+        score += weightQuestions[iterator];
       }
     }
 
