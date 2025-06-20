@@ -2,6 +2,8 @@ const express = require('express');
 
 const userController = require('../controllers/userController');
 const endorsementController = require('../controllers/endorsementController');
+const uploadService = require('../services/uploadServices');
+
 const validate = require('../middlewares/validate');
 const protect = require('../middlewares/auth/protect');
 const restrictTo = require('../middlewares/auth/restrictTo');
@@ -12,6 +14,7 @@ const {
   deleteUserZodSchema,
   updateUserZodSchema,
   createUserZodSchema,
+  changeMeZodSchema,
 } = require('../validators/userValidator');
 
 const router = express.Router();
@@ -20,13 +23,22 @@ router.use(protect);
 
 router.get('/my-enrollments', userController.getMyEnrollments);
 router.get('/inbox', userController.getMyNotifications);
+router.get('/me', userController.getMe);
+
+router.patch(
+  '/updateMe',
+  validate(changeMeZodSchema),
+  uploadService.getPhotoAndResumeUploader(),
+  uploadService.resizeUserPhoto,
+  uploadService.uploadResumeToCloudinary,
+  userController.updateMe,
+);
 
 router.use(restrictTo(ROLE.ADMIN, ROLE.MANAGER));
 
 router.get(
   '/:id/skills',
   validate(getUserZodSchema),
-  protect,
   endorsementController.getSkillsAndEndorsements,
 );
 

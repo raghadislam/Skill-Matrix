@@ -2,6 +2,8 @@ const User = require('../models/userModel');
 const Enrollment = require('../models/enrollmentModel');
 const Notification = require('../models/notificationModel');
 const APIFeatures = require('../utils/apiFeatures');
+const AppError = require('../utils/appError');
+const cloudinary = require('../utils/cloudinary');
 
 class UserService {
   #population(query) {
@@ -59,15 +61,31 @@ class UserService {
     return await Notification.find(filter);
   }
 
-  async updateMe(id, updatedData) {
-    const updatedUser = await User.findByIdAndUpdate(id, updatedData, {
+  async updateMe(userId, updatedData) {
+    const updatedUser = await User.findByIdAndUpdate(userId, updatedData, {
       new: true,
       runValidators: true,
     });
+
+    if (!updatedUser) {
+      throw new AppError('User not found.', 404);
+    }
+
     return updatedUser;
   }
 
   async deleteMe(id) {
+    const user = await User.findById(id);
+
+    if (user.photoPublicId) {
+      await cloudinary.uploader.destroy(user.photoPublicId);
+    }
+    if (user.resumePublicId) {
+      await cloudinary.uploader.destroy(user.resumePublicId, {
+        resource_type: 'raw',
+      });
+    }
+
     await User.findByIdAndUpdate(id, { active: false });
   }
 }
