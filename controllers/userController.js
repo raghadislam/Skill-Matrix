@@ -2,15 +2,6 @@ const userService = require('../services/userService');
 const { sendResponse } = require('../utils/responseUtils');
 const AppError = require('../utils/appError');
 
-// TODO -> get rid of this and handle it using ZOD
-// const filterObj = (obj, ...allowedFields) => {
-//   const newObj = {};
-//   Object.keys(obj).forEach((el) => {
-//     if (allowedFields.includes(el)) newObj[el] = obj[el];
-//   });
-//   return newObj;
-// };
-
 exports.getAllUsers = async (req, res, next) => {
   const users = await userService.getAllUsers(req.query);
 

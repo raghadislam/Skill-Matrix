@@ -3,6 +3,7 @@ const Enrollment = require('../models/enrollmentModel');
 const Notification = require('../models/notificationModel');
 const APIFeatures = require('../utils/apiFeatures');
 const AppError = require('../utils/appError');
+const cloudinary = require('../utils/cloudinary');
 
 class UserService {
   #population(query) {
@@ -74,6 +75,17 @@ class UserService {
   }
 
   async deleteMe(id) {
+    const user = await User.findById(id);
+
+    if (user.photoPublicId) {
+      await cloudinary.uploader.destroy(user.photoPublicId);
+    }
+    if (user.resumePublicId) {
+      await cloudinary.uploader.destroy(user.resumePublicId, {
+        resource_type: 'raw',
+      });
+    }
+
     await User.findByIdAndUpdate(id, { active: false });
   }
 }
