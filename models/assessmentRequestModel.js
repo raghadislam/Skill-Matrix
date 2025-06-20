@@ -36,7 +36,7 @@ assessmentRequestSchema.pre('save', async function (next) {
     path: 'assessment',
     populate: [
       { path: 'course', select: 'title category description' },
-      { path: 'questions', select: 'question options' },
+      { path: 'questions', select: 'question options weight' },
     ],
   });
   next();
@@ -58,7 +58,7 @@ assessmentRequestSchema.pre(/^find/, function (next) {
     path: 'assessment',
     populate: [
       { path: 'course', select: 'title category description' },
-      { path: 'questions', select: 'question options' },
+      { path: 'questions', select: 'question options weight' },
     ],
   });
   next();

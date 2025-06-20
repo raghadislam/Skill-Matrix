@@ -4,6 +4,12 @@ const DIFFICULTY = {
   HARD: 'hard',
 };
 
+const WEIGHT = Object.freeze({
+  EASY: 1,
+  MEDIUM: 2,
+  HARD: 3,
+});
+
 const ROLE = {
   EMPLOYEE: 'employee',
   TRAINER: 'trainer',
@@ -43,4 +49,5 @@ module.exports = {
   STATUS,
   TYPE,
   DIFFICULTY,
+  WEIGHT,
 };
