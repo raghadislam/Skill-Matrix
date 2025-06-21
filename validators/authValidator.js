@@ -2,7 +2,7 @@ const z = require('zod');
 
 const { ROLE, DEPT } = require('../utils/enums');
 
-exports.signupZodSchema = z.object({
+const signupZodSchema = z.object({
   body: z
     .object(
       {
@@ -52,7 +52,7 @@ exports.signupZodSchema = z.object({
     .transform(({ confirmPassword, ...data }) => data),
 });
 
-exports.loginZodSchema = z.object({
+const loginZodSchema = z.object({
   body: z
     .object(
       {
@@ -77,3 +77,43 @@ exports.loginZodSchema = z.object({
     )
     .strict(),
 });
+
+const emptyObject = z
+  .object(
+    {},
+    {
+      errorMap: (issue, ctx) => {
+        if (issue.code === z.ZodIssueCode.unrecognized_keys) {
+          const extraFields = issue.keys.join(', ');
+          return {
+            message: `No extra fields are permitted in the request body: ${extraFields}`,
+          };
+        }
+        return { message: ctx.defaultError };
+      },
+    },
+  )
+  .strict();
+
+const refreshZodSchema = z
+  .object({
+    body: emptyObject,
+    params: emptyObject,
+    query: emptyObject,
+  })
+  .partial();
+
+const logoutZodSchema = z
+  .object({
+    body: emptyObject,
+    params: emptyObject,
+    query: emptyObject,
+  })
+  .partial();
+
+module.exports = {
+  signupZodSchema,
+  loginZodSchema,
+  refreshZodSchema,
+  logoutZodSchema,
+};
