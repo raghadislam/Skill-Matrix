@@ -12,5 +12,6 @@ const router = express.Router();
 
 router.post('/signup', validate(signupZodSchema), authController.signup);
 router.post('/login', validate(loginZodSchema), authController.login);
+router.post('/refresh', authController.refresh);
 
 module.exports = router;
