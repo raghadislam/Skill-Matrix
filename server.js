@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const { loadBadgesToCache } = require('./services/badgeEngine');
+require('./services/badgeListeners');
 
 process.on('uncaughtException', (err) => {
   console.error('UNHANDLED EXCEPTION! 💥 Shutting down...');
