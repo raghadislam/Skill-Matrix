@@ -12,8 +12,8 @@ const verifyAsync = promisify(jwt.verify);
 const MAX_SESSION_AGE_MS = 30 * 24 * 60 * 60 * 1000;
 
 class AuthService {
-  async #createTokens(id) {
-    const payload = { id };
+  async #createTokens(userId) {
+    const payload = { id: userId };
     const [accessToken, refreshToken] = await Promise.all([
       signAsync(payload, process.env.ACCESS_TOKEN_SECRET, {
         expiresIn: process.env.ACCESS_TOKEN_EXPIRES_IN,
@@ -24,6 +24,17 @@ class AuthService {
     ]);
 
     return { accessToken, refreshToken };
+  }
+
+  async #findStoredToken(userId, oldRefreshToken) {
+    const tokens = await RefreshToken.find({ user: userId }).select('+token');
+
+    const comparisons = await Promise.all(
+      tokens.map((t) => bcrypt.compare(oldRefreshToken, t.token)),
+    );
+    const index = comparisons.findIndex((result) => result);
+
+    return index !== -1 ? tokens[index] : undefined;
   }
 
   async signup(data) {
@@ -84,9 +95,9 @@ class AuthService {
         401,
       );
 
-    let id;
+    let userId;
     try {
-      ({ id } = await verifyAsync(
+      ({ id: userId } = await verifyAsync(
         oldRefreshToken,
         process.env.REFRESH_TOKEN_SECRET,
       ));
@@ -94,23 +105,16 @@ class AuthService {
       throw new AppError('Invalid refresh token', 401);
     }
 
-    const tokens = await RefreshToken.find({ user: id }).select('+token');
-
-    const comparisons = await Promise.all(
-      tokens.map((t) => bcrypt.compare(oldRefreshToken, t.token)),
-    );
-    const index = comparisons.findIndex((result) => result);
-    const matchedToken = index !== -1 ? tokens[index] : undefined;
-
+    const matchedToken = await this.#findStoredToken(userId, oldRefreshToken);
     if (!matchedToken)
-      throw new AppError('Refresh token revoked or unknown', 401);
+      throw new AppError('Refresh token not found or already revoked', 401);
 
     await RefreshToken.findByIdAndDelete(matchedToken._id);
 
-    const { accessToken, refreshToken } = await this.#createTokens(id);
+    const { accessToken, refreshToken } = await this.#createTokens(userId);
 
     await RefreshToken.create({
-      user: id,
+      user: userId,
       token: refreshToken,
       expiresAt: new Date(Date.now() + MAX_SESSION_AGE_MS),
     });
@@ -120,6 +124,35 @@ class AuthService {
       statusCode: 200,
       accessToken,
       refreshToken,
+    };
+  }
+
+  async logout(oldRefreshToken) {
+    if (!oldRefreshToken)
+      throw new AppError(
+        'Authentication required: no refresh token provided',
+        401,
+      );
+
+    let userId;
+    try {
+      ({ id: userId } = await verifyAsync(
+        oldRefreshToken,
+        process.env.REFRESH_TOKEN_SECRET,
+      ));
+    } catch (err) {
+      throw new AppError('Invalid refresh token', 401);
+    }
+
+    const matchedToken = await this.#findStoredToken(userId, oldRefreshToken);
+    if (!matchedToken)
+      throw new AppError('Refresh token not found or already revoked', 401);
+
+    await RefreshToken.findByIdAndDelete(matchedToken._id);
+
+    return {
+      status: 'success',
+      statusCode: 200,
     };
   }
 }
