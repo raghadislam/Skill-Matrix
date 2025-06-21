@@ -9,6 +9,7 @@ const Assessment = require('../../models/assessmentModel');
 const AssessmentRequest = require('../../models/assessmentRequestModel');
 const Notification = require('../../models/notificationModel');
 const Question = require('../../models/questionModel');
+const Badge = require('../../models/BadgeModel');
 
 dotenv.config({ path: './config.env' });
 
@@ -35,6 +36,7 @@ const assessmentRequests = JSON.parse(
 const notifications = JSON.parse(
   fs.readFileSync(`${__dirname}/notifications.json`),
 );
+const badges = JSON.parse(fs.readFileSync(`${__dirname}/badges.json`));
 
 const importData = async () => {
   try {
@@ -46,6 +48,7 @@ const importData = async () => {
     await Assessment.create(assessments);
     await AssessmentRequest.create(assessmentRequests);
     await Notification.create(notifications);
+    await Badge.create(badges);
 
     console.log('Data successfully loaded!');
     process.exit();
@@ -66,6 +69,7 @@ const deleteData = async () => {
     await AssessmentRequest.deleteMany();
     await Notification.deleteMany();
     await Question.deleteMany();
+    await Badge.deleteMany();
 
     console.log('Data successfully deleted!');
     process.exit();

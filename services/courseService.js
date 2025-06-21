@@ -1,14 +1,16 @@
-const ApiFeatures = require('../utils/apiFeatures');
+const assessmentRequestService = require('./assessmentRequestService');
+const notificationService = require('./notificationService');
 const Course = require('../models/courseModel');
 const Assessment = require('../models/assessmentModel');
 const User = require('../models/userModel');
 const Enrollment = require('../models/enrollmentModel');
 const QuizResult = require('../models/quizResultModel');
+const ApiFeatures = require('../utils/apiFeatures');
+const AppError = require('../utils/appError');
+const eventBus = require('../utils/eventBus');
 const STATUS = require('../utils/courseStatus');
 const { TYPE } = require('../utils/enums');
-const AppError = require('../utils/appError');
-const assessmentRequestService = require('./assessmentRequestService');
-const notificationService = require('./notificationService');
+const { CRITERIA } = require('../utils/enums');
 
 class CourseService {
   #population(query) {
@@ -158,6 +160,7 @@ class CourseService {
 
       assessmentStatus = 'pass';
       notificationType = TYPE.ASSESSMENT_PASSED;
+      eventBus.emit(CRITERIA.COURSE_COMPLETED, userId);
     }
 
     await notificationService.createNotification(

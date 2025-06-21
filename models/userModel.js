@@ -34,11 +34,13 @@ const userSchema = new mongoose.Schema(
     photo: {
       type: String,
       trim: true,
-      default: 'default.jpg',
+      default:
+        'https://res.cloudinary.com/djprpv859/image/upload/v1750480225/default_ymutrj.jpg',
     },
     photoPublicId: {
       type: String,
       trim: true,
+      select: false,
     },
     resume: {
       type: String,
@@ -47,6 +49,7 @@ const userSchema = new mongoose.Schema(
     resumePublicId: {
       type: String,
       trim: true,
+      select: false,
     },
     linkedIn: {
       type: String,
