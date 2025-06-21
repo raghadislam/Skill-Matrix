@@ -109,15 +109,10 @@ class AuthService {
     if (!matchedToken)
       throw new AppError('Refresh token not found or already revoked', 401);
 
-    await RefreshToken.findByIdAndDelete(matchedToken._id);
-
     const { accessToken, refreshToken } = await this.#createTokens(userId);
 
-    await RefreshToken.create({
-      user: userId,
-      token: refreshToken,
-      expiresAt: new Date(Date.now() + MAX_SESSION_AGE_MS),
-    });
+    matchedToken.token = refreshToken;
+    matchedToken.save();
 
     return {
       status: 'success',
