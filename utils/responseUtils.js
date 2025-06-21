@@ -1,19 +1,10 @@
 exports.sendResponse = (
   res,
-  {
-    statusCode,
-    status,
-    message,
-    accessToken,
-    refreshToken,
-    data,
-    assessmentStatus,
-  },
+  { statusCode, status, message, accessToken, data, assessmentStatus },
 ) => {
   res.status(statusCode).json({
     status,
     accessToken,
-    refreshToken,
     message,
     data,
     assessmentStatus,
