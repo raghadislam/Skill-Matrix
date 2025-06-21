@@ -1,6 +1,8 @@
+const eventBus = require('../utils/eventBus');
 const endorsementService = require('../services/endorsementService');
 const { sendResponse } = require('../utils/responseUtils');
 const AppError = require('../utils/appError');
+const { CRITERIA } = require('../utils/enums');
 
 exports.getAllEndorsements = async (req, res) => {
   const endorsements = await endorsementService.getAllEndorsements(req.query);
@@ -61,6 +63,8 @@ exports.endorse = async (req, res) => {
       `Endorsement failed! Make sure both the endorsee Id and the skill Id are correct`,
       404,
     );
+
+  eventBus.emit(CRITERIA.SKILL_ENDORSED, req.body.endorseeId);
 
   sendResponse(res, {
     statusCode: 201,
