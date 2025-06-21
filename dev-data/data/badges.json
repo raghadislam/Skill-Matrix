@@ -2,31 +2,31 @@
   {
     "name": "The First Flame",
     "description": "Completed your very first course — the journey begins here.",
-    "iconUrl": "https://res.cloudinary.com/djprpv859/image/upload/v1750497739/checkmark_a5pyxw.png",
-    "criteria": { "type": "COURSE_COMPLETION", "count": 1 }
+    "icon": "https://res.cloudinary.com/djprpv859/image/upload/v1750497739/checkmark_a5pyxw.png",
+    "criteria": { "type": "COURSE_COMPLETED", "count": 1 }
   },
   {
     "name": "Learning Shark",
     "description": "Completed 5 courses — circling knowledge like a predator.",
-    "iconUrl": "https://res.cloudinary.com/djprpv859/image/upload/v1750497925/badge_3_xbe6r4.png",
-    "criteria": { "type": "COURSE_COMPLETION", "count": 5 }
+    "icon": "https://res.cloudinary.com/djprpv859/image/upload/v1750497925/badge_3_xbe6r4.png",
+    "criteria": { "type": "COURSE_COMPLETED", "count": 5 }
   },
   {
     "name": "Curriculum Crusher",
     "description": "Completed 8 courses — you are devouring content like a machine.",
-    "iconUrl": "https://res.cloudinary.com/djprpv859/image/upload/v1750497677/value_rlfgvg.png",
-    "criteria": { "type": "COURSE_COMPLETION", "count": 8 }
+    "icon": "https://res.cloudinary.com/djprpv859/image/upload/v1750497677/value_rlfgvg.png",
+    "criteria": { "type": "COURSE_COMPLETED", "count": 8 }
   },
   {
     "name": "Endorsement Magnet",
     "description": "Endorsed for 5 skills — people just can not help noticing your talent.",
-    "iconUrl": "https://res.cloudinary.com/djprpv859/image/upload/v1750497700/badge_qm6kiv.png",
-    "criteria": { "type": "SKILL_ENDORSEMENT", "count": 5 }
+    "icon": "https://res.cloudinary.com/djprpv859/image/upload/v1750497700/badge_qm6kiv.png",
+    "criteria": { "type": "SKILL_ENDORSED", "count": 5 }
   },
   {
     "name": "Skill Collector",
     "description": "Endorsed for 8 skills — building a portfolio that speaks volumes.",
-    "iconUrl": "https://res.cloudinary.com/djprpv859/image/upload/v1750497841/trophy-star_qoj8jy.png",
-    "criteria": { "type": "SKILL_ENDORSEMENT", "count": 8 }
+    "icon": "https://res.cloudinary.com/djprpv859/image/upload/v1750497841/trophy-star_qoj8jy.png",
+    "criteria": { "type": "SKILL_ENDORSED", "count": 8 }
   }
 ]

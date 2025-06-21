@@ -54,7 +54,7 @@ async function evaluateAndAwardBadges(userId, type) {
       });
       if (alreadyAwarded) return;
 
-      await UserBadge.create({ userId: userId, badgeId: badge._id });
+      await UserBadge.create({ user: userId, badge: badge._id });
 
       console.log(`🏅 ${userId} earned badge: ${badge.name}`);
     }),
