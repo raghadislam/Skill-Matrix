@@ -51,3 +51,15 @@ exports.refresh = async (req, res, next) => {
     refreshToken,
   });
 };
+
+exports.logout = async (req, res, next) => {
+  const oldToken = req.cookies?.jwt;
+  const { status, statusCode } = await AuthService.logout(oldToken);
+
+  const message = 'Logged out successfully.';
+  sendResponse(res, {
+    statusCode,
+    status,
+    message,
+  });
+};

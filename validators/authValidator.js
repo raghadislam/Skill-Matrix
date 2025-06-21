@@ -78,11 +78,10 @@ const loginZodSchema = z.object({
     .strict(),
 });
 
-const refreshZodSchema = z
+const emptyObject = z
   .object(
     {},
     {
-      // to catch the extra keys
       errorMap: (issue, ctx) => {
         if (issue.code === z.ZodIssueCode.unrecognized_keys) {
           const extraFields = issue.keys.join(', ');
@@ -96,8 +95,25 @@ const refreshZodSchema = z
   )
   .strict();
 
+const refreshZodSchema = z
+  .object({
+    body: emptyObject,
+    params: emptyObject,
+    query: emptyObject,
+  })
+  .partial();
+
+const logoutZodSchema = z
+  .object({
+    body: emptyObject,
+    params: emptyObject,
+    query: emptyObject,
+  })
+  .partial();
+
 module.exports = {
   signupZodSchema,
   loginZodSchema,
   refreshZodSchema,
+  logoutZodSchema,
 };
