@@ -2,7 +2,7 @@ const eventBus = require('../utils/eventBus');
 const { evaluateAndAwardBadges } = require('./badgeEngine');
 const { CRITERIA } = require('../utils/enums');
 
-eventBus.on('COURSE_COMPLETED', async (user) => {
+eventBus.on(CRITERIA.COURSE_COMPLETED, async (user) => {
   try {
     await evaluateAndAwardBadges(user, CRITERIA.COURSE_COMPLETED);
   } catch (err) {
@@ -10,7 +10,7 @@ eventBus.on('COURSE_COMPLETED', async (user) => {
   }
 });
 
-eventBus.on('SKILL_ENDORSED', async (user) => {
+eventBus.on(CRITERIA.SKILL_ENDORSED, async (user) => {
   try {
     await evaluateAndAwardBadges(user, CRITERIA.SKILL_ENDORSED);
   } catch (err) {
