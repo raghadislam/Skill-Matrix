@@ -3,7 +3,7 @@ const Enrollment = require('../models/enrollmentModel');
 const Notification = require('../models/notificationModel');
 const APIFeatures = require('../utils/apiFeatures');
 const AppError = require('../utils/appError');
-const cloudinary = require('../utils/cloudinary');
+const cloudinary = require('../config/cloudinaryConfig');
 
 class UserService {
   #population(query) {

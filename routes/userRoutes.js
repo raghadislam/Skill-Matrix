@@ -2,7 +2,6 @@ const express = require('express');
 
 const userController = require('../controllers/userController');
 const endorsementController = require('../controllers/endorsementController');
-const uploadService = require('../services/uploadServices');
 
 const validate = require('../middlewares/validate');
 const protect = require('../middlewares/auth/protect');
@@ -25,12 +24,18 @@ router.get('/my-enrollments', userController.getMyEnrollments);
 router.get('/inbox', userController.getMyNotifications);
 router.get('/me', userController.getMe);
 
+const upload = require('../middlewares/multer');
+const {
+  handlePhotoUpload,
+  handleResumeUpload,
+} = require('../middlewares/uploadsHandler');
+
 router.patch(
   '/updateMe',
   validate(changeMeZodSchema),
-  uploadService.getPhotoAndResumeUploader(),
-  uploadService.resizeUserPhoto,
-  uploadService.uploadResumeToCloudinary,
+  upload,
+  handlePhotoUpload,
+  handleResumeUpload,
   userController.updateMe,
 );
 

@@ -5,8 +5,7 @@
     "email": "ahmed.elsakka@example.com",
     "role": "trainer",
     "password": "pass1111",
-    "department": "Development",
-    "photo": "default.jpg"
+    "department": "Development"
   },
   {
     "_id": "60f5a3c2e1b1c8001c4d0002",
@@ -14,8 +13,7 @@
     "email": "mona.zaki@example.com",
     "role": "employee",
     "password": "pass1111",
-    "department": "Marketing",
-    "photo": "default.jpg"
+    "department": "Marketing"
   },
   {
     "_id": "60f5a3c2e1b1c8001c4d0003",
@@ -23,8 +21,7 @@
     "email": "amr.diab@example.com",
     "role": "trainer",
     "password": "pass1111",
-    "department": "Design",
-    "photo": "default.jpg"
+    "department": "Design"
   },
   {
     "_id": "60f5a3c2e1b1c8001c4d0004",
@@ -32,8 +29,7 @@
     "email": "yasmine.abdelaziz@example.com",
     "role": "trainer",
     "password": "pass1111",
-    "department": "Development",
-    "photo": "default.jpg"
+    "department": "Development"
   },
   {
     "_id": "60f5a3c2e1b1c8001c4d0005",
@@ -41,8 +37,7 @@
     "email": "tamer.hosny@example.com",
     "role": "employee",
     "password": "pass1111",
-    "department": "Marketing",
-    "photo": "default.jpg"
+    "department": "Marketing"
   },
   {
     "_id": "60f5a3c2e1b1c8001c4d0006",
@@ -50,8 +45,7 @@
     "email": "donia.samirghanem@example.com",
     "role": "trainer",
     "password": "pass1111",
-    "department": "Development",
-    "photo": "default.jpg"
+    "department": "Development"
   },
   {
     "_id": "60f5a3c2e1b1c8001c4d0007",
@@ -59,8 +53,7 @@
     "email": "mohamed.ramadan@example.com",
     "role": "employee",
     "password": "pass1111",
-    "department": "Marketing",
-    "photo": "default.jpg"
+    "department": "Marketing"
   },
   {
     "_id": "60f5a3c2e1b1c8001c4d0008",
@@ -68,8 +61,7 @@
     "email": "hend.sabry@example.com",
     "role": "trainer",
     "password": "pass1111",
-    "department": "Design",
-    "photo": "default.jpg"
+    "department": "Design"
   },
   {
     "_id": "60f5a3c2e1b1c8001c4d0009",
@@ -77,8 +69,7 @@
     "email": "karim.abdelaziz@example.com",
     "role": "trainer",
     "password": "pass1111",
-    "department": "Development",
-    "photo": "default.jpg"
+    "department": "Development"
   },
   {
     "_id": "60f5a3c2e1b1c8001c4d000a",
@@ -86,8 +77,7 @@
     "email": "menna.shalaby@example.com",
     "role": "employee",
     "password": "pass1111",
-    "department": "Marketing",
-    "photo": "default.jpg"
+    "department": "Marketing"
   },
   {
     "_id": "60f5a3c2e1b1c8001c4d000b",
@@ -95,8 +85,7 @@
     "email": "ahmed.helmy@example.com",
     "role": "trainer",
     "password": "pass1111",
-    "department": "Development",
-    "photo": "default.jpg"
+    "department": "Development"
   },
   {
     "_id": "60f5a3c2e1b1c8001c4d000c",
@@ -104,8 +93,7 @@
     "email": "ghada.adel@example.com",
     "role": "admin",
     "password": "pass1111",
-    "department": "Design",
-    "photo": "default.jpg"
+    "department": "Design"
   },
   {
     "_id": "60f5a3c2e1b1c8001c4d000d",
@@ -113,8 +101,7 @@
     "email": "hany.ramzy@example.com",
     "role": "employee",
     "password": "pass1111",
-    "department": "Marketing",
-    "photo": "default.jpg"
+    "department": "Marketing"
   },
   {
     "_id": "60f5a3c2e1b1c8001c4d000e",
@@ -122,8 +109,7 @@
     "email": "mai.ezzeldin@example.com",
     "role": "trainer",
     "password": "pass1111",
-    "department": "Development",
-    "photo": "default.jpg"
+    "department": "Development"
   },
   {
     "_id": "60f5a3c2e1b1c8001c4d000f",
@@ -131,8 +117,7 @@
     "email": "mohamed.henedy@example.com",
     "role": "employee",
     "password": "pass1111",
-    "department": "Marketing",
-    "photo": "default.jpg"
+    "department": "Marketing"
   },
   {
     "_id": "60f5a3c2e1b1c8001c4d0010",
@@ -140,8 +125,7 @@
     "email": "saba.mubarak@example.com",
     "role": "trainer",
     "password": "pass1111",
-    "department": "Design",
-    "photo": "default.jpg"
+    "department": "Design"
   },
   {
     "_id": "60f5a3c2e1b1c8001c4d0011",
@@ -149,8 +133,7 @@
     "email": "samersamora@example.com",
     "role": "admin",
     "password": "pass1111",
-    "department": "Development",
-    "photo": "default.jpg"
+    "department": "Development"
   },
   {
     "_id": "60f5a3c2e1b1c8001c4d0012",
@@ -158,7 +141,6 @@
     "email": "raghad.noser@example.com",
     "role": "admin",
     "password": "pass1111",
-    "department": "Marketing",
-    "photo": "default.jpg"
+    "department": "Marketing"
   }
 ]

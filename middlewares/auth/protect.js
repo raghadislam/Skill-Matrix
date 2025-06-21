@@ -23,7 +23,9 @@ module.exports = async (req, res, next) => {
     token,
     process.env.ACCESS_TOKEN_SECRET,
   );
-  const user = await User.findById(decoded.id);
+  const user = await User.findById(decoded.id).select(
+    '+photoPublicId +resumePublicId',
+  );
   if (!user)
     throw new AppError(
       'The user belonging to this token does no longer exist.',
