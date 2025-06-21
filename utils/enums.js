@@ -43,6 +43,11 @@ const STATUS = {
   COMPLETED: 'completed',
 };
 
+const CRITERIA = {
+  COURSE_COMPLETION: 'COURSE_COMPLETION',
+  SKILL_ENDORSEMENT: 'SKILL_ENDORSEMENT',
+  MENTORSHIP: 'MENTORSHIP',
+};
 module.exports = {
   ROLE,
   DEPT,
@@ -50,4 +55,5 @@ module.exports = {
   TYPE,
   DIFFICULTY,
   WEIGHT,
+  CRITERIA,
 };
