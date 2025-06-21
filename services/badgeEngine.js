@@ -23,40 +23,40 @@ async function loadBadgesToCache() {
 }
 
 const badgeEvaluators = {
-  [CRITERIA.COURSE_COMPLETED]: async (user, count) => {
+  [CRITERIA.COURSE_COMPLETED]: async (userId, count) => {
     const completed = await Enrollment.find({
-      user: user._id,
+      user: userId,
       status: STATUS.COMPLETED,
     });
     return completed.length >= count;
   },
-  [CRITERIA.SKILL_ENDORSED]: async (user, count) => {
+  [CRITERIA.SKILL_ENDORSED]: async (userId, count) => {
     const endorsed = await Endorsement.find({
-      endorsee: user._id,
+      endorsee: userId,
     });
 
     return endorsed.length >= count;
   },
 };
 
-async function evaluateAndAwardBadges(user, type) {
+async function evaluateAndAwardBadges(userId, type) {
   const typeMap = badgeCache.get(type);
   if (!typeMap) return;
 
   await Promise.all(
     Array.from(typeMap.entries()).map(async ([count, badge]) => {
-      const hasReached = await badgeEvaluators[type](user, count);
+      const hasReached = await badgeEvaluators[type](userId, count);
       if (!hasReached) return;
 
       const alreadyAwarded = await UserBadge.exists({
-        userId: user._id,
+        userId: userId,
         badgeId: badge._id,
       });
       if (alreadyAwarded) return;
 
-      await UserBadge.create({ userId: user._id, badgeId: badge._id });
+      await UserBadge.create({ userId: userId, badgeId: badge._id });
 
-      console.log(`🏅 ${user.name} earned badge: ${badge.name}`);
+      console.log(`🏅 ${userId} earned badge: ${badge.name}`);
     }),
   );
 }
