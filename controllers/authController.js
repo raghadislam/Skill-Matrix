@@ -13,7 +13,6 @@ exports.signup = async (req, res, next) => {
     status,
     message,
     accessToken,
-    refreshToken,
     data: { user },
   });
 };
@@ -30,7 +29,6 @@ exports.login = async (req, res, next) => {
     status,
     message,
     accessToken,
-    refreshToken,
     data: { user },
   });
 };
@@ -48,7 +46,6 @@ exports.refresh = async (req, res, next) => {
     status,
     message,
     accessToken,
-    refreshToken,
   });
 };
 
