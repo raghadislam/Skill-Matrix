@@ -9,8 +9,6 @@ const AppError = require('../utils/appError');
 const signAsync = promisify(jwt.sign);
 const verifyAsync = promisify(jwt.verify);
 
-const MAX_SESSION_AGE_MS = 30 * 24 * 60 * 60 * 1000;
-
 class AuthService {
   async #createTokens(userId) {
     const payload = { id: userId };
@@ -45,7 +43,7 @@ class AuthService {
     await RefreshToken.create({
       user: user._id,
       token: refreshToken,
-      expiresAt: new Date(Date.now() + MAX_SESSION_AGE_MS),
+      expiresAt: new Date(Date.now() + process.env.REFRESH_TOKEN_EXPIRES_IN),
     });
 
     user.password = undefined;
@@ -76,7 +74,7 @@ class AuthService {
     await RefreshToken.create({
       user: user._id,
       token: refreshToken,
-      expiresAt: new Date(Date.now() + MAX_SESSION_AGE_MS),
+      expiresAt: new Date(Date.now() + process.env.REFRESH_TOKEN_EXPIRES_IN),
     });
 
     return {
