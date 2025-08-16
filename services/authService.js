@@ -74,7 +74,9 @@ class AuthService {
     await RefreshToken.create({
       user: user._id,
       token: refreshToken,
-      expiresAt: new Date(Date.now() + process.env.REFRESH_TOKEN_EXPIRES_IN),
+      expiresAt: new Date(
+        Date.now() + Number(process.env.REFRESH_TOKEN_EXPIRES_IN),
+      ),
     });
 
     return {

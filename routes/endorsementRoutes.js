@@ -15,7 +15,10 @@ const {
 
 const router = express.Router();
 
-router.use(protect, restrictTo(ROLE.TRAINER, ROLE.ADMIN, ROLE.MANAGER));
+router.use(
+  protect,
+  restrictTo(ROLE.TRAINER, ROLE.ADMIN, ROLE.MANAGER, ROLE.MENTOR),
+);
 
 router.get(
   '/',

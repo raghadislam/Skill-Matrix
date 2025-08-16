@@ -15,6 +15,7 @@ const ROLE = {
   TRAINER: 'trainer',
   MANAGER: 'manager',
   ADMIN: 'admin',
+  MENTOR: 'mentor',
 };
 
 const TYPE = {
