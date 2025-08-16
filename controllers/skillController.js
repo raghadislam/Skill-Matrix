@@ -57,3 +57,14 @@ exports.getSkill = async (req, res, next) => {
     data: { skill },
   });
 };
+
+exports.getSkillHistory = async (req, res, next) => {
+  const skillId = req.params.id;
+  const history = await skillService.getSkillHistory(skillId, req.query);
+
+  sendResponse(res, {
+    statusCode: 200,
+    status: 'success',
+    data: { history },
+  });
+};

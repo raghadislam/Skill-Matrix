@@ -45,5 +45,12 @@ const skillHistorySchema = new mongoose.Schema(
 skillHistorySchema.index({ skill: 1, createdAt: -1 });
 skillHistorySchema.index({ actor: 1, createdAt: -1 });
 
+skillHistorySchema.query.findPopulate = function () {
+  return this.populate('skill', 'name category description').populate(
+    'actor',
+    'name role',
+  );
+};
+
 const SkillHistory = mongoose.model('SkillHistory', skillHistorySchema);
 module.exports = SkillHistory;

@@ -13,6 +13,13 @@ const { endorseSchema } = require('../validators/endorsementValidator');
 
 const router = express.Router();
 
+router.get(
+  '/:id/history',
+  protect,
+  restrictTo(ROLE.ADMIN, ROLE.MANAGER),
+  skillController.getSkillHistory,
+);
+
 router.post(
   '/:id/endorse',
   validate(endorseSchema),

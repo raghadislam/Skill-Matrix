@@ -4,6 +4,7 @@ const Skill = require('../models/skillModel');
 const SkillHistory = require('../models/skillHistoryModel');
 const APIFeatures = require('../utils/apiFeatures');
 const { HISTORY_TYPE } = require('../utils/enums');
+const AppError = require('../utils/appError');
 
 class SkillService {
   #population(query) {
@@ -133,6 +134,21 @@ class SkillService {
   async getSkill(id) {
     const query = this.#population(Skill.findById(id));
     return await query.lean();
+  }
+
+  async getSkillHistory(skillId, queryString) {
+    const skillExists = await SkillHistory.exists({ skill: skillId });
+    if (!skillExists) throw new AppError(`No skill found with that ID`, 404);
+
+    const query = SkillHistory.find({ skill: skillId }).findPopulate();
+
+    const features = new APIFeatures(query, queryString)
+      .filter()
+      .sort()
+      .limitFields()
+      .paginate();
+
+    return await features.query.lean();
   }
 }
 
