@@ -12,7 +12,7 @@ exports.getAllSkills = async (req, res, next) => {
 };
 
 exports.createSkill = async (req, res, next) => {
-  const skill = await skillService.createSkill(req.body);
+  const skill = await skillService.createSkill(req.body, req.user);
   sendResponse(res, {
     statusCode: 201,
     status: 'success',
@@ -21,7 +21,11 @@ exports.createSkill = async (req, res, next) => {
 };
 
 exports.updateSkill = async (req, res, next) => {
-  const skill = await skillService.updateSkill(req.params.id, req.body);
+  const skill = await skillService.updateSkill(
+    req.params.id,
+    req.body,
+    req.user,
+  );
 
   if (!skill) return next(new AppError(`No skill found with that ID`, 404));
   sendResponse(res, {
@@ -32,7 +36,7 @@ exports.updateSkill = async (req, res, next) => {
 };
 
 exports.deleteSkill = async (req, res, next) => {
-  const skill = await skillService.deleteSkill(req.params.id);
+  const skill = await skillService.deleteSkill(req.params.id, req.user);
   if (!skill) {
     return next(new AppError('No skill found with that ID', 404));
   }
