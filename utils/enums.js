@@ -48,6 +48,16 @@ const CRITERIA = {
   COURSE_COMPLETED: 'COURSE_COMPLETED',
   SKILL_ENDORSED: 'SKILL_ENDORSED',
 };
+
+const HISTORY_TYPE = {
+  CREATE: 'create',
+  RENAME: 'rename',
+  MERGE: 'merge',
+  SPLIT: 'split',
+  UPDATE: 'update',
+  DELETE: 'delete',
+};
+
 module.exports = {
   ROLE,
   DEPT,
@@ -56,4 +66,5 @@ module.exports = {
   DIFFICULTY,
   WEIGHT,
   CRITERIA,
+  HISTORY_TYPE,
 };
