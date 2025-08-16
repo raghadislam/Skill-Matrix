@@ -14,8 +14,8 @@ const skillHistorySchema = new mongoose.Schema(
       type: String,
       required: [true, 'History type is required'],
       enum: {
-        values: HISTORY_TYPE.values,
-        message: `Type must be one of ${HISTORY_TYPE.values.join(', ')}`,
+        values: Object.values(HISTORY_TYPE),
+        message: `Type must be one of ${Object.values(HISTORY_TYPE).join(', ')}`,
       },
     },
 
@@ -27,11 +27,9 @@ const skillHistorySchema = new mongoose.Schema(
 
     before: {
       type: mongoose.Schema.Types.Mixed,
-      required: [true, 'Before snapshot is required'],
     },
     after: {
       type: mongoose.Schema.Types.Mixed,
-      required: [true, 'After snapshot is required'],
     },
 
     note: { type: String, trim: true },
