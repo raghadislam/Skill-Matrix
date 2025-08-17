@@ -17,7 +17,10 @@ const router = express.Router();
 
 router.route();
 
-router.use(protect, restrictTo(ROLE.ADMIN, ROLE.TRAINER, ROLE.MANAGER));
+router.use(
+  protect,
+  restrictTo(ROLE.ADMIN, ROLE.TRAINER, ROLE.MANAGER, ROLE.MENTOR),
+);
 
 router
   .route('/')

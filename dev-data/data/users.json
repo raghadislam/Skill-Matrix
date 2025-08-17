@@ -128,8 +128,16 @@
     "department": "Design"
   },
   {
+    "_id": "60f5a3c2e1b1c8001c4d0055",
+    "name": "Rody",
+    "email": "rody@example.com",
+    "role": "mentor",
+    "password": "pass1111",
+    "department": "Development"
+  },
+  {
     "_id": "60f5a3c2e1b1c8001c4d0011",
-    "name": "Samersamora",
+    "name": "Samer Samora",
     "email": "samersamora@example.com",
     "role": "admin",
     "password": "pass1111",
