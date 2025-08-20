@@ -11,8 +11,19 @@ const eventBus = require('../utils/eventBus');
 const STATUS = require('../utils/courseStatus');
 const { TYPE } = require('../utils/enums');
 const { CRITERIA } = require('../utils/enums');
+const redisClient = require('../config/redis');
 
 class CourseService {
+  async #getOrSetCache(key, cb) {
+    const data = await redisClient.get(key);
+
+    if (data != null) return JSON.parse(data);
+
+    const freshData = await cb();
+    await redisClient.setEx(key, 3600, JSON.stringify(freshData));
+    return freshData;
+  }
+
   #population(query) {
     return query.populate({
       path: 'prerequisites',
@@ -21,19 +32,30 @@ class CourseService {
   }
 
   async getAllCourses(queryString) {
-    const query = this.#population(Course.find());
-    const feature = new ApiFeatures(query, queryString)
-      .filter()
-      .sort()
-      .limitFields()
-      .paginate();
+    const cacheKey = `courses:${JSON.stringify(queryString)}}`;
 
-    return await feature.query.lean();
+    const data = await this.#getOrSetCache(cacheKey, async () => {
+      const query = this.#population(Course.find());
+      const feature = new ApiFeatures(query, queryString)
+        .filter()
+        .sort()
+        .limitFields()
+        .paginate();
+      return await feature.query.lean();
+    });
+
+    return data;
   }
 
   async getCourse(id) {
-    const query = this.#population(Course.findById(id));
-    return await query.lean();
+    const cacheKey = `courses:${id}`;
+
+    const data = await this.#getOrSetCache(cacheKey, async () => {
+      const query = this.#population(Course.findById(id));
+      return await query.lean();
+    });
+
+    return data;
   }
 
   async createCourse(data) {
