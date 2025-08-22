@@ -1,15 +1,15 @@
 const fs = require('fs');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
-const Skill = require('../../models/skillModel');
-const User = require('../../models/userModel');
-const Course = require('../../models/courseModel');
-const Path = require('../../models/learningPathModel');
-const Assessment = require('../../models/assessmentModel');
-const AssessmentRequest = require('../../models/assessmentRequestModel');
-const Notification = require('../../models/notificationModel');
-const Question = require('../../models/questionModel');
-const Badge = require('../../models/BadgeModel');
+const Skill = require('../../models/skill.model');
+const User = require('../../models/user.model');
+const Course = require('../../models/course.model');
+const Path = require('../../models/learningPath.model');
+const Assessment = require('../../models/assessment.model');
+const AssessmentRequest = require('../../models/assessmentRequest.model');
+const Notification = require('../../models/notification.model');
+const Question = require('../../models/question.model');
+const Badge = require('../../models/badge.model');
 
 dotenv.config({ path: './config.env' });
 

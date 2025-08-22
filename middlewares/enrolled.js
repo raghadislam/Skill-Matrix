@@ -1,4 +1,4 @@
-const Enrollment = require('../models/enrollmentModel');
+const Enrollment = require('../models/enrollment.model');
 const AppError = require('../utils/appError');
 const { ROLE } = require('../utils/enums');
 

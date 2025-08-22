@@ -1,8 +1,8 @@
 const badgeCache = new Map();
-const Badge = require('../models/BadgeModel');
-const UserBadge = require('../models/userBadgeModel');
-const Endorsement = require('../models/endorsementModel');
-const Enrollment = require('../models/enrollmentModel');
+const Badge = require('../models/badge.model');
+const UserBadge = require('../models/userBadge.model');
+const Endorsement = require('../models/endorsement.model');
+const Enrollment = require('../models/enrollment.model');
 const { STATUS } = require('../utils/enums');
 const { CRITERIA } = require('../utils/enums');
 

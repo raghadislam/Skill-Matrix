@@ -2,17 +2,17 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 
 const globalErrorHandler = require('./middlewares/globalErrorHandler');
-const userRouter = require('./routes/userRoutes');
-const authRouter = require('./routes/authRoutes');
-const skillRouter = require('./routes/skillRoutes');
-const courseRouter = require('./routes/courseRoutes');
-const pathRouter = require('./routes/learningPathRoutes');
-const assessmentRouter = require('./routes/assessmentRoutes');
-const enrollmentRouter = require('./routes/enrollmentRoutes');
-const assessmentRequestRouter = require('./routes/assessmentRequestsRoutes');
-const notificationRouter = require('./routes/notificationRoutes');
-const endorsementRouter = require('./routes/endorsementRoutes');
-const reportRouter = require('./routes/Report.routes');
+const userRouter = require('./routes/user.routes');
+const authRouter = require('./routes/auth.routes');
+const skillRouter = require('./routes/skill.routes');
+const courseRouter = require('./routes/course.routes');
+const pathRouter = require('./routes/learningPath.routes');
+const assessmentRouter = require('./routes/assessment.routes');
+const enrollmentRouter = require('./routes/enrollment.routes');
+const assessmentRequestRouter = require('./routes/assessmentRequests.routes');
+const notificationRouter = require('./routes/notification.routes');
+const endorsementRouter = require('./routes/endorsement.routes');
+const reportRouter = require('./routes/report.routes');
 
 const app = express();
 
