@@ -12,6 +12,7 @@ const enrollmentRouter = require('./routes/enrollmentRoutes');
 const assessmentRequestRouter = require('./routes/assessmentRequestsRoutes');
 const notificationRouter = require('./routes/notificationRoutes');
 const endorsementRouter = require('./routes/endorsementRoutes');
+const reportRouter = require('./routes/Report.routes');
 
 const app = express();
 
@@ -28,6 +29,7 @@ app.use('/api/v1/enrollments', enrollmentRouter);
 app.use('/api/v1/assessment-requests', assessmentRequestRouter);
 app.use('/api/v1/notifications', notificationRouter);
 app.use('/api/v1/endorsements', endorsementRouter);
+app.use('/api/v1/reports', reportRouter);
 
 app.use(globalErrorHandler);
 
