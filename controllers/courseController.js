@@ -38,7 +38,6 @@ exports.updateCourse = async (req, res) => {
     req.params.id,
     req.body,
   );
-  if (!updatedCourse) throw new AppError(`No course found with that ID`, 404);
 
   sendResponse(res, {
     statusCode: 200,
@@ -48,8 +47,7 @@ exports.updateCourse = async (req, res) => {
 };
 
 exports.deleteCourse = async (req, res) => {
-  const course = await courseService.deleteCourse(req.params.id);
-  if (!course) throw new AppError(`No course found with that ID`, 404);
+  await courseService.deleteCourse(req.params.id);
 
   sendResponse(res, {
     statusCode: 204,
