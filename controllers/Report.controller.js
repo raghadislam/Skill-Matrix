@@ -14,7 +14,17 @@ exports.getSkillPopularity = async (req, res) => {
     min,
   );
   sendResponse(res, {
-    statusCode: 201,
+    statusCode: 200,
+    status: 'success',
+    data: { report },
+  });
+};
+
+exports.getAvgCompletionTime = async (req, res) => {
+  const report = await reportService.getAvgCompletionTime();
+
+  sendResponse(res, {
+    statusCode: 200,
     status: 'success',
     data: { report },
   });

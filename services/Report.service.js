@@ -1,4 +1,5 @@
 const Endorsement = require('../models/endorsementModel');
+const Enrollment = require('../models/enrollmentModel');
 
 class ReportService {
   async getSkillPopularity(limit, page, category, min) {
@@ -40,6 +41,68 @@ class ReportService {
       { $sort: { endorsementCount: -1, name: 1 } },
       { $skip: skip },
       { $limit: limit },
+    ]).exec();
+
+    return report;
+  }
+
+  async getAvgCompletionTime() {
+    const report = await Enrollment.aggregate([
+      {
+        $match: {
+          completedAt: { $exists: true, $ne: null },
+        },
+      },
+
+      {
+        $project: {
+          course: 1,
+          durationHours: {
+            $divide: [
+              { $subtract: ['$completedAt', '$enrolledAt'] },
+              1000 * 60 * 60,
+            ],
+          },
+        },
+      },
+
+      {
+        $match: {
+          durationHours: { $gte: 0 },
+        },
+      },
+
+      {
+        $group: {
+          _id: '$course',
+          avgDuration: { $avg: '$durationHours' },
+          count: { $sum: 1 },
+        },
+      },
+
+      {
+        $lookup: {
+          from: 'courses',
+          localField: '_id',
+          foreignField: '_id',
+          as: 'course',
+        },
+      },
+
+      {
+        $unwind: '$course',
+      },
+
+      {
+        $project: {
+          courseId: '$_id',
+          title: '$course.title',
+          avgDuration: { $round: ['$avgDuration', 2] },
+          count: 1,
+        },
+      },
+
+      { $sort: { avgDuration: -1 } },
     ]).exec();
 
     return report;

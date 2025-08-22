@@ -213,7 +213,7 @@ class CourseService {
       await Promise.all([
         Enrollment.findOneAndUpdate(
           { course: courseId, user: userId },
-          { status: STATUS.COMPLETED },
+          { status: STATUS.COMPLETED, completedAt: Date.now() },
           { new: true, runValidators: true },
         ),
 
