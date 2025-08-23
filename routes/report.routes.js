@@ -22,4 +22,6 @@ router.get(
   reportController.getMonthlyNotificationVolume,
 );
 
+router.get('/course-funnel/:courseId', reportController.getCourseFunnel);
+
 module.exports = router;

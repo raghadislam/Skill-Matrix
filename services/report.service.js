@@ -1,6 +1,11 @@
+const mongoose = require('mongoose');
+
 const Endorsement = require('../models/endorsement.model');
 const Enrollment = require('../models/enrollment.model');
 const Notification = require('../models/notification.model');
+const course = require('../models/course.model');
+const AppError = require('../utils/appError');
+const { STATUS } = require('../utils/enums');
 
 class ReportService {
   async getSkillPopularity(limit, page, category, min) {
@@ -148,6 +153,42 @@ class ReportService {
     ]).exec();
 
     return report;
+  }
+
+  async getCourseFunnel(courseId) {
+    if (!(await course.exists({ _id: courseId })))
+      throw new AppError(`No course found with that ID`, 404);
+
+    const courseObjectId = new mongoose.Types.ObjectId(courseId);
+
+    const report = await Enrollment.aggregate([
+      { $match: { course: courseObjectId } },
+
+      {
+        $group: {
+          _id: '$status',
+          count: { $sum: 1 },
+        },
+      },
+
+      {
+        $project: {
+          _id: 0,
+          status: '$_id',
+          count: 1,
+        },
+      },
+    ]);
+
+    const map = report.reduce((a, r) => {
+      a[r.status] = r.count;
+      return a;
+    }, {});
+
+    return Object.values(STATUS).map((status) => ({
+      status,
+      count: map[status] || 0,
+    }));
   }
 }
 
