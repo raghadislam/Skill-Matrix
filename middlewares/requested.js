@@ -1,5 +1,5 @@
-const AssessmentRequest = require('../models/assessmentRequestModel');
-const Assessment = require('../models/assessmentModel');
+const AssessmentRequest = require('../models/assessmentRequest.model');
+const Assessment = require('../models/assessment.model');
 const AppError = require('../utils/appError');
 
 module.exports = async (req, res, next) => {
