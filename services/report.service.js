@@ -1,5 +1,6 @@
 const Endorsement = require('../models/endorsement.model');
 const Enrollment = require('../models/enrollment.model');
+const Notification = require('../models/notification.model');
 
 class ReportService {
   async getSkillPopularity(limit, page, category, min) {
@@ -103,6 +104,47 @@ class ReportService {
       },
 
       { $sort: { avgDuration: -1 } },
+    ]).exec();
+
+    return report;
+  }
+
+  async getMonthlyNotificationVolume(year) {
+    const start = new Date(`${year}-01-01T00:00:00.000Z`);
+    const end = new Date(`${year + 1}-01-01T00:00:00.000Z`);
+
+    const report = await Notification.aggregate([
+      {
+        $match: {
+          createdAt: { $gte: start, $lt: end },
+        },
+      },
+
+      {
+        $group: {
+          _id: { month: { $month: '$createdAt' }, type: '$type' },
+          count: { $sum: 1 },
+        },
+      },
+
+      {
+        $group: {
+          _id: '$_id.month',
+          notificationTypes: {
+            $push: { type: '$_id.type', count: '$count' },
+          },
+        },
+      },
+
+      {
+        $project: {
+          month: '$_id',
+          notificationTypes: 1,
+          _id: 0,
+        },
+      },
+
+      { $sort: { month: 1 } },
     ]).exec();
 
     return report;

@@ -16,4 +16,10 @@ router.get('/skill-popularity', reportController.getSkillPopularity);
 
 router.get('/avg-completion-time', reportController.getAvgCompletionTime);
 
+router.get(
+  '/monthly-notification-volume',
+  restrictTo(ROLE.ADMIN, ROLE.MANAGER),
+  reportController.getMonthlyNotificationVolume,
+);
+
 module.exports = router;
