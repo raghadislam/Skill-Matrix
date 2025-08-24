@@ -58,3 +58,16 @@ exports.getPath = async (req, res, next) => {
     data: { path },
   });
 };
+
+exports.autoEnroll = async (req, res, next) => {
+  const { pathId } = req.params;
+  const { user } = req;
+  const mode = req.query.mode === 'warn' ? 'warn' : 'enroll';
+
+  const result = await learningPathService.autoEnroll(pathId, user, mode);
+
+  res.status(200).json({
+    status: 'success',
+    data: result,
+  });
+};

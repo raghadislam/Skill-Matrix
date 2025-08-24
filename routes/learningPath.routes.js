@@ -18,6 +18,13 @@ const router = express.Router();
 router.get('/', validate(getAllPathsZodSchema), pathController.getAllPaths);
 router.get('/:id', validate(getPathZodSchema), pathController.getPath);
 
+router.post(
+  '/:pathId/auto-enroll',
+  protect,
+  restrictTo(ROLE.EMPLOYEE),
+  pathController.autoEnroll,
+);
+
 router.use(protect, restrictTo(ROLE.MANAGER, ROLE.ADMIN));
 
 router.post('/', validate(createPathSchema), pathController.createPath);
