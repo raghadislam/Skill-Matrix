@@ -50,10 +50,21 @@ const updatePathZodSchema = z.object({
     }),
 });
 
+const autoEnrollZodSchema = z.object({
+  params: idParamsValidator,
+
+  query: z
+    .object({
+      mode: z.enum(['auto', 'warn']).default('auto'),
+    })
+    .partial(),
+});
+
 module.exports = {
   getAllPathsZodSchema,
   getPathZodSchema,
   deletePathZodSchema,
   createPathSchema,
   updatePathZodSchema,
+  autoEnrollZodSchema,
 };
