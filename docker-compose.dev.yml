@@ -1,0 +1,14 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+
+    container_name: skill-matrix-api-app-dev
+
+    volumes:
+      - .:/app:ro
+      - /app/node_modules # Prevent node_modules overwrite by host
+    environment:
+      - NODE_ENV=development

@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const Endorsement = require('../models/endorsement.model');
 const Enrollment = require('../models/enrollment.model');
 const Notification = require('../models/notification.model');
-const course = require('../models/course.model');
+const Course = require('../models/course.model');
 const AppError = require('../utils/appError');
 const { STATUS } = require('../utils/enums');
 
@@ -156,7 +156,7 @@ class ReportService {
   }
 
   async getCourseFunnel(courseId) {
-    if (!(await course.exists({ _id: courseId })))
+    if (!(await Course.exists({ _id: courseId })))
       throw new AppError(`No course found with that ID`, 404);
 
     const courseObjectId = new mongoose.Types.ObjectId(courseId);
