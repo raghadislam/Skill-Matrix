@@ -16,7 +16,11 @@ const {
   answersSchema,
 } = require('../validators/courseValidator');
 
+const reviewRouter = require('./review.routes');
+
 const router = express.Router();
+
+router.use('/:courseId/reviews', reviewRouter);
 
 router.get(
   '/',
