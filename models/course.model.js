@@ -50,7 +50,7 @@ const courseSchema = new mongoose.Schema(
       default: 4.5,
       min: [1, 'Rating must be >= 1.0'],
       max: [5, 'Rating must be <= 5.0'],
-      set: (val) => Math.round(val * 10) / 10, // round to 1 decimal place
+      set: (v) => (Number.isFinite(v) ? Math.round(v * 10) / 10 : undefined),
     },
   },
   {
