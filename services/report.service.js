@@ -1,9 +1,11 @@
 const mongoose = require('mongoose');
+const Sentiment = require('sentiment');
 
 const Endorsement = require('../models/endorsement.model');
 const Enrollment = require('../models/enrollment.model');
 const Notification = require('../models/notification.model');
 const Course = require('../models/course.model');
+const Review = require('../models/review.model');
 const AppError = require('../utils/appError');
 const { STATUS } = require('../utils/enums');
 
@@ -189,6 +191,101 @@ class ReportService {
       status,
       count: map[status] || 0,
     }));
+  }
+
+  async getCourseRatingsSummary() {
+    const result = await Review.aggregate([
+      {
+        $lookup: {
+          from: 'courses',
+          localField: 'course',
+          foreignField: '_id',
+          as: 'course',
+        },
+      },
+
+      {
+        $unwind: '$course',
+      },
+
+      {
+        $group: {
+          _id: '$course._id',
+          title: { $first: '$course.title' },
+          reviewCount: { $sum: 1 },
+          averageRating: { $avg: '$rating' },
+          reviews: { $push: { rating: '$rating', review: '$review' } },
+        },
+      },
+
+      {
+        $project: {
+          title: 1,
+          averageRating: { $round: ['$averageRating', 2] },
+          count: 1,
+          reviews: 1,
+          reviewCount: 1,
+        },
+      },
+
+      { $sort: { averageRating: -1, reviewCount: -1 } },
+    ]).exec();
+
+    // Sentiment analysis on reviews
+    const sentiment = new Sentiment();
+    const report = result.map((course) => {
+      let postive = 0;
+      let negative = 0;
+
+      course.reviews.forEach((reviewObj) => {
+        if (reviewObj) {
+          const { score } = sentiment.analyze(reviewObj.review);
+          if (score > 0) postive += 1;
+          else if (score < 0) negative += 1;
+          else if (reviewObj.rating >= 4) postive += 1;
+          else if (reviewObj.rating <= 2) negative += 1;
+        }
+      });
+
+      const postivePercentage =
+        course.reviews.length > 0
+          ? Math.round((postive / course.reviewCount) * 100)
+          : 0;
+      const negativePercentage =
+        course.reviews.length > 0
+          ? Math.round((negative / course.reviewCount) * 100)
+          : 0;
+
+      return {
+        courseId: course._id,
+        title: course.title,
+        averageRating: course.averageRating,
+        reviewCount: course.reviewCount,
+        percentage: {
+          positive: postivePercentage,
+          negative: negativePercentage,
+        },
+      };
+    });
+
+    report.sort((a, b) => {
+      // Sort by average rating desc
+      if (a.averageRating !== b.averageRating)
+        return b.averageRating - a.averageRating;
+
+      // then by positive percentage desc
+      if (a.positivePercentage !== b.positivePercentage)
+        return b.positivePercentage - a.positivePercentage;
+
+      // then by negative percentage asc
+      if (a.negativePercentage !== b.negativePercentage)
+        return a.negativePercentage - b.negativePercentage;
+
+      // then by review count desc
+      return b.reviewCount - a.reviewCount;
+    });
+
+    return report;
   }
 }
 

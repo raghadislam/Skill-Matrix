@@ -53,3 +53,13 @@ exports.getCourseFunnel = async (req, res) => {
     data: { report },
   });
 };
+
+exports.getCourseRatingsSummary = async (req, res) => {
+  const report = await reportService.getCourseRatingsSummary();
+
+  sendResponse(res, {
+    statusCode: 200,
+    status: 'success',
+    data: { report },
+  });
+};
