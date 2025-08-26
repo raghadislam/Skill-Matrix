@@ -1,0 +1,14 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+
+    container_name: skill-matrix-api-app-dev
+
+    volumes:
+      - ./src:/app/src:ro
+
+    environment:
+      - NODE_ENV=development
