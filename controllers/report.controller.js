@@ -29,3 +29,27 @@ exports.getAvgCompletionTime = async (req, res) => {
     data: { report },
   });
 };
+
+exports.getMonthlyNotificationVolume = async (req, res) => {
+  const year = req.query.year * 1 || new Date().getFullYear();
+
+  const report = await reportService.getMonthlyNotificationVolume(year);
+
+  sendResponse(res, {
+    statusCode: 200,
+    status: 'success',
+    data: { report },
+  });
+};
+
+exports.getCourseFunnel = async (req, res) => {
+  const { courseId } = req.params;
+
+  const report = await reportService.getCourseFunnel(courseId);
+
+  sendResponse(res, {
+    statusCode: 200,
+    status: 'success',
+    data: { report },
+  });
+};

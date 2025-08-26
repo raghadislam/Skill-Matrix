@@ -45,7 +45,6 @@ learningPathSchema.path('updatedAt').select(false);
 learningPathSchema.pre(/^find/, function (next) {
   this.populate({
     path: 'orderedCourses',
-    select: '-prerequisites',
   });
   next();
 });

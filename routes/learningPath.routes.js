@@ -11,12 +11,21 @@ const {
   deletePathZodSchema,
   createPathSchema,
   updatePathZodSchema,
+  autoEnrollZodSchema,
 } = require('../validators/pathValidators');
 
 const router = express.Router();
 
 router.get('/', validate(getAllPathsZodSchema), pathController.getAllPaths);
 router.get('/:id', validate(getPathZodSchema), pathController.getPath);
+
+router.post(
+  '/:pathId/auto-enroll',
+  protect,
+  restrictTo(ROLE.EMPLOYEE),
+  validate(autoEnrollZodSchema),
+  pathController.autoEnroll,
+);
 
 router.use(protect, restrictTo(ROLE.MANAGER, ROLE.ADMIN));
 
