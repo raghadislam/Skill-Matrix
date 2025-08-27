@@ -1,6 +1,6 @@
-# 🏢 Corporate Training & Skill Management System
+# 🏢 Skill-Matrix
 
-A Back-end system for companies to manage employee and intern training, skills, courses, assessments, enrollments, and achievements.
+A Back-end corporate Training & Skill Management System for companies to manage employee and intern training, skills, courses, assessments, enrollments, and achievements.
 This project provides a scalable foundation for corporate learning platforms with robust authentication, validation, reporting, and integrations.
 
 ## Features
