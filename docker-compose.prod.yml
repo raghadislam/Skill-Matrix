@@ -1,0 +1,11 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+
+    container_name: skill-matrix-api-app-prod
+
+    environment:
+      - NODE_ENV=production

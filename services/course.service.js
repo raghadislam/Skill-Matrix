@@ -1,4 +1,5 @@
 const assessmentRequestService = require('./assessmentRequest.service');
+const cachService = require('./cache.service');
 const notificationService = require('./notification.service');
 const Course = require('../models/course.model');
 const Assessment = require('../models/assessment.model');
@@ -11,53 +12,8 @@ const eventBus = require('../utils/eventBus');
 const STATUS = require('../utils/courseStatus');
 const { TYPE } = require('../utils/enums');
 const { CRITERIA } = require('../utils/enums');
-const redisClient = require('../config/redis');
 
 class CourseService {
-  async #getOrSetCache(key, cb) {
-    const data = await redisClient.get(key);
-
-    if (data != null) return JSON.parse(data);
-
-    const freshData = await cb();
-    await redisClient.setEx(key, 3600, JSON.stringify(freshData));
-    return freshData;
-  }
-
-  /* eslint-disable no-await-in-loop */
-  async #deleteBatch(keys) {
-    const BATCH_SIZE = 500;
-    if (!keys || keys.length === 0) return;
-
-    if (typeof redisClient.unlink === 'function') {
-      for (let i = 0; i < keys.length; i += BATCH_SIZE) {
-        await redisClient.unlink(...keys.slice(i, i + BATCH_SIZE));
-      }
-    } else {
-      for (let i = 0; i < keys.length; i += BATCH_SIZE) {
-        await redisClient.del(...keys.slice(i, i + BATCH_SIZE));
-      }
-    }
-  }
-
-  async #clearCourseCache() {
-    const BATCH_SIZE = 500;
-    let batch = [];
-
-    // eslint-disable-next-line no-restricted-syntax, node/no-unsupported-features/es-syntax
-    for await (const key of redisClient.scanIterator({
-      MATCH: 'courses:*',
-      COUNT: 1000,
-    })) {
-      batch.push(key);
-      if (batch.length >= BATCH_SIZE) {
-        await this.#deleteBatch(batch);
-        batch = [];
-      }
-    }
-    if (batch.length) this.#deleteBatch(batch);
-  }
-
   #population(query) {
     return query.populate({
       path: 'prerequisites',
@@ -68,7 +24,7 @@ class CourseService {
   async getAllCourses(queryString) {
     const cacheKey = `courses:${JSON.stringify(queryString)}}`;
 
-    const data = await this.#getOrSetCache(cacheKey, async () => {
+    const data = await cachService.getOrSetCache(cacheKey, async () => {
       const query = this.#population(Course.find());
       const feature = new ApiFeatures(query, queryString)
         .filter()
@@ -84,7 +40,7 @@ class CourseService {
   async getCourse(id) {
     const cacheKey = `courses:${id}`;
 
-    const data = await this.#getOrSetCache(cacheKey, async () => {
+    const data = await cachService.getOrSetCache(cacheKey, async () => {
       const query = this.#population(Course.findById(id));
       return await query.lean();
     });
@@ -95,7 +51,7 @@ class CourseService {
   async createCourse(data) {
     const newCourse = await Course.create(data);
 
-    this.#clearCourseCache();
+    await cachService.clearCourseCache();
 
     return newCourse;
   }
@@ -110,7 +66,7 @@ class CourseService {
 
     if (!updatedCourse) throw new AppError(`No course found with that ID`, 404);
 
-    this.#clearCourseCache();
+    await cachService.clearCourseCache();
 
     return updatedCourse;
   }
@@ -119,7 +75,7 @@ class CourseService {
     const course = await Course.findByIdAndDelete(id);
     if (!course) throw new AppError(`No course found with that ID`, 404);
 
-    this.#clearCourseCache();
+    await cachService.clearCourseCache();
   }
 
   async requestCourseAssessment(courseId, userId) {

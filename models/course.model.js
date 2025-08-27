@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const cacheService = require('../services/cache.service');
 
 const { DEPT } = require('../utils/enums');
 
@@ -66,6 +67,22 @@ const courseSchema = new mongoose.Schema(
 
 courseSchema.path('createdAt').select(false);
 courseSchema.path('updatedAt').select(false);
+
+async function clearCache() {
+  await cacheService.clearCourseCache();
+}
+
+[
+  'save',
+  'findOneAndUpdate',
+  'findOneAndDelete',
+  'deleteMany',
+  'updateOne',
+  'updateMany',
+  'insertMany',
+].forEach((event) => {
+  courseSchema.post(event, clearCache);
+});
 
 const Course = mongoose.model('Course', courseSchema);
 module.exports = Course;

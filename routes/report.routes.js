@@ -24,4 +24,6 @@ router.get(
 
 router.get('/course-funnel/:courseId', reportController.getCourseFunnel);
 
+router.get('/course-ratings-summary', reportController.getCourseRatingsSummary);
+
 module.exports = router;
