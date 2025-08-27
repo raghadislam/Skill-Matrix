@@ -144,7 +144,7 @@ This project provides a scalable foundation for corporate learning platforms wit
 ## Installation
 
 ```
-git clone https://github.com/your-org/training-system.git
+git clone https://github.com/SamerYaserr/Skill-Matrix.git
 cd training-system
 npm install
 ```
@@ -220,5 +220,3 @@ npm start     # Production
 - Multi-language support (Arabic/English)
 
 - Frontend integration (Angular/React)
-
----
