@@ -144,7 +144,7 @@ This project provides a scalable foundation for corporate learning platforms wit
 ## Installation
 
 ```
-git clone https://github.com/SamerYaserr/Skill-Matrix.git
+git clone https://github.com/raghadislam/Skill-Matrix.git
 cd Skill-Matrix
 npm install
 ```

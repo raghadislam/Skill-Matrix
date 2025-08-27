@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SamerYaserr/Skill-Matrix.git"
+    "url": "git+https://github.com/raghadislam/Skill-Matrix.git"
   },
   "author": "Raghad Islam and Samer Yasser",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/SamerYaserr/Skill-Matrix/issues"
+    "url": "https://github.com/raghadislam/Skill-Matrix/issues"
   },
-  "homepage": "https://github.com/SamerYaserr/Skill-Matrix#readme",
+  "homepage": "https://github.com/raghadislam/Skill-Matrix#readme",
   "engines": {
     "node": ">=8.3.0"
   },
