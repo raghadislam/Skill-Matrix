@@ -1,6 +1,6 @@
-# 🏢 Corporate Training & Skill Management System
+# 🏢 Skill-Matrix
 
-A Back-end system for companies to manage employee and intern training, skills, courses, assessments, enrollments, and achievements.
+A Back-end corporate Training & Skill Management System for companies to manage employee and intern training, skills, courses, assessments, enrollments, and achievements.
 This project provides a scalable foundation for corporate learning platforms with robust authentication, validation, reporting, and integrations.
 
 ## Features
@@ -144,8 +144,8 @@ This project provides a scalable foundation for corporate learning platforms wit
 ## Installation
 
 ```
-git clone https://github.com/your-org/training-system.git
-cd training-system
+git clone https://github.com/SamerYaserr/Skill-Matrix.git
+cd Skill-Matrix
 npm install
 ```
 
@@ -220,5 +220,3 @@ npm start     # Production
 - Multi-language support (Arabic/English)
 
 - Frontend integration (Angular/React)
-
----
